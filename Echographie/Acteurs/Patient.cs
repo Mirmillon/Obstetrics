@@ -17,11 +17,17 @@ namespace Echographie.Acteurs
             this.numeroPatient = numeroPatient;
         }
 
-
         public int NumeroPatient
         {
-            get {return numeroPatient;}
-            set {numeroPatient = value;}
+            get { return numeroPatient; }
+            set
+            {
+                if (this.numeroPatient != value)
+                {
+                    this.numeroPatient = value;
+                    OnPropertyChanged("NumeroPatient");
+                }
+            }
         }
     }
 }

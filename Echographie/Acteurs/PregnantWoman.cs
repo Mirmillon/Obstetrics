@@ -6,7 +6,7 @@ using Echographie.Classes;
 
 namespace Echographie.Acteurs
 {
-    public class PregnantWoman : People
+    public class PregnantWoman : Patient
     {
         Grossesse uneGrossesse = null;
 
@@ -14,17 +14,7 @@ namespace Echographie.Acteurs
         {
             uneGrossesse = new Grossesse();
         }
-        public PregnantWoman(string firstName, string lastname) : base( firstName,  lastname)
-        {
-            uneGrossesse = new Grossesse();
-        }
-
-        public PregnantWoman(string firstName, string lastname, DateTime dateBirth) : base(firstName, lastname, dateBirth)
-        {
-            uneGrossesse = new Grossesse();
-        }
-
-
+       
         public Grossesse UneGrossesse
         {
             get {return uneGrossesse;}
