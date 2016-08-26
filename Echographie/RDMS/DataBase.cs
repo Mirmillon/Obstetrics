@@ -1,23 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using FirebirdSql.Data.FirebirdClient;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Echographie.RDMS
 {
-    class DataBase
-    {
-        using System;
-using System.Collections.Generic;
-using System.Data;
-using FirebirdSql.Data.FirebirdClient;
-using Partogramme.Acteurs;
-using Partogramme.Classes;
-using System.Collections.ObjectModel;
 
-namespace Partogramme.RDMS
-    {
         public class DataBase
         {
             public string ChaineConnection()
@@ -2715,5 +2704,5 @@ namespace Partogramme.RDMS
         }
     }
 
-}
-}
+
+
