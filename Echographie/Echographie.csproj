@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Acteurs\Foetus.cs" />
     <Compile Include="Acteurs\Patient.cs" />
     <Compile Include="Acteurs\People.cs" />
     <Compile Include="Acteurs\PregnantWoman.cs" />
