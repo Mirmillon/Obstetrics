@@ -157,7 +157,7 @@ namespace Echographie.Acteurs
         }
 
         public int AgeDeces()
-        {ss
+        {
             // CALCUL D'APRES LIEN CI-DESSOUS
             //http://stackoverflow.com/questions/9/how-do-i-calculate-someones-age-in-c
             int age = dateDeath.Year - dateBirth.Year;
