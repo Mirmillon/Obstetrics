@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using FirebirdSql.Data.FirebirdClient;
 using Echographie.Acteurs;
-using System.Threading.Tasks;
+using Echographie.Classes;
+using System.Data;
 
 namespace Echographie.RDMS
 {
