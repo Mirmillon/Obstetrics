@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,7 +59,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Acteurs\Foetus.cs" />
+    <Compile Include="Acteurs\Patient.cs" />
     <Compile Include="Acteurs\People.cs" />
+    <Compile Include="Acteurs\PregnantWoman.cs" />
+    <Compile Include="Classes\Grossesse.cs" />
     <Compile Include="Classes\Reference.cs" />
     <Compile Include="RDMS\DataBase.cs" />
     <Page Include="MainWindow.xaml">

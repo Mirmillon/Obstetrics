@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using FirebirdSql.Data.FirebirdClient;
 using Echographie.Acteurs;
-using System.Threading.Tasks;
+using Echographie.Classes;
+using System.Data;
 
 namespace Echographie.RDMS
 {
@@ -106,7 +107,7 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 p.FirstName = (string)reader[1];
                                 //p.MiddleName = (string)reader[2];
                                 p.LastName = (string)reader[3];
@@ -148,7 +149,7 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 p.FirstName = (string)reader[1];
                                 //p.MiddleName = (string)reader[2];
                                 p.LastName = (string)reader[3];
@@ -193,7 +194,7 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 p.FirstName = (string)reader[1];
                                 //p.MiddleName = (string)reader[2];
                                 p.LastName = (string)reader[3];
@@ -236,7 +237,7 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 p.FirstName = (string)reader[1];
                                 //p.MiddleName = (string)reader[2];
                                 p.LastName = (string)reader[3];
@@ -281,7 +282,7 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 p.FirstName = (string)reader[1];
                                 //p.MiddleName = (string)reader[2];
                                 p.LastName = (string)reader[3];
@@ -325,7 +326,7 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 p.FirstName = (string)reader[1];
                                 //p.MiddleName = (string)reader[2];
                                 p.LastName = (string)reader[3];
@@ -370,7 +371,7 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 p.FirstName = (string)reader[1];
                                 //p.MiddleName = (string)reader[2];
                                 p.LastName = (string)reader[3];
@@ -418,8 +419,8 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
-                                p.NumPatient = (int)reader[1];
+                                p.ClePeople = (int)reader[0];
+                                p.NumeroPatient = (int)reader[1];
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
                                 {
@@ -427,7 +428,7 @@ namespace Echographie.RDMS
                                 }
                                 p.LastName = (string)reader[4];
                                 p.DateBirth = Convert.ToDateTime(reader[5]);
-                                p.UneGrossesse.KeyDossier = (int)reader[6];
+                                p.UneGrossesse.CleGrossesse = (int)reader[6];
                                 p.UneGrossesse.Ddg = Convert.ToDateTime(reader[7]);
                                 p.UneGrossesse.PregnancyKind = (int)reader[8];
                                 pregnantWomen.Add(p);
@@ -467,8 +468,8 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
-                                p.NumPatient = (int)reader[1];
+                                p.ClePeople = (int)reader[0];
+                                p.NumeroPatient = (int)reader[1];
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
                                 {
@@ -476,7 +477,7 @@ namespace Echographie.RDMS
                                 }
                                 p.LastName = (string)reader[4];
                                 p.DateBirth = Convert.ToDateTime(reader[5]);
-                                p.UneGrossesse.KeyDossier = (int)reader[6];
+                                p.UneGrossesse.CleGrossesse = (int)reader[6];
                                 p.UneGrossesse.Ddg = Convert.ToDateTime(reader[7]);
                                 p.UneGrossesse.PregnancyKind = (int)reader[8];
                                 pregnantWomen.Add(p);
@@ -517,8 +518,8 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
-                                p.NumPatient = (int)reader[1];
+                                p.ClePeople = (int)reader[0];
+                                p.NumeroPatient = (int)reader[1];
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
                                 {
@@ -526,7 +527,7 @@ namespace Echographie.RDMS
                                 }
                                 p.LastName = (string)reader[4];
                                 p.DateBirth = Convert.ToDateTime(reader[5]);
-                                p.UneGrossesse.KeyDossier = (int)reader[6];
+                                p.UneGrossesse.CleGrossesse = (int)reader[6];
                                 p.UneGrossesse.Ddg = Convert.ToDateTime(reader[7]);
                                 p.UneGrossesse.PregnancyKind = (int)reader[8];
 
@@ -568,8 +569,8 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
-                                p.NumPatient = (int)reader[1];
+                                p.ClePeople = (int)reader[0];
+                                p.NumeroPatient = (int)reader[1];
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
                                 {
@@ -577,7 +578,7 @@ namespace Echographie.RDMS
                                 }
                                 p.LastName = (string)reader[4];
                                 p.DateBirth = Convert.ToDateTime(reader[5]);
-                                p.UneGrossesse.KeyDossier = (int)reader[6];
+                                p.UneGrossesse.CleGrossesse = (int)reader[6];
                                 p.UneGrossesse.Ddg = Convert.ToDateTime(reader[7]);
                                 p.UneGrossesse.PregnancyKind = (int)reader[8];
 
@@ -620,8 +621,8 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
-                                p.NumPatient = (int)reader[1];
+                                p.ClePeople = (int)reader[0];
+                                p.NumeroPatient = (int)reader[1];
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
                                 {
@@ -629,7 +630,7 @@ namespace Echographie.RDMS
                                 }
                                 p.LastName = (string)reader[4];
                                 p.DateBirth = Convert.ToDateTime(reader[5]);
-                                p.UneGrossesse.KeyDossier = (int)reader[6];
+                                p.UneGrossesse.CleGrossesse = (int)reader[6];
                                 p.UneGrossesse.Ddg = Convert.ToDateTime(reader[7]);
                                 p.UneGrossesse.PregnancyKind = (int)reader[8];
 
@@ -673,8 +674,8 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
-                                p.NumPatient = (int)reader[1];
+                                p.ClePeople = (int)reader[0];
+                                p.NumeroPatient = (int)reader[1];
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
                                 {
@@ -682,7 +683,7 @@ namespace Echographie.RDMS
                                 }
                                 p.LastName = (string)reader[4];
                                 p.DateBirth = Convert.ToDateTime(reader[5]);
-                                p.UneGrossesse.KeyDossier = (int)reader[6];
+                                p.UneGrossesse.CleGrossesse = (int)reader[6];
                                 p.UneGrossesse.Ddg = Convert.ToDateTime(reader[7]);
                                 p.UneGrossesse.PregnancyKind = (int)reader[8];
 
@@ -726,8 +727,8 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
-                                p.NumPatient = (int)reader[1];
+                                p.ClePeople = (int)reader[0];
+                                p.NumeroPatient = (int)reader[1];
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
                                 {
@@ -735,7 +736,7 @@ namespace Echographie.RDMS
                                 }
                                 p.LastName = (string)reader[4];
                                 p.DateBirth = Convert.ToDateTime(reader[5]);
-                                p.UneGrossesse.KeyDossier = (int)reader[6];
+                                p.UneGrossesse.CleGrossesse = (int)reader[6];
                                 p.UneGrossesse.Ddg = Convert.ToDateTime(reader[7]);
                                 p.UneGrossesse.PregnancyKind = (int)reader[8];
 
@@ -782,10 +783,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -840,10 +841,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -866,7 +867,7 @@ namespace Echographie.RDMS
                                 }
                                 //if (!(reader[8] == DBNull.Value))
                                 //{
-                                //    p.UneGrossesse.KeyDossier = (int)reader[8];
+                                //    p.UneGrossesse.CleGrossesse = (int)reader[8];
                                 //}
                                 //if (!(reader[9] == DBNull.Value))
                                 //{
@@ -912,10 +913,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -971,10 +972,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1032,10 +1033,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1058,7 +1059,7 @@ namespace Echographie.RDMS
                             connexion.Close();
                             return patients;
                         }
-                        s
+                        
                         connexion.Close();
                         return null;
                     }
@@ -1092,10 +1093,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1153,10 +1154,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Patient p = new Patient();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1218,10 +1219,10 @@ namespace Echographie.RDMS
                             {
 
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1244,7 +1245,7 @@ namespace Echographie.RDMS
                                 }
                                 if (!(reader[8] == DBNull.Value))
                                 {
-                                    p.UneGrossesse.KeyDossier = (int)reader[8];
+                                    p.UneGrossesse.CleGrossesse = (int)reader[8];
                                 }
                                 if (!(reader[9] == DBNull.Value))
                                 {
@@ -1291,10 +1292,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1317,7 +1318,7 @@ namespace Echographie.RDMS
                                 }
                                 if (!(reader[8] == DBNull.Value))
                                 {
-                                    p.UneGrossesse.KeyDossier = (int)reader[8];
+                                    p.UneGrossesse.CleGrossesse = (int)reader[8];
                                 }
                                 if (!(reader[9] == DBNull.Value))
                                 {
@@ -1365,10 +1366,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1391,7 +1392,7 @@ namespace Echographie.RDMS
                                 }
                                 if (!(reader[8] == DBNull.Value))
                                 {
-                                    p.UneGrossesse.KeyDossier = (int)reader[8];
+                                    p.UneGrossesse.CleGrossesse = (int)reader[8];
                                 }
                                 if (!(reader[9] == DBNull.Value))
                                 {
@@ -1439,10 +1440,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1465,7 +1466,7 @@ namespace Echographie.RDMS
                                 }
                                 if (!(reader[8] == DBNull.Value))
                                 {
-                                    p.UneGrossesse.KeyDossier = (int)reader[8];
+                                    p.UneGrossesse.CleGrossesse = (int)reader[8];
                                 }
                                 if (!(reader[9] == DBNull.Value))
                                 {
@@ -1514,10 +1515,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1540,7 +1541,7 @@ namespace Echographie.RDMS
                                 }
                                 if (!(reader[8] == DBNull.Value))
                                 {
-                                    p.UneGrossesse.KeyDossier = (int)reader[8];
+                                    p.UneGrossesse.CleGrossesse = (int)reader[8];
                                 }
                                 if (!(reader[9] == DBNull.Value))
                                 {
@@ -1590,10 +1591,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1616,7 +1617,7 @@ namespace Echographie.RDMS
                                 }
                                 if (!(reader[8] == DBNull.Value))
                                 {
-                                    p.UneGrossesse.KeyDossier = (int)reader[8];
+                                    p.UneGrossesse.CleGrossesse = (int)reader[8];
                                 }
                                 if (!(reader[9] == DBNull.Value))
                                 {
@@ -1666,10 +1667,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1692,7 +1693,7 @@ namespace Echographie.RDMS
                                 }
                                 if (!(reader[8] == DBNull.Value))
                                 {
-                                    p.UneGrossesse.KeyDossier = (int)reader[8];
+                                    p.UneGrossesse.CleGrossesse = (int)reader[8];
                                 }
                                 if (!(reader[9] == DBNull.Value))
                                 {
@@ -1744,7 +1745,7 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
 
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 p.FirstName = (string)reader[1];
                                 if (!(reader[2] == DBNull.Value))
                                 {
@@ -1788,10 +1789,10 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
 
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -1843,7 +1844,7 @@ namespace Echographie.RDMS
                         {
                             while (reader.Read())
                             {
-                                g.KeyDossier = (int)reader[0];
+                                g.CleGrossesse = (int)reader[0];
                                 g.Ddg = Convert.ToDateTime(reader[1]);
                                 g.PregnancyKind = (int)reader[2];
                                 if (g.PregnancyKind == 1)
@@ -1939,7 +1940,7 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 Echographie e = new Echographie();
-                                e.KeyDossier = (int)reader[0];
+                                e.CleGrossesse = (int)reader[0];
                                 e.Ddg = Convert.ToDateTime(reader[1]);
                                 e.Numero = (int)reader[2];
                                 e.DateUsc = Convert.ToDateTime(reader[3]);
@@ -1989,8 +1990,8 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
-                                p.NumPatient = (int)reader[1];
+                                p.ClePeople = (int)reader[0];
+                                p.NumeroPatient = (int)reader[1];
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
                                 {
@@ -1998,7 +1999,7 @@ namespace Echographie.RDMS
                                 }
                                 p.LastName = (string)reader[4];
                                 p.DateBirth = Convert.ToDateTime(reader[5]);
-                                p.UneGrossesse.KeyDossier = (int)reader[6];
+                                p.UneGrossesse.CleGrossesse = (int)reader[6];
                                 p.UneGrossesse.Ddg = Convert.ToDateTime(reader[7]);
                                 p.UneGrossesse.PregnancyKind = (int)reader[8];
                                 pregnantWomen.Add(p);
@@ -2037,10 +2038,10 @@ namespace Echographie.RDMS
                             {
 
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -2099,10 +2100,10 @@ namespace Echographie.RDMS
                             {
 
                                 PregnantWoman p = new PregnantWoman();
-                                p.Key = (int)reader[0];
+                                p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
-                                    p.NumPatient = (int)reader[1];
+                                    p.NumeroPatient = (int)reader[1];
                                 }
                                 p.FirstName = (string)reader[2];
                                 if (!(reader[3] == DBNull.Value))
@@ -2125,7 +2126,7 @@ namespace Echographie.RDMS
                                 }
                                 if (!(reader[8] == DBNull.Value))
                                 {
-                                    p.UneGrossesse.KeyDossier = (int)reader[8];
+                                    p.UneGrossesse.CleGrossesse = (int)reader[8];
                                 }
                                 if (!(reader[9] == DBNull.Value))
                                 {
