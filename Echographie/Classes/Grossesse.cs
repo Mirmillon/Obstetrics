@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Echographie.Utilitaires;
 
 namespace Echographie.Classes
 {
@@ -61,7 +62,7 @@ namespace Echographie.Classes
 
         public string Terme
         {
-            get { return ( (DateTime.Today.Subtract(ddg.AddDays(-14)).Days) / 7).ToString() + " + " + ((DateTime.Today.Subtract(ddg.AddDays(-14)).Days) % 7).ToString();}
+            get { return new Calcul().AfficherTerme(new Calcul().NbrJour(ddg)); }
             set { terme = value; }
         }
 

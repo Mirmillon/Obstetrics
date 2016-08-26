@@ -63,9 +63,11 @@
     <Compile Include="Acteurs\Patient.cs" />
     <Compile Include="Acteurs\People.cs" />
     <Compile Include="Acteurs\PregnantWoman.cs" />
+    <Compile Include="Classes\Echographie.cs" />
     <Compile Include="Classes\Grossesse.cs" />
     <Compile Include="Classes\Reference.cs" />
     <Compile Include="RDMS\DataBase.cs" />
+    <Compile Include="Utilitaires\Calcul.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
