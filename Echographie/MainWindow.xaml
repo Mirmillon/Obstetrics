@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Echographie"
         mc:Ignorable="d"
         Title="MainWindow" Style="{StaticResource MainWindow}" WindowStartupLocation="CenterScreen">
-    <Grid Style="{StaticResource gridMain}">
+    <Grid x:Name="gridMain">
         <Grid.ColumnDefinitions>
            
         </Grid.ColumnDefinitions>

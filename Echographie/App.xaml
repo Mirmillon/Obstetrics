@@ -277,12 +277,9 @@
         <Setter Property="Grid.ColumnSpan" Value="3"/>
         <Setter Property="Grid.RowSpan" Value="1"/>
     </Style>
-        <Style x:Key="gridMain" TargetType="Grid">
-           
-            <Setter Property="Grid.Column" Value="12"/>
-            <Setter Property="Grid.Row" Value="12"/>
-            <Setter Property="ShowGridLines" Value="True"/>
-        </Style>
+      
+
+        
         <!--END GRID-->
     </Application.Resources>
 </Application>
