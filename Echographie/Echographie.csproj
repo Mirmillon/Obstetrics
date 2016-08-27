@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="RDMS\DataBase.cs" />
     <Compile Include="Utilitaires\Calcul.cs" />
+    <Compile Include="Utilitaires\GestionComboBox.cs" />
     <Compile Include="Utilitaires\GestionGrille.cs" />
     <Page Include="Fenetres\Patiente.xaml">
       <SubType>Designer</SubType>
