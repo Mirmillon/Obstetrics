@@ -107,7 +107,7 @@ namespace Echographie.Fenetres
 
         private void SetFirstQuarter()
         {
-            buttonEcho1T.IsEnabled = true;
+             buttonEcho1T.IsEnabled = true;
             buttonBiometrics.IsEnabled = false;
             buttonMorphology.IsEnabled = false;
             buttonHeart.IsEnabled = false;
