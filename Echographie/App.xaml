@@ -6,8 +6,8 @@
     <Application.Resources>
     <!--WINDOWS-->
         <Style x:Key="MainWindow" TargetType="Window">
-            <Setter Property="Width" Value="700"/>
-            <Setter Property="Height" Value="700"/>
+            <Setter Property="Width" Value="800"/>
+            <Setter Property="Height" Value="600"/>
             <Setter Property="ResizeMode" Value="NoResize"/>
             <Setter Property="WindowStyle" Value="None"/>
             <Setter Property="BorderBrush" Value="Blue"/>
@@ -24,8 +24,11 @@
         <Setter Property="Orientation" Value="Horizontal"/>
         <Setter Property="FlowDirection" Value="LeftToRight"/>
         <Setter Property="Background" Value="LightBlue"/>
-
-    </Style>
+            <Setter Property="Grid.Row" Value="0"/>
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Grid.RowSpan" Value="1"/>
+            <Setter Property="Grid.ColumnSpan" Value="12"/>
+        </Style>
     <Style x:Key="stackPanelHautInf" TargetType="StackPanel">
         <Setter Property="Orientation" Value="Horizontal"/>
         <Setter Property="FlowDirection" Value="RightToLeft"/>
@@ -41,7 +44,11 @@
         <Setter Property="Orientation" Value="Horizontal"/>
         <Setter Property="FlowDirection" Value="RightToLeft"/>
         <Setter Property="Background" Value="LightBlue"/>
-    </Style>
+            <Setter Property="Grid.Row" Value="12"/>
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Grid.RowSpan" Value="1"/>
+            <Setter Property="Grid.ColumnSpan" Value="12"/>
+        </Style>
     <Style x:Key="stackPanelVertical" TargetType="StackPanel">
         <Setter Property="Orientation" Value="Vertical"/>
         <Setter Property="Background" Value="LightGray"/>

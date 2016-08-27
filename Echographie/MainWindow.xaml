@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Echographie"
         mc:Ignorable="d"
         Title="MainWindow" Style="{StaticResource MainWindow}" WindowStartupLocation="CenterScreen">
-    <Grid x:Name="gridMain">
+    <Grid x:Name="gridMain" ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -35,5 +35,9 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <StackPanel x:Name="stackPanelHaut" Style="{StaticResource stackPanelHautSup}"></StackPanel>
+        <StackPanel x:Name="stackPanelBas" Style="{StaticResource stackPanelBas}">
+            <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
+        </StackPanel>
     </Grid>
 </Window>
