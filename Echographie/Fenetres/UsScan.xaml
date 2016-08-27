@@ -45,7 +45,7 @@
             <Button x:Name="buttonEcho1T" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">FIRST QUATTER</Button>
             <Button x:Name="buttonBiometrics" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BIOMETRICS</Button>
             <Button x:Name="buttonMorphology"  Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">MORPHOLOGY</Button>
-            <Button  Style="{DynamicResource buttonStackPanelGauche}"  Visibility="Visible" Click="ButtonIdentification_Click">HEART</Button>
+            <Button  x:Name="buttonHeart" Style="{DynamicResource buttonStackPanelGauche}"  Visibility="Visible" Click="ButtonIdentification_Click">HEART</Button>
             <Button  Style="{DynamicResource buttonStackPanelGauche}"  Visibility="Visible" Click="ButtonIdentification_Click">DOPPLER</Button>
             <Button x:Name="buttonGrowthChart" Style="{DynamicResource buttonStackPanelGauche}"  Click="ButtonGrowthChart_Click">GROWTH CHART</Button>
             <Button  x:Name="buttonBiometricsChart" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BIOMETRICS CHART</Button>
