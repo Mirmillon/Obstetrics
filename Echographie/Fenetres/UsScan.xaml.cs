@@ -11,6 +11,9 @@ namespace Echographie.Fenetres
         public UsScan()
         {
             InitializeComponent();
+
+            //Premiere grille visible
+            new GestionGrille().GridVisibilty(gridCentre, 0);
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e) { Close(); }
