@@ -36,21 +36,30 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="stackPanelHaut" Style="{StaticResource stackPanelHautSup}">
+            <Label x:Name="labelTitre" Style="{DynamicResource LabelTitre}">ULTRASOUND SCAN</Label>
+            <Label Style="{DynamicResource LabelStandard}">D.D.G</Label>
+            <TextBox x:Name="textBoxDdg"  Style="{StaticResource TextBoxStandard }" Width="90"  TextChanged="TextBoxDdg_TextChanged" Text="{Binding Ddg,StringFormat=dd/MM/yyyy}"></TextBox>
+            <TextBox x:Name="textBoxTerme"  Style="{StaticResource TextBoxStandard }" Width="50"   TextChanged="TextBoxTerme_TextChanged"></TextBox>
             <Label Style="{DynamicResource LabelStandard}">U.S.C KIND</Label>
-            <ComboBox x:Name="comboBoxPregnancyUscKind"   Style="{StaticResource ComboBoxStandard}" SelectionChanged="ComboBoxPregnancyUscKind_SelectionChanged" ></ComboBox>
+            <ComboBox x:Name="comboBoxPregnancyUscKind"   Style="{StaticResource ComboBoxStandard}"  SelectionChanged="ComboBoxPregnancyUscKind_SelectionChanged" ></ComboBox>
             <Label Style="{DynamicResource LabelStandard}">PREGNANCY KIND</Label>
-            <ComboBox x:Name="comboBoxPregnancyKind"    Style="{StaticResource ComboBoxStandard}" SelectionChanged="ComboBoxPregnancyKind_SelectionChanged" SelectedValue="{Binding PregnancyKind}" ></ComboBox>
+            <ComboBox x:Name="comboBoxPregnancyKind"    Style="{StaticResource ComboBoxStandard}" Width="80" SelectionChanged="ComboBoxPregnancyKind_SelectionChanged" SelectedValue="{Binding PregnancyKind}" ></ComboBox>
+            <ComboBox x:Name="comboBoxTwin"  Style="{DynamicResource ComboBoxStandard}"  Width="220" Visibility="Collapsed" SelectedValue="{Binding Twin}"></ComboBox>
+            <Label  x:Name="labelNumberFoetus" Style="{DynamicResource LabelStandard}" Visibility="Collapsed" >NUMBER FOETUS</Label>
+            <TextBox x:Name="textBoxNumberFoetus"  Style="{StaticResource TextBoxStandard }" Width="40" Visibility="Collapsed"  Text="{Binding NombreFoetus}"></TextBox>
+            <Label  x:Name="labelWeightEstimation"    Style="{DynamicResource LabelStandard}"  >FORMULA</Label>
+            <ComboBox x:Name="comboBoxWeightEstimation"    Style="{StaticResource ComboBoxStandard}" ></ComboBox>
         </StackPanel>
         <StackPanel x:Name="stackPanelGauche" Style="{StaticResource stackPanelVerticalgauche}">
-            <Button x:Name="buttonEcho1T" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">FIRST QUATTER</Button>
+            <Button x:Name="buttonEcho1T" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click" >BIO MORPHO 1T</Button>
             <Button x:Name="buttonBiometrics" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BIOMETRICS</Button>
             <Button x:Name="buttonMorphology"  Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">MORPHOLOGY</Button>
-            <Button  x:Name="buttonHeart" Style="{DynamicResource buttonStackPanelGauche}"  Visibility="Visible" Click="ButtonIdentification_Click">HEART</Button>
-            <Button  Style="{DynamicResource buttonStackPanelGauche}"  Visibility="Visible" Click="ButtonIdentification_Click">DOPPLER</Button>
+            <Button x:Name="buttonHeart" Style="{DynamicResource buttonStackPanelGauche}"  Visibility="Visible" Click="ButtonIdentification_Click">HEART</Button>
+            <Button Style="{DynamicResource buttonStackPanelGauche}"  Visibility="Visible" Click="ButtonIdentification_Click">DOPPLER</Button>
             <Button x:Name="buttonGrowthChart" Style="{DynamicResource buttonStackPanelGauche}"  Click="ButtonGrowthChart_Click">GROWTH CHART</Button>
-            <Button  x:Name="buttonBiometricsChart" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BIOMETRICS CHART</Button>
-            <Button  x:Name="buttonBiometricsBoneChart" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BONE BIOMETRICS CHART</Button>
-            <Button  Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">FINDINGS</Button>
+            <Button x:Name="buttonBiometricsChart" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BIOMETRICS CHART</Button>
+            <Button x:Name="buttonBiometricsBoneChart" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BONE BIOMETRICS CHART</Button>
+            <Button Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">FINDINGS</Button>
         </StackPanel>
         <Grid x:Name="gridCentre" Style="{StaticResource gridCentre}">
             <Grid x:Name="gridEcho1T" Background="LightCyan">
