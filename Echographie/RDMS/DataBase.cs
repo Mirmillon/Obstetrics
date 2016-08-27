@@ -1918,11 +1918,11 @@ namespace Echographie.RDMS
                     }
                 }
             }
-
-            public List<Echographie> GetPoidsFoetus(int keyGrossesse)
+            //TODO Refaire cette methode
+            public List<Foetus> GetPoidsFoetus(int keyGrossesse)
             {
                 FbConnection connexion = new FbConnection(ChaineConnection());
-                List<Echographie> poids = new List<Echographie>();
+                List<Foetus> poids = new List<Foetus>();
                 using (FbCommand commande = connexion.CreateCommand())
                 {
                     commande.CommandText = "GET_POIDS_FOETUS";
@@ -1939,10 +1939,10 @@ namespace Echographie.RDMS
                             commande.ExecuteNonQuery();
                             while (reader.Read())
                             {
-                                Echographie e = new Echographie();
+                                Foetus e = new Foetus();
                                 e.CleGrossesse = (int)reader[0];
                                 e.Ddg = Convert.ToDateTime(reader[1]);
-                                e.Numero = (int)reader[2];
+                                e.NumeroFoetus = (int)reader[2];
                                 e.DateUsc = Convert.ToDateTime(reader[3]);
                                 e.Poids = (int)reader[4];
                                 poids.Add(e);
@@ -2154,10 +2154,11 @@ namespace Echographie.RDMS
                 }
             }
 
-            public List<ElementDimension> GetElement1T()
+        //TODO Verifier cette methode
+            public List<ElementBiometrique> GetElement1T()
             {
                 FbConnection connexion = new FbConnection(ChaineConnection());
-                List<ElementDimension> elements = new List<ElementDimension>();
+                List<ElementBiometrique> elements = new List<ElementBiometrique>();
                 using (FbCommand commande = connexion.CreateCommand())
                 {
                     commande.CommandText = "GET_ELEMENT_DIMENSION";
@@ -2171,7 +2172,7 @@ namespace Echographie.RDMS
                             while (reader.Read())
                             {
 
-                                ElementDimension p = new ElementDimension();
+                                ElementBiometrique p = new ElementBiometrique();
                                 p.CleElement = (int)reader[0];
                                 p.CleDimension = (int)reader[1];
                                 p.Label = (string)reader[2];
@@ -2384,13 +2385,6 @@ namespace Echographie.RDMS
                 }
             }
 
-            //public void SetResultUs(int cle, int number)
-            //{
-            //    Foetus("SET_RESULTS_US", cle, number);
-            //}
-
-
-
             public int SetUltrasoundScan(int cle)
             {
                 FbConnection connexion = new FbConnection(ChaineConnection());
@@ -2403,10 +2397,8 @@ namespace Echographie.RDMS
                     commande.CommandText = "SET_ULS";
                     commande.CommandType = CommandType.StoredProcedure;
 
-
                     try
                     {
-
                         connexion.Open();
                         commande.ExecuteNonQuery();
                         int cleUS;
@@ -2414,7 +2406,6 @@ namespace Echographie.RDMS
                         {
                             cleUS = (int)pc[0].Value;
                             return cleUS;
-
                         }
                         else
                         {
@@ -2423,7 +2414,6 @@ namespace Echographie.RDMS
 
                         connexion.Close();
                         return cleUS;
-
                     }
                     catch (Exception ex)
                     {

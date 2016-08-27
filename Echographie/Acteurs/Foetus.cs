@@ -2,9 +2,10 @@
 
 namespace Echographie.Acteurs
 {
-    public class Foetus : Grossesse
+    public class Foetus : UsScan
     {
         int numeroFoetus;
+        int poids;
 
         public Foetus() : base() { }
 
@@ -17,6 +18,13 @@ namespace Echographie.Acteurs
         {
             get {return numeroFoetus;}
             set {numeroFoetus = value;}
+        }
+
+        public int Poids
+        {
+            get {return poids;}
+            set {poids = value;}
+            
         }
     }
 }

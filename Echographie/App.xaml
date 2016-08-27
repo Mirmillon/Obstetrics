@@ -4,6 +4,285 @@
              xmlns:local="clr-namespace:Echographie"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+    <!--WINDOWS-->
+        <Style x:Key="MainWindow" TargetType="Window">
+            <Setter Property="Width" Value="700"/>
+            <Setter Property="Height" Value="700"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+            <Setter Property="WindowStyle" Value="None"/>
+            <Setter Property="BorderBrush" Value="Blue"/>
+            <Setter Property="BorderThickness" Value="5"/>
+            </Style>
+        <!--END WINDOWS-->
+        <!--STACKPANEL-->
+    <Style x:Key="stackPanelStandard" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="FlowDirection" Value="LeftToRight"/>
+        <Setter Property="Background" Value="LightBlue"/>
+    </Style>
+    <Style x:Key="stackPanelHautSup" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="FlowDirection" Value="LeftToRight"/>
+        <Setter Property="Background" Value="LightBlue"/>
+
+    </Style>
+    <Style x:Key="stackPanelHautInf" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="FlowDirection" Value="RightToLeft"/>
+        <Setter Property="Background" Value="LightBlue"/>
+
+    </Style>
+    <Style x:Key="stackPanelButton" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="FlowDirection" Value="LeftToRight"/>
+        <Setter Property="Background" Value="LightBlue"/>
+    </Style>
+    <Style x:Key="stackPanelBas" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="FlowDirection" Value="RightToLeft"/>
+        <Setter Property="Background" Value="LightBlue"/>
+    </Style>
+    <Style x:Key="stackPanelVertical" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Vertical"/>
+        <Setter Property="Background" Value="LightGray"/>
+    </Style>
+    <!--END STACKPANEL-->
+    <!--BUTTON-->
+    <Style x:Key="buttonStandard" TargetType="Button">
+        <Setter Property="Width" Value="70"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+
+    <Style x:Key="buttonStackPanelBas" TargetType="Button">
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <Style x:Key="buttonStackPanelGauche" TargetType="Button">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="3,10"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <Style x:Key="buttonstartWindow" TargetType="Button">
+        <Setter Property="Width" Value="165"/>
+        <Setter Property="Height" Value="55"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+    <!--END BUTTON-->
+
+    <!--LABEL-->
+    <Style x:Key="LabelStandard" TargetType="Label" >
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="Margin" Value="5,3"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+    </Style>
+    <Style x:Key="LabelMm" TargetType="Label" >
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="Margin" Value="5,3"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    </Style>
+    <Style x:Key="LabelSousTitre" TargetType="Label" >
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Margin" Value="5,3"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    </Style>
+    <Style x:Key="LabelInfo" TargetType="Label" >
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="Margin" Value="50,3,50,3"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    </Style>
+    <Style x:Key="LabelTitre" TargetType="Label" >
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Margin" Value="10,5"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+    </Style>
+    <!--END LABEL-->
+
+    <!--TEXTBOX-->
+    <Style x:Key="TextBoxStandard" TargetType="TextBox" >
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="175"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="Margin" Value="5,3"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="CharacterCasing" Value="Upper"/>
+        <Setter Property="MaxLines" Value="1"/>
+    </Style>
+    <Style x:Key="TextBoxBiometric" TargetType="TextBox" >
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="75"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="Margin" Value="5,3"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="CharacterCasing" Value="Upper"/>
+        <Setter Property="MaxLines" Value="1"/>
+    </Style>
+    <Style x:Key="TextBoxDate" TargetType="TextBox" >
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="85"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="Margin" Value="10,3,5,3"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="MaxLength" Value="10"/>
+        <Setter Property="MaxLines" Value="1"/>
+    </Style>
+    <Style x:Key="TextBoxMorphologie" TargetType="TextBox" >
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="LightBlue"/>
+        <Setter Property="Foreground" Value="Blue"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="AcceptsTab" Value="False"/>
+    </Style>
+    <Style x:Key="TextBoxPoids" TargetType="TextBox" >
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="Yellow"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="85"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Margin" Value="10,3,5,3"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="MaxLength" Value="4"/>
+        <Setter Property="MaxLines" Value="1"/>
+    </Style>
+    <!--END sTEXTBOX-->
+    <Style x:Key="DatePickerTextBoxStandard" TargetType="DatePickerTextBox" >
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="Margin" Value="10,3,5,3"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="MaxLength" Value="10"/>
+        <Setter Property="MaxLines" Value="1"/>
+    </Style>
+    <!--COMBOBOX-->
+    <Style x:Key="ComboBoxStandard" TargetType="ComboBox" >
+        <Setter Property="Background" Value="LightGray"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="Margin" Value="5,2"/>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="ComboBoxCheck" TargetType="ComboBox" >
+        <Setter Property="Background" Value="LightGray"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Margin" Value="0,2"/>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    </Style>
+    <!--END COMBOBOX-->
+    <!--RADIO BUTTON-->
+    <Style x:Key="RadioButtonTitre" TargetType="RadioButton" >
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Margin" Value="10,5"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    <!--END RADIO BUTTON-->
+    <!--CHECK BOX-->
+    <Style x:Key="CheckBoxStandard" TargetType="CheckBox">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="FlowDirection" Value="LeftToRight"/>
+    </Style>
+    <Style x:Key="CheckBoxAnatomie" TargetType="CheckBox">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="IsThreeState" Value="True"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="FlowDirection" Value="LeftToRight"/>
+    </Style>
+    <!--END  CHECK BOX-->
+    <!--GRID-->
+    <Style x:Key="gridUnitData" TargetType="Grid">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Grid.ColumnSpan" Value="3"/>
+        <Setter Property="Grid.RowSpan" Value="1"/>
+    </Style>
+    <Style x:Key="gridUnitNonData" TargetType="Grid">
+        <Setter Property="Background" Value="LightBlue"/>
+        <Setter Property="Grid.ColumnSpan" Value="3"/>
+        <Setter Property="Grid.RowSpan" Value="1"/>
+    </Style>
+        <Style x:Key="gridMain" TargetType="Grid">
+           
+            <Setter Property="Grid.Column" Value="12"/>
+            <Setter Property="Grid.Row" Value="12"/>
+            <Setter Property="ShowGridLines" Value="True"/>
+        </Style>
+        <!--END GRID-->
     </Application.Resources>
 </Application>

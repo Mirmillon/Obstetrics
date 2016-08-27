@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Echographie"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="MainWindow" Style="{StaticResource MainWindow}" WindowStartupLocation="CenterScreen">
+    <Grid Style="{StaticResource gridMain}">
         <Grid.ColumnDefinitions>
            
         </Grid.ColumnDefinitions>

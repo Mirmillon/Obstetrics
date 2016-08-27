@@ -63,7 +63,11 @@
     <Compile Include="Acteurs\Patient.cs" />
     <Compile Include="Acteurs\People.cs" />
     <Compile Include="Acteurs\PregnantWoman.cs" />
-    <Compile Include="Classes\Echographie.cs" />
+    <Compile Include="Classes\Element.cs" />
+    <Compile Include="Classes\ElementAnatomique.cs" />
+    <Compile Include="Classes\ElementBiometrique.cs" />
+    <Compile Include="Classes\ElmentEchographique.cs" />
+    <Compile Include="Classes\UsScan.cs" />
     <Compile Include="Classes\Grossesse.cs" />
     <Compile Include="Classes\Reference.cs" />
     <Compile Include="RDMS\DataBase.cs" />
@@ -108,7 +112,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Classes\Explication.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

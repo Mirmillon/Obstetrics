@@ -4,19 +4,17 @@ using Echographie.Acteurs;
 
 namespace Echographie.Classes
 {
-    public class Echographie : Foetus
+    public class UsScan : Grossesse
     {
         int cleEchographie;
         DateTime dateUsc;
-        int poids;
 
-        public Echographie()
+        public UsScan()
         {
             dateUsc = DateTime.Today;
         }
 
-
-        public Echographie(int cleEchographie) : this()
+        public UsScan(int cleEchographie) : this()
         {
             this.cleEchographie = cleEchographie;
         }
@@ -33,16 +31,9 @@ namespace Echographie.Classes
             set { dateUsc = value; }
         }
 
-
         public int NombreSemaine
         {
             get { return new Calcul().NbrJour(Ddg, DateUsc) / 7; }
-        }
-
-        public int Poids
-        {
-            get {return poids;}
-            set {poids = value;}
         }
     }
 }

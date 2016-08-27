@@ -1,0 +1,2 @@
+﻿suppression de la classe ElementDimension car la classe ElementBiometrie a les mêmes propriétées.
+Le champ Poids passe de la classe USScan au Foetus : plus logique
