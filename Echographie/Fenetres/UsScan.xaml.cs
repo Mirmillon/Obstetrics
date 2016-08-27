@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Echographie.Utilitaires;
 
 namespace Echographie.Fenetres
 {
@@ -13,5 +14,15 @@ namespace Echographie.Fenetres
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e) { Close(); }
+
+        private void ButtonIdentification_Click(object sender, RoutedEventArgs e)
+        {
+            new GestionGrille().GridVisibilty(gridCentre, stackPanelGauche.Children.IndexOf((UIElement)sender));
+        }
+
+        private void ButtonGrowthChart_Click(object sender, RoutedEventArgs e)
+        {
+            new GestionGrille().GridVisibilty(gridCentre, stackPanelGauche.Children.IndexOf((UIElement)sender));
+        }
     }
 }

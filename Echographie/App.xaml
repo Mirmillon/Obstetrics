@@ -309,9 +309,16 @@
         <Setter Property="Grid.ColumnSpan" Value="3"/>
         <Setter Property="Grid.RowSpan" Value="1"/>
     </Style>
-      
+        <Style x:Key="gridCentre" TargetType="Grid">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Grid.ColumnSpan" Value="11"/>
+            <Setter Property="Grid.RowSpan" Value="10"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Grid.Row" Value="1"/>
+        </Style>
 
-        
+
+
         <!--END GRID-->
     </Application.Resources>
 </Application>

@@ -36,10 +36,27 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="stackPanelHaut" Style="{StaticResource stackPanelHautSup}">
-            
         </StackPanel>
         <StackPanel x:Name="stackPanelGauche" Style="{StaticResource stackPanelVerticalgauche}">
+            <Button x:Name="button1T" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BIOMETRICS</Button>
+            <Button x:Name="buttonMorphology"  Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">MORPHOLOGY</Button>
+            <Button  Style="{DynamicResource buttonStackPanelGauche}"  Visibility="Visible" Click="ButtonIdentification_Click">HEART</Button>
+            <Button  Style="{DynamicResource buttonStackPanelGauche}"  Visibility="Visible" Click="ButtonIdentification_Click">DOPPLER</Button>
+            <Button x:Name="buttonGrowthChart" Style="{DynamicResource buttonStackPanelGauche}"  Click="ButtonGrowthChart_Click">GROWTH CHART</Button>
+            <Button  x:Name="buttonBiometricsChart" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BIOMETRICS CHART</Button>
+            <Button  x:Name="buttonBiometricsBoneChart" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BONE BIOMETRICS CHART</Button>
+            <Button  Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">FINDINGS</Button>
         </StackPanel>
+        <Grid x:Name="gridCentre" Style="{StaticResource gridCentre}">
+            <Grid x:Name="gridBiometric" Background="Yellow"></Grid>
+            <Grid x:Name="gridMorphology" Background="LightCyan"></Grid>
+            <Grid x:Name="gridHeart" Background="Yellow"></Grid>
+            <Grid x:Name="gridDoppler" Background="LightCoral"></Grid>
+            <Grid x:Name="gridChartGrowth" Background="LightGray"></Grid>
+            <Grid x:Name="gridChartBiometric" Background="LightGreen"></Grid>
+            <Grid x:Name="gridChartBones" Background="LightPink"></Grid>
+            <Grid x:Name="gridFinding" Background="LightSeaGreen"></Grid>
+        </Grid>
         <StackPanel x:Name="stackPanelBas" Style="{StaticResource stackPanelBas}">
             <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
         </StackPanel>  
