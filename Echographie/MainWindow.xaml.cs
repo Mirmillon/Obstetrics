@@ -20,12 +20,14 @@ namespace Echographie
 
         private void ButtonNewPregnantWoman_Click(object sender, RoutedEventArgs e)
         {
-
+            new Pregnancy().Show();
+            WindowState = WindowState.Minimized;
         }
 
         private void ButtonNewUltrasound_Click(object sender, RoutedEventArgs e)
         {
-
+            new UsScan().Show();
+            WindowState = WindowState.Minimized;
         }
     }
 }
