@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Echographie"
         mc:Ignorable="d"
         Title="MainWindow" Style="{StaticResource MainWindow}" WindowStartupLocation="CenterScreen">
-    <Grid x:Name="gridMain" ShowGridLines="True">
+    <Grid x:Name="gridMain" ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -36,6 +36,40 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="stackPanelHaut" Style="{StaticResource stackPanelHautSup}"></StackPanel>
+        <Grid x:Name="gridButton" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="10" ShowGridLines="True">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="buttonNewPatiente"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}" Click="ButtonNewPatiente_Click" >NEW PATIENTE</Button>
+            <Button x:Name="buttonNewPRegnantWoman"  Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}"  Click="ButtonNewPregnantWoman_Click">NEW PREGNANT WOMAN</Button>
+            <Button x:Name="buttonNewUltrasound"  Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}"  Click="ButtonNewUltrasound_Click">NEW ULTRASOUND SCAN</Button>
+
+        </Grid>
         <StackPanel x:Name="stackPanelBas" Style="{StaticResource stackPanelBas}">
             <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
         </StackPanel>

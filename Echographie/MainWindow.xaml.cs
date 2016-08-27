@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Echographie.Fenetres;
 
 namespace Echographie
 {
@@ -7,11 +8,24 @@ namespace Echographie
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        public MainWindow() {InitializeComponent();}
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e) {Close();}
+
+        private void ButtonNewPatiente_Click(object sender, RoutedEventArgs e)
+        {
+            new Patiente().Show();
+            WindowState = WindowState.Minimized;
+        }
+
+        private void ButtonNewPregnantWoman_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonNewUltrasound_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

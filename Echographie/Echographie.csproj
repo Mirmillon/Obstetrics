@@ -70,8 +70,29 @@
     <Compile Include="Classes\UsScan.cs" />
     <Compile Include="Classes\Grossesse.cs" />
     <Compile Include="Classes\Reference.cs" />
+    <Compile Include="Fenetres\Patiente.xaml.cs">
+      <DependentUpon>Patiente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fenetres\Pregnancy.xaml.cs">
+      <DependentUpon>Pregnancy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fenetres\UsScan.xaml.cs">
+      <DependentUpon>UsScan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RDMS\DataBase.cs" />
     <Compile Include="Utilitaires\Calcul.cs" />
+    <Page Include="Fenetres\Patiente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fenetres\Pregnancy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fenetres\UsScan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
