@@ -81,6 +81,9 @@
       <DependentUpon>UsScan.xaml</DependentUpon>
     </Compile>
     <Compile Include="RDMS\DataBase.cs" />
+    <Compile Include="UserControl\UnitData.xaml.cs">
+      <DependentUpon>UnitData.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilitaires\Calcul.cs" />
     <Compile Include="Utilitaires\GestionComboBox.cs" />
     <Compile Include="Utilitaires\GestionGrille.cs" />
@@ -108,6 +111,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControl\UnitData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

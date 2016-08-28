@@ -42,13 +42,12 @@ namespace Echographie.Fenetres
 
         private void ButtonValidate_Click(object sender, RoutedEventArgs e)
         {
-
+            SetDataBase();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            buttonValidate.IsEnabled = SetValidateEnable() ? true : false;
-            
+            buttonValidate.IsEnabled = SetValidateEnable() ? true : false;            
         }
 
         private bool SetValidateEnable()
@@ -88,7 +87,5 @@ namespace Echographie.Fenetres
 
             }
         }
-
-
     }
 }
