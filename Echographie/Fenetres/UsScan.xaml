@@ -1041,7 +1041,7 @@
             <Grid x:Name="gridDoppler" Background="LightCoral"></Grid>
             <Grid x:Name="gridChartGrowth" Background="LightGray"></Grid>
             <Grid x:Name="gridChartBiometric" Background="LightGreen"></Grid>
-            <Grid x:Name="gridChartBones" Background="LightPink" ShowGridLines="True">
+            <Grid x:Name="gridChartBones" Background="LightPink" ShowGridLines="False">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
