@@ -320,5 +320,23 @@
 
 
         <!--END GRID-->
+        <!--SPLITTER-->
+        <Style x:Key="splitterVertical" TargetType="GridSplitter">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="ResizeDirection" Value="Columns"/>
+            <Setter Property="ShowsPreview" Value="True"/>
+            <Setter Property="Width" Value="5"/>
+            <Setter Property="Background" Value="Black"/>
+        </Style>
+        <Style x:Key="splitterHorizontal" TargetType="GridSplitter">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="ResizeDirection" Value="Rows"/>
+            <Setter Property="ShowsPreview" Value="True"/>
+            <Setter Property="Height" Value="5"/>
+            <Setter Property="Background" Value="Black"/>
+        </Style>
+        <!--END SPLITTER-->
     </Application.Resources>
 </Application>
