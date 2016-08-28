@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -80,6 +81,11 @@
     <Compile Include="Fenetres\UsScan.xaml.cs">
       <DependentUpon>UsScan.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Graphes\ChartAeraBase.cs" />
+    <Compile Include="Graphes\ChartAreaCroissance.cs" />
+    <Compile Include="Graphes\ChartAreaCroissanceBase.cs" />
+    <Compile Include="Graphes\ChartAreaPartogrammeBase.cs" />
+    <Compile Include="Graphes\SerieCroissance.cs" />
     <Compile Include="RDMS\DataBase.cs" />
     <Compile Include="UserControl\UnitData.xaml.cs">
       <DependentUpon>UnitData.xaml</DependentUpon>
@@ -147,7 +153,6 @@
     <Resource Include="Classes\Explication.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Graphes\" />
     <Folder Include="WinForms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
