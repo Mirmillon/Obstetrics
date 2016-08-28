@@ -193,9 +193,13 @@ namespace Echographie.Fenetres
             buttonBiometricsBoneChart.Visibility = Visibility.Visible;
             buttonBiometricsChart.Visibility = Visibility.Visible;
             buttonGrowthChart.Visibility = Visibility.Visible;
-        } 
-        
+        }
+
         #endregion END METHODES LOCALES
 
+        private void CheckBoxAnatomie_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

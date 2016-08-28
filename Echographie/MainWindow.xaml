@@ -36,7 +36,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="stackPanelHaut" Style="{StaticResource stackPanelHautSup}"></StackPanel>
-        <Grid x:Name="gridButton" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="10" ShowGridLines="True">
+        <Grid x:Name="gridButton" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="10" ShowGridLines="False">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
