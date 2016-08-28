@@ -1,6 +1,5 @@
 ﻿using System;
 using Echographie.Utilitaires;
-using Echographie.Acteurs;
 
 namespace Echographie.Classes
 {
