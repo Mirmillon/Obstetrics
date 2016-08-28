@@ -48,8 +48,6 @@ namespace Echographie.Fenetres
             {
                 case 0://1 Trimestre
                     SetFirstQuarter();
-                    labelWeightEstimation.Visibility = Visibility.Collapsed;
-                    comboBoxWeightEstimation.Visibility = Visibility.Collapsed;
                     new GestionGrille().GridVisibilty(gridCentre, 0);//Demarre sur le 1T
                     switch (comboBoxPregnancyKind.SelectedIndex)
                     {
@@ -69,29 +67,13 @@ namespace Echographie.Fenetres
                 case 1:
                 case 2://2 et 3 Trimestre
                     SetSecondQuarter();
-                    labelWeightEstimation.Visibility = Visibility.Visible;
-                    comboBoxWeightEstimation.Visibility = Visibility.Visible;
                     new GestionGrille().GridVisibilty(gridCentre, 1);//Demarre sur le 2T
                     break;
-                case 3://Croissance
-                    SetSecondQuarter();
-                    labelWeightEstimation.Visibility = Visibility.Visible;
-                    comboBoxWeightEstimation.Visibility = Visibility.Visible;
-                    break;
+                case 3://Croissance             
                 case 4://Morphologie
-                    SetSecondQuarter();
-                    labelWeightEstimation.Visibility = Visibility.Visible;
-                    comboBoxWeightEstimation.Visibility = Visibility.Visible;
-                    break;
                 case 5://Pathologie maternelle
-                    SetSecondQuarter();
-                    labelWeightEstimation.Visibility = Visibility.Visible;
-                    comboBoxWeightEstimation.Visibility = Visibility.Visible;
-                    break;
                 case 6://Pathologie foetale
                     SetSecondQuarter();
-                    labelWeightEstimation.Visibility = Visibility.Visible;
-                    comboBoxWeightEstimation.Visibility = Visibility.Visible;
                     break;
                 default:
                     SetSecondQuarter();
@@ -412,6 +394,8 @@ namespace Echographie.Fenetres
             buttonBiometricsBoneChart.Visibility = Visibility.Collapsed;
             buttonBiometricsChart.Visibility = Visibility.Collapsed;
             buttonGrowthChart.Visibility = Visibility.Collapsed;
+            labelWeightEstimation.Visibility = Visibility.Collapsed;
+            comboBoxWeightEstimation.Visibility = Visibility.Collapsed;
         }
 
         private void SetSecondQuarter()
@@ -423,6 +407,8 @@ namespace Echographie.Fenetres
             buttonBiometricsBoneChart.Visibility = Visibility.Visible;
             buttonBiometricsChart.Visibility = Visibility.Visible;
             buttonGrowthChart.Visibility = Visibility.Visible;
+            labelWeightEstimation.Visibility = Visibility.Visible;
+            comboBoxWeightEstimation.Visibility = Visibility.Visible;
         }
 
         #endregion END METHODES LOCALES
