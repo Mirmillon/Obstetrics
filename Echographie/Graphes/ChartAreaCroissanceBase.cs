@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Echographie.Graphes
+﻿namespace Echographie.Graphes
 {
-    class ChartAreaCroissanceBase
+    public class ChartAreaCroissanceBase : ChartAeraBase
     {
         private SerieCroissance p1 = null;
         private SerieCroissance p3 = null;

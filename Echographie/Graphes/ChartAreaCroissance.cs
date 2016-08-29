@@ -1,6 +1,6 @@
 ﻿namespace Echographie.Graphes
 {
-    class ChartAreaCroissance : ChartAreaCroissanceBase
+    public class ChartAreaCroissance : ChartAreaCroissanceBase
     {
         public ChartAreaCroissance()
         {

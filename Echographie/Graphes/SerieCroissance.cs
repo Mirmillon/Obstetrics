@@ -2,7 +2,7 @@
 
 namespace Echographie.Graphes
 {
-    class SerieCroissance : Series
+    public class SerieCroissance : Series
     {
         public SerieCroissance()
         {             
