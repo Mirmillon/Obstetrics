@@ -30,6 +30,15 @@
             <Setter Property="BorderBrush" Value="Blue"/>
             <Setter Property="BorderThickness" Value="3"/>
         </Style>
+        <Style x:Key="ListWindow" TargetType="Window">
+            <Setter Property="Width" Value="800"/>
+            <Setter Property="Height" Value="600"/>
+            <Setter Property="WindowState" Value="Normal"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+            <Setter Property="WindowStyle" Value="None"/>
+            <Setter Property="BorderBrush" Value="Blue"/>
+            <Setter Property="BorderThickness" Value="3"/>
+        </Style>
         <!--END WINDOWS-->
         <!--STACKPANEL-->
     <Style x:Key="stackPanelStandard" TargetType="StackPanel">
