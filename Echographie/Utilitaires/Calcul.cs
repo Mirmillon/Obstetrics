@@ -24,9 +24,6 @@ namespace Echographie.Utilitaires
             return dateCalcul.Subtract(ddg.AddDays(-14)).Days;
         }
 
-
-
-
         public static int NbrJourParLcc(string lcc)
         {
             return Convert.ToInt32(Math.Round(8.052 * Math.Sqrt(Convert.ToDouble(lcc)) + 23.73));
@@ -61,5 +58,28 @@ namespace Echographie.Utilitaires
         //    //ddg = dtpDateEcho.Value.AddDays(-nbrJours + 14);
         //    //return ddg;
         //}
+
+        ///////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////
+       /* var P = (.0005831 + Math.exp(-16.1992104 + (.2892432 * AgeMater)))
+
+if (document.forms[0].A[0].checked ==false) {
+P=(P+.0075)
+}
+
+    var OddsAgeTerme = ((1 / P) - 1)
+form.RisqueAgeTerme.value=Math.round(1/P)
+*/
+     
+        public double RisqueT21AgeMaternel(int age, bool atcdT21)
+        {
+            double p = (.0005831 + Math.Exp(-16.1992104 + (.2892432 * age)));
+            if(atcdT21)
+            {
+                p = p + 0.0075;
+            }
+            return Math.Round(1/p);
+
+        }
     }
 }

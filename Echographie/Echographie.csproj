@@ -76,8 +76,23 @@
     <Compile Include="Fenetres\Patiente.xaml.cs">
       <DependentUpon>Patiente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fenetres\PatientList.xaml.cs">
+      <DependentUpon>PatientList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fenetres\PeopleList.xaml.cs">
+      <DependentUpon>PeopleList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fenetres\Pregnancy.xaml.cs">
       <DependentUpon>Pregnancy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fenetres\PregnantWomenList.xaml.cs">
+      <DependentUpon>PregnantWomenList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fenetres\SearchFemalePatient.xaml.cs">
+      <DependentUpon>SearchFemalePatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fenetres\SearchPeople.xaml.cs">
+      <DependentUpon>SearchPeople.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fenetres\UsScan.xaml.cs">
       <DependentUpon>UsScan.xaml</DependentUpon>
@@ -88,9 +103,12 @@
     <Compile Include="Graphes\ChartAreaCroissance.cs" />
     <Compile Include="Graphes\ChartAreaCroissanceBase.cs" />
     <Compile Include="Graphes\ChartAreaCubitus.cs" />
+    <Compile Include="Graphes\ChartAreaFemur.cs" />
     <Compile Include="Graphes\ChartAreaHumerus.cs" />
     <Compile Include="Graphes\ChartAreaPartogrammeBase.cs" />
+    <Compile Include="Graphes\ChartAreaPeronee.cs" />
     <Compile Include="Graphes\ChartAreaRadius.cs" />
+    <Compile Include="Graphes\ChartAreaTibia.cs" />
     <Compile Include="Graphes\SerieCroissance.cs" />
     <Compile Include="RDMS\DataBase.cs" />
     <Compile Include="Utilitaires\Calcul.cs" />
@@ -103,7 +121,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Fenetres\PatientList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fenetres\PeopleList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Fenetres\Pregnancy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fenetres\PregnantWomenList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fenetres\SearchFemalePatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fenetres\SearchPeople.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

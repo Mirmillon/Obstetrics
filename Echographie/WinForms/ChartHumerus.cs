@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Echographie.Graphes;
 using System.Windows.Forms.DataVisualization.Charting;
 

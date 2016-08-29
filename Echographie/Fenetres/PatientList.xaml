@@ -1,0 +1,77 @@
+﻿<Window x:Class="Echographie.Fenetres.PatientList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Echographie.Fenetres"
+        mc:Ignorable="d"
+        Title="PatientList" Style="{StaticResource ListWindow}" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Style="{StaticResource stackPanelHautSup}">
+            <Label Style="{DynamicResource LabelTitre}">PATIENTS LIST</Label>
+            <RadioButton x:Name="radionButtonMale" Style="{DynamicResource RadioButtonTitre}"  Checked="RadionButton_Checked">MALE</RadioButton>
+            <RadioButton x:Name="radionButtonFemale" Style="{DynamicResource RadioButtonTitre}"  Checked="RadionButton_Checked">FEMALE</RadioButton>
+            <RadioButton x:Name="radionButtonAll" Style="{DynamicResource RadioButtonTitre}"  Checked="RadionButton_Checked">ALL</RadioButton>
+        </StackPanel>
+        <DataGrid x:Name="gridData" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="12" Grid.RowSpan="10">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding UneGrossesse.KeyDossier}" Value="-1">
+                            <Setter Property="Background" Value="LightGray"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding UneGrossesse.Outcome}" Value="1">
+                            <Setter Property="Background" Value="LightBlue"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding NumPatient}" Value="-1">
+                            <Setter Property="Background" Value="LightGreen"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="dataGridColClePatient" Header="KEY"  Binding="{Binding Key}"/>
+                <DataGridTextColumn x:Name="dataGridColNumeroPatient" Header="PATIENT NUMBER"  Binding="{Binding NumPatient}"/>
+                <DataGridTextColumn x:Name="dataGridColMiddleName" Header="FIRST NAME"  Binding="{Binding FirstName}"/>
+                <DataGridTextColumn x:Name="dataGridColName" Header="MIDDLE NAME"  Binding="{Binding MiddleName}"/>
+                <DataGridTextColumn x:Name="dataGridColLastName" Header="LAST NAME"  Binding="{Binding LastName}"/>
+                <DataGridTextColumn x:Name="dataGridColDob" Header="D.O.B"  Binding="{Binding DateBirth,StringFormat=dd/MM/yyyy}"/>
+                <DataGridComboBoxColumn x:Name="dataGridComboBoxGender" Header="GENDER"  SelectedValueBinding="{Binding Gender}"/>
+                <DataGridComboBoxColumn x:Name="dataGridComboBoxStatut" Header="STATUT" SelectedValueBinding="{Binding Statut}"></DataGridComboBoxColumn>
+                <DataGridTextColumn x:Name="dataGridColCle" Header="CLEGRO" Binding="{Binding UneGrossesse.KeyDossier}"></DataGridTextColumn>
+                <DataGridComboBoxColumn x:Name="dataGridComboBoxOutcome" Header="OUTCOME" SelectedValueBinding="{Binding UneGrossesse.Outcome}"></DataGridComboBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Style="{StaticResource stackPanelBas}">
+            <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
+        </StackPanel>
+    </Grid>
+</Window>

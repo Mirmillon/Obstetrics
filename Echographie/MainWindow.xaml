@@ -69,6 +69,15 @@
             <Button x:Name="buttonNewPRegnantWoman"  Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}"  Click="ButtonNewPregnantWoman_Click">NEW PREGNANT WOMAN</Button>
             <Button x:Name="buttonNewUltrasound"  Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}"  Click="ButtonNewUltrasound_Click">NEW ULTRASOUND SCAN</Button>
 
+            <Button x:Name="buttonListePeople"  Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}" Click="ButtonPeopleList_Click" >PEOPLE LIST</Button>
+            <Button x:Name="buttonListePatient"  Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}"  Click="ButtonPatientList_Click">PATIENTS LIST</Button>
+            <Button x:Name="buttonListePregnantWomen"  Grid.Column="6" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}"  Click="ButtonPregnantWomenList_Click">PREGNANT WOMEN LIST</Button>
+
+            <Button x:Name="buttonSearchPeople"  Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}" Click="ButtonSearchPeople_Click" >SEARCH PEOPLE</Button>
+            <Button x:Name="buttonSearchFemalePatient"  Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}"  Click="ButtonSearchFemalePatientList_Click">SEARCH FEMALE PATIENTS</Button>
+         
+
+
         </Grid>
         <StackPanel x:Name="stackPanelBas" Style="{StaticResource stackPanelBas}">
             <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>

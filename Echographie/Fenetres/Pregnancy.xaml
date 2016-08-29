@@ -35,8 +35,145 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <StackPanel Style="{StaticResource stackPanelHautSup}">
+            <Label Style="{StaticResource LabelTitre}">PREGNANCY FORM</Label>
+        </StackPanel>
+        <StackPanel x:Name="stackPanelGauche" Style="{StaticResource stackPanelVerticalgauche}" Grid.ColumnSpan="2">
+            <Button x:Name="buttonIdentification" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonLateralGauche_Click">IDENTIFICATION</Button>
+            <Button x:Name="buttonBackground"       Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonLateralGauche_Click">BACKGROUND</Button>
+            <Button x:Name="buttonPregnancy"       Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonLateralGauche_Click">PREGNANCY</Button>
+        </StackPanel>
+        <Grid x:Name="gridCentre" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="10" Grid.RowSpan="10">
+            <Grid x:Name="gridIdentification">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >PATIENT NUMBER</Label>
+                <TextBox x:Name="textBoxNumPatient" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{DynamicResource TextBoxStandard}"  IsReadOnly="True" Text="{Binding NumPatient}"></TextBox>
+                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >NAME</Label>
+                <TextBox x:Name="textBoxName" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{DynamicResource TextBoxStandard}" TextChanged="TextBox_TextChanged" Text="{Binding FirstName}"></TextBox>
+                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" >MIDDLE NAME</Label>
+                <TextBox x:Name="textBoxMiddleName" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{DynamicResource TextBoxStandard}" TextChanged="TextBox_TextChanged" Text="{Binding MiddleName}"></TextBox>
+                <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}">LAST NAME</Label>
+                <TextBox x:Name="textBoxLastName" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{DynamicResource TextBoxStandard}" TextChanged="TextBox_TextChanged" Text="{Binding LastName}"></TextBox>
+                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" >DATE BIRTH</Label>
+                <DatePickerTextBox x:Name="datePickerTextBoxDateBitrth" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource DatePickerTextBoxStandard}" Margin="8,0,24,0" Width="Auto" Height="Auto" TextChanged="TextBox_TextChanged" Text="{Binding DateBirth, StringFormat=dd/MM/yyyy}" ></DatePickerTextBox>
+
+                <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" >CIVIL STATUT</Label>
+                <ComboBox x:Name="comboBoxCivilStatut" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{DynamicResource ComboBoxStandard}" SelectedValue="{Binding Statut}"></ComboBox>
+            </Grid>
+            <Grid x:Name="gridBackground" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" >PREGNANCY KIND</Label>
+                <ComboBox x:Name="comboBoxPregnancyKind" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{DynamicResource ComboBoxStandard}"   SelectionChanged="ComboBoxPregnancyKind_SelectionChanged"  SelectedValue="{Binding PregnancyKind}"></ComboBox>
+                <ComboBox x:Name="comboBoxTwin" Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="5" Grid.RowSpan="1" Style="{DynamicResource ComboBoxStandard}"  Width="220" Visibility="Hidden" SelectedValue="{Binding Twin}"></ComboBox>
+                <Label  x:Name="labelNumberFoetus" Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" Visibility="Hidden" >NUMBER FOETUS</Label>
+                <TextBox x:Name="textBoxNumberFoetus" Grid.Row="0" Grid.Column="10" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{StaticResource TextBoxStandard }" Width="40" Visibility="Hidden" TextChanged="TextBox_TextChanged" Text="{Binding NombreFoetus}"></TextBox>
+                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" >DATE LAST PERIOD</Label>
+                <DatePickerTextBox x:Name="datePickerTextBoxDdr" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource DatePickerTextBoxStandard}" Margin="8,0,24,0" Width="Auto" Height="Auto" Text="{Binding Ddr,StringFormat=dd/MM/yyyy}"></DatePickerTextBox>
+                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" >DATE DEBUT</Label>
+                <DatePickerTextBox x:Name="datePickerTextBoxDdg" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource DatePickerTextBoxStandard}" Height="Auto" Margin="8,0,24,0" Width="Auto" TextChanged="TextBox_TextChanged" Text="{Binding Ddg,StringFormat=dd/MM/yyyy}"></DatePickerTextBox>
+                <Label Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" HorizontalContentAlignment="Center">BY</Label>
+                <ComboBox x:Name="comboBoxDatation" Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{DynamicResource ComboBoxStandard}" SelectedValue="{Binding Datation}"></ComboBox>
+                <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" >TERM</Label>
+                <TextBox x:Name="textBoxTerme" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{DynamicResource TextBoxStandard}" Text="{Binding Terme}" ></TextBox>
+                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" >E.D.D</Label>
+                <DatePickerTextBox x:Name="datePickerTextBoxTerm" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource DatePickerTextBoxStandard}" Height="Auto" Margin="8,0,24,0" Width="Auto" Text="{Binding EddD40,StringFormat=dd/MM/yyyy}"></DatePickerTextBox>
+
+
+
+
+                <CheckBox Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="1" FlowDirection="RightToLeft"  Style="{StaticResource CheckBoxStandard}">ATCD PERSONNEL T21</CheckBox>
+                <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1"  Style="{StaticResource LabelStandard}">RIQUE T21 AGE</Label>
+                <TextBox Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{StaticResource TextBoxBiometric}"></TextBox>
+                
+            </Grid>
+            <Grid x:Name="gridPregnancy">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
         <StackPanel x:Name="stackPanelBas" Style="{StaticResource stackPanelBas}">
             <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
+            <Button x:Name="buttonValidate" Style="{DynamicResource buttonStackPanelBas}"  IsEnabled="False" Click="ButtonValidate_Click">Validate</Button>
         </StackPanel>
     </Grid>
 </Window>

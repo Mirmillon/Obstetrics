@@ -12,21 +12,25 @@ namespace Echographie
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e) {Close();}
 
-        private void ButtonNewPatiente_Click(object sender, RoutedEventArgs e)
-        {
-            new Patiente().Show();
-            WindowState = WindowState.Minimized;
-        }
+        private void ButtonNewPatiente_Click(object sender, RoutedEventArgs e)  {Show(new Patiente());}
 
-        private void ButtonNewPregnantWoman_Click(object sender, RoutedEventArgs e)
-        {
-            new Pregnancy().Show();
-            WindowState = WindowState.Minimized;
-        }
+        private void ButtonNewPregnantWoman_Click(object sender, RoutedEventArgs e) {Show(new Pregnancy());}
 
-        private void ButtonNewUltrasound_Click(object sender, RoutedEventArgs e)
+        private void ButtonNewUltrasound_Click(object sender, RoutedEventArgs e) {Show(new UsScan());}
+
+        private void ButtonPeopleList_Click(object sender, RoutedEventArgs e){ Show(new PeopleList()); }
+
+        private void ButtonPatientList_Click(object sender, RoutedEventArgs e){Show(new PatientList());}
+
+        private void ButtonPregnantWomenList_Click(object sender, RoutedEventArgs e) {Show(new PregnantWomenList());}
+
+        private void ButtonSearchPeople_Click(object sender, RoutedEventArgs e) {Show(new SearchPeople());}
+
+        private void ButtonSearchFemalePatientList_Click(object sender, RoutedEventArgs e){ Show(new SearchFemalePatient()); }
+
+        private void Show(Window w)
         {
-            new UsScan().Show();
+            w.Show();
             WindowState = WindowState.Minimized;
         }
     }
