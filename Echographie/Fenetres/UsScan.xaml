@@ -1073,7 +1073,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <WindowsFormsHost x:Name="hostGrapheHumerus" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="6">
+                <WindowsFormsHost  x:Name="hostGrapheHumerus" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="6">
                 </WindowsFormsHost>
                 <WindowsFormsHost x:Name="hostGrapheRadius" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="6">
                 </WindowsFormsHost>

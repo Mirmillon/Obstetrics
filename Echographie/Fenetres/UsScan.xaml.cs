@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Echographie.Utilitaires;
 using Echographie.RDMS;
 using Echographie.Classes;
+using Echographie.WinForms;
 
 namespace Echographie.Fenetres
 {
@@ -20,6 +21,10 @@ namespace Echographie.Fenetres
             new GestionComboBox().SetComboxReference(new DataBase().GetPregnancyKind(), comboBoxPregnancyKind, 0);
             new GestionComboBox().SetComboxReference(new DataBase().GetTwin(), comboBoxTwin, 0);
             new GestionComboBox().SetComboxReference(new DataBase().GetPregnancyUscKind(), comboBoxPregnancyUscKind, 1);
+
+            ChartHumerus chartHumerus = new ChartHumerus();
+            chartHumerus.ChartHumerusLoaded();
+            hostGrapheHumerus.Child = chartHumerus;
 
             comboBoxPregnancyUscKind.SelectedIndex = 0;
         }
