@@ -184,17 +184,17 @@ namespace Echographie.Fenetres
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //if (textBoxLlc.Text.Trim().Length > 0 && Convert.ToInt32(textBoxLlc.Text) > 0)
-            //{
+            if (textBoxLlc.Text.Trim().Length > 0 && Convert.ToInt32(textBoxLlc.Text) > 0)
+            {
 
-            //    textBoxDdg.Text = new Calcul().CalculerDdgParLcc(textBoxLlc.Text, DateTime.Today).ToShortDateString();
-            //    textBoxTerme.Text = new Calcul().AfficherTerme(new Calcul().NbrJour(Convert.ToDateTime(textBoxDdg.Text)));
-            //}
-            //else
-            //{
-            //    textBoxTerme.Text = String.Empty;
-            //    textBoxDdg.Text = String.Empty;
-            //}
+                textBoxDdg.Text = new Calcul().CalculerDdgParLcc(textBoxLlc.Text, DateTime.Today).ToShortDateString();
+                textBoxTerme.Text = new Calcul().AfficherTerme(new Calcul().NbrJour(Convert.ToDateTime(textBoxDdg.Text)));
+            }
+            else
+            {
+                textBoxTerme.Text = String.Empty;
+                textBoxDdg.Text = String.Empty;
+            }
         }
 
         #endregion END TEXTBOX

@@ -96,6 +96,9 @@
     <Compile Include="Utilitaires\Calcul.cs" />
     <Compile Include="Utilitaires\GestionComboBox.cs" />
     <Compile Include="Utilitaires\GestionGrille.cs" />
+    <Compile Include="WinForms\ChartHumerus.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Page Include="Fenetres\Patiente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,9 +154,7 @@
   <ItemGroup>
     <Resource Include="Classes\Explication.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WinForms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
