@@ -26,6 +26,10 @@ namespace Echographie.Fenetres
             chartHumerus.ChartHumerusLoaded();
             hostGrapheHumerus.Child = chartHumerus;
 
+            ChartBiometrics biometrie = new ChartBiometrics();
+            biometrie.ChartBiometricsLoader();
+            hostGrapheBiometrics.Child = biometrie;
+
             comboBoxPregnancyUscKind.SelectedIndex = 0;
         }
 

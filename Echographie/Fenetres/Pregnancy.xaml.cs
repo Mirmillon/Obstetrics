@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Echographie.Utilitaires;
+using System;
 
 namespace Echographie.Fenetres
 {
@@ -54,6 +55,12 @@ namespace Echographie.Fenetres
         private void ComboBoxPregnancyKind_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxRisqueAgeMaternel.Text = Convert.ToString(new DownSyndrome().RisqueT21AgeMaternelTerme(33, false));
+            textBoxRisqueRelatifAgeEcho.Text = new DownSyndrome().RisqueRelatifAgeEcho(11);
         }
     }
 }

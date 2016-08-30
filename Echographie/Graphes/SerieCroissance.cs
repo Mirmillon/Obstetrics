@@ -7,6 +7,7 @@ namespace Echographie.Graphes
         public SerieCroissance()
         {             
             ChartType = SeriesChartType.Line;
+            Color = System.Drawing.Color.Blue;
             BorderWidth = 2;
         }   
     }

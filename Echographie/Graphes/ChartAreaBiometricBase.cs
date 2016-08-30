@@ -4,7 +4,7 @@
     {
         public ChartAreaBiometricBase()
         {
-            AxisY.Minimum = 60;
+            AxisY.Minimum = 20;
             AxisY.Maximum = 400;
             AxisY.Interval = 20;
         }

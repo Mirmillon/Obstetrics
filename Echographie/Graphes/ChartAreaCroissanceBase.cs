@@ -40,8 +40,8 @@
             p97 = new SerieCroissance();
             p99 = new SerieCroissance();
 
-            AxisX.Minimum = 20;
-            AxisX.Maximum = 43;
+            AxisX.Minimum = 13;
+            AxisX.Maximum = 41;
             AxisX.Interval = 1;
         }
     }

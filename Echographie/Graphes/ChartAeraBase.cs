@@ -9,9 +9,9 @@ namespace Echographie.Graphes
             AlignmentOrientation = AreaAlignmentOrientations.Horizontal;
 
             Position.X = 0F;
-            Position.Y = 15F;
+            Position.Y = 5;
             Position.Width = 100F;
-            Position.Height = 75;
+            Position.Height = 85;
             AlignmentStyle = AreaAlignmentStyles.PlotPosition | AreaAlignmentStyles.AxesView;
         }
     }

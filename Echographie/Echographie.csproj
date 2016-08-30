@@ -66,6 +66,7 @@
     <Compile Include="Acteurs\Patient.cs" />
     <Compile Include="Acteurs\People.cs" />
     <Compile Include="Acteurs\PregnantWoman.cs" />
+    <Compile Include="Classes\DataBiometrique.cs" />
     <Compile Include="Classes\Element.cs" />
     <Compile Include="Classes\ElementAnatomique.cs" />
     <Compile Include="Classes\ElementBiometrique.cs" />
@@ -99,6 +100,7 @@
     </Compile>
     <Compile Include="Graphes\ChartAeraBase.cs" />
     <Compile Include="Graphes\ChartAreaBiometricBase.cs" />
+    <Compile Include="Graphes\ChartAreaBiometricHeadCircum.cs" />
     <Compile Include="Graphes\ChartAreaBoneBase.cs" />
     <Compile Include="Graphes\ChartAreaCroissance.cs" />
     <Compile Include="Graphes\ChartAreaCroissanceBase.cs" />
@@ -112,8 +114,13 @@
     <Compile Include="Graphes\SerieCroissance.cs" />
     <Compile Include="RDMS\DataBase.cs" />
     <Compile Include="Utilitaires\Calcul.cs" />
+    <Compile Include="Utilitaires\DownSyndrome.cs" />
+    <Compile Include="Utilitaires\Fichier.cs" />
     <Compile Include="Utilitaires\GestionComboBox.cs" />
     <Compile Include="Utilitaires\GestionGrille.cs" />
+    <Compile Include="WinForms\ChartBiometrics.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WinForms\ChartHumerus.cs">
       <SubType>Component</SubType>
     </Compile>

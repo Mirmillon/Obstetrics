@@ -1040,7 +1040,10 @@
             </Grid>
             <Grid x:Name="gridDoppler" Background="LightCoral"></Grid>
             <Grid x:Name="gridChartGrowth" Background="LightGray"></Grid>
-            <Grid x:Name="gridChartBiometric" Background="LightGreen"></Grid>
+            <Grid x:Name="gridChartBiometric" Background="LightGreen">
+                <WindowsFormsHost x:Name="hostGrapheBiometrics" Grid.Row="0" Grid.Column="0" >
+                </WindowsFormsHost>
+            </Grid>
             <Grid x:Name="gridChartBones" Background="LightPink" ShowGridLines="False">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
