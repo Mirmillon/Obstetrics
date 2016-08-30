@@ -99,6 +99,7 @@
       <DependentUpon>UsScan.xaml</DependentUpon>
     </Compile>
     <Compile Include="Graphes\ChartAeraBase.cs" />
+    <Compile Include="Graphes\ChartAreaBiometricAbdoCircum.cs" />
     <Compile Include="Graphes\ChartAreaBiometricBase.cs" />
     <Compile Include="Graphes\ChartAreaBiometricHeadCircum.cs" />
     <Compile Include="Graphes\ChartAreaBoneBase.cs" />
@@ -112,16 +113,36 @@
     <Compile Include="Graphes\ChartAreaRadius.cs" />
     <Compile Include="Graphes\ChartAreaTibia.cs" />
     <Compile Include="Graphes\SerieCroissance.cs" />
+    <Compile Include="Graphes\SerieWeight.cs" />
     <Compile Include="RDMS\DataBase.cs" />
     <Compile Include="Utilitaires\Calcul.cs" />
     <Compile Include="Utilitaires\DownSyndrome.cs" />
+    <Compile Include="Utilitaires\EstimationPoids.cs" />
     <Compile Include="Utilitaires\Fichier.cs" />
     <Compile Include="Utilitaires\GestionComboBox.cs" />
     <Compile Include="Utilitaires\GestionGrille.cs" />
     <Compile Include="WinForms\ChartBiometrics.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WinForms\ChartCroissancePonderale.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinForms\ChartCubitus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinForms\ChartFemur.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WinForms\ChartHumerus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinForms\ChartPeronee.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinForms\ChartRadius.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinForms\ChartTibia.cs">
       <SubType>Component</SubType>
     </Compile>
     <Page Include="Fenetres\Patiente.xaml">

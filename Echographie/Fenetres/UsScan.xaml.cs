@@ -14,6 +14,9 @@ namespace Echographie.Fenetres
     /// </summary>
     public partial class UsScan : Window
     {
+        private ChartBiometrics biometrie = null;
+        private ChartCroissancePonderale chartCroissance = null;
+
         public UsScan()
         {
             InitializeComponent();
@@ -26,9 +29,13 @@ namespace Echographie.Fenetres
             chartHumerus.ChartHumerusLoaded();
             hostGrapheHumerus.Child = chartHumerus;
 
-            ChartBiometrics biometrie = new ChartBiometrics();
+            biometrie = new ChartBiometrics();
             biometrie.ChartBiometricsLoader();
             hostGrapheBiometrics.Child = biometrie;
+
+            chartCroissance = new ChartCroissancePonderale();
+            chartCroissance.CroissancePonderaleLoaded();
+            hostGrapheCroissance.Child = chartCroissance;
 
             comboBoxPregnancyUscKind.SelectedIndex = 0;
         }
@@ -45,6 +52,31 @@ namespace Echographie.Fenetres
         private void ButtonGrowthChart_Click(object sender, RoutedEventArgs e)
         {
             new GestionGrille().GridVisibilty(gridCentre, stackPanelGauche.Children.IndexOf((UIElement)sender));
+        }
+
+        private void ButtonBiometricsChart_Click(object sender, RoutedEventArgs e)
+        {
+            new GestionGrille().GridVisibilty(gridCentre, stackPanelGauche.Children.IndexOf((UIElement)sender));
+            biometrie.AreaHead.Visible = true;
+            biometrie.AreaAbdo.Visible = false;
+        }
+
+        private void ButtonChartAreaHead_Click(object sender, RoutedEventArgs e)
+        {
+            biometrie.AreaHead.Visible = true;
+            biometrie.AreaAbdo.Visible = false;
+        }
+
+        private void ButtonChartAreaAddo_Click(object sender, RoutedEventArgs e)
+        {
+            biometrie.AreaHead.Visible = false;
+            biometrie.AreaAbdo.Visible = true;
+        }
+
+        private void ButtonChartAreaFemur_Click(object sender, RoutedEventArgs e)
+        {
+            biometrie.AreaHead.Visible = false;
+            biometrie.AreaAbdo.Visible = false;
         }
 
         #endregion END BUTTON
@@ -202,6 +234,30 @@ namespace Echographie.Fenetres
         }
 
         #endregion END TEXTBOX
+
+        #region CHECKBOX
+
+        private void CheckBoxAnatomie_Click(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            if (cb is CheckBox)
+            {
+                if (cb.IsChecked == true)
+                {
+                    cb.Content = "Checked";
+                }
+                else if (cb.IsChecked == false)
+                {
+                    cb.Content = "Not Checked";
+                }
+                else
+                {
+                    cb.Content = "To Check Again";
+                }
+            }
+        }
+
+        #endregion END CHECKBOX
 
         #region LISTS
 
@@ -422,24 +478,8 @@ namespace Echographie.Fenetres
 
         #endregion END METHODES LOCALES
 
-        private void CheckBoxAnatomie_Click(object sender, RoutedEventArgs e)
-        {
-            CheckBox cb = sender as CheckBox;
-            if (cb is CheckBox)
-            {
-                if (cb.IsChecked == true)
-                {
-                    cb.Content = "Checked";
-                }
-                else if (cb.IsChecked == false)
-                {
-                    cb.Content = "Not Checked";
-                }
-                else
-                {
-                    cb.Content = "To Check Again";
-                }
-            }
-        }
+       
+
+
     }
 }

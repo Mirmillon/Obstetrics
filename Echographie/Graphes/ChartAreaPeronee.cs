@@ -4,7 +4,7 @@
     {
         public ChartAreaPeronee()
         {
-            Name = "airePeronee";
+            Name = "airePerone";
             AxisY.Maximum = 80;
             BackColor = System.Drawing.Color.LightSeaGreen;
         }

@@ -57,7 +57,7 @@
             <Button x:Name="buttonHeart" Style="{DynamicResource buttonStackPanelGauche}"  Visibility="Visible" Click="ButtonIdentification_Click">HEART</Button>
             <Button Style="{DynamicResource buttonStackPanelGauche}"  Visibility="Visible" Click="ButtonIdentification_Click">DOPPLER</Button>
             <Button x:Name="buttonGrowthChart" Style="{DynamicResource buttonStackPanelGauche}"  Click="ButtonGrowthChart_Click">GROWTH CHART</Button>
-            <Button x:Name="buttonBiometricsChart" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BIOMETRICS CHART</Button>
+            <Button x:Name="buttonBiometricsChart" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonBiometricsChart_Click">BIOMETRICS CHART</Button>
             <Button x:Name="buttonBiometricsBoneChart" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">BONE BIOMETRICS CHART</Button>
             <Button Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click">FINDINGS</Button>
         </StackPanel>
@@ -1039,10 +1039,44 @@
                 </Grid>
             </Grid>
             <Grid x:Name="gridDoppler" Background="LightCoral"></Grid>
-            <Grid x:Name="gridChartGrowth" Background="LightGray"></Grid>
-            <Grid x:Name="gridChartBiometric" Background="LightGreen">
-                <WindowsFormsHost x:Name="hostGrapheBiometrics" Grid.Row="0" Grid.Column="0" >
+            <Grid x:Name="gridChartGrowth" Background="LightGray">
+                <WindowsFormsHost x:Name="hostGrapheCroissance" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="10" Grid.RowSpan="11">
                 </WindowsFormsHost>
+            </Grid>
+            <Grid x:Name="gridChartBiometric" ShowGridLines="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <WindowsFormsHost x:Name="hostGrapheBiometrics" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="10" Grid.RowSpan="11">
+                </WindowsFormsHost>
+                <Button x:Name="buttonChartAreaHead" Grid.Row="11" Grid.Column="4" Style="{StaticResource buttonStandard}" Click="ButtonChartAreaHead_Click">HEAD </Button>
+                <Button x:Name="buttonChartAreaAddo" Grid.Row="11" Grid.Column="5" Style="{StaticResource buttonStandard}" Click="ButtonChartAreaAddo_Click">ABDOMEN</Button>
+                <Button x:Name="buttonChartAreaFemur" Grid.Row="11" Grid.Column="6" Style="{StaticResource buttonStandard}">FEMUR</Button>
             </Grid>
             <Grid x:Name="gridChartBones" Background="LightPink" ShowGridLines="False">
                 <Grid.ColumnDefinitions>

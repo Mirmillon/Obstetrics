@@ -10,17 +10,23 @@ namespace Echographie.WinForms
     public class ChartBiometrics : Chart
     {
         ChartAreaBiometricHeadCircum areaHead = null;
+        ChartAreaBiometricAbdoCircum areaAbdo = null;
+
 
         public ChartBiometrics():base()
         {
             areaHead = new ChartAreaBiometricHeadCircum();
+            areaAbdo = new ChartAreaBiometricAbdoCircum();
         }
 
-        public ChartAreaBiometricHeadCircum AireHead  {get {return areaHead; }}
+        public ChartAreaBiometricHeadCircum AreaHead  {get {return areaHead; }}
+        public ChartAreaBiometricAbdoCircum AreaAbdo  {get {return areaAbdo; }}
 
         public void ChartBiometricsLoader()
         {
             ChartAreas.Add(areaHead);
+            ChartAreas.Add(areaAbdo);
+
 
             Series.Add(areaHead.P1);
             Series.Add(areaHead.P3);
@@ -34,6 +40,21 @@ namespace Echographie.WinForms
             Series.Add(areaHead.P97);
             Series.Add(areaHead.P99);
 
+            Series.Add(areaAbdo.P1);
+            Series.Add(areaAbdo.P3);
+            Series.Add(areaAbdo.P5);
+            Series.Add(areaAbdo.P10);
+            Series.Add(areaAbdo.P25);
+            Series.Add(areaAbdo.P50);
+            Series.Add(areaAbdo.P75);
+            Series.Add(areaAbdo.P90);
+            Series.Add(areaAbdo.P95);
+            Series.Add(areaAbdo.P97);
+            Series.Add(areaAbdo.P99);
+
+
+
+
             areaHead.P1.ChartArea = "aireHead";
             areaHead.P3.ChartArea = "aireHead";
             areaHead.P5.ChartArea = "aireHead";
@@ -45,6 +66,19 @@ namespace Echographie.WinForms
             areaHead.P95.ChartArea = "aireHead";
             areaHead.P97.ChartArea = "aireHead";
             areaHead.P99.ChartArea = "aireHead";
+
+
+            areaAbdo.P1.ChartArea = "aireAbdo";
+            areaAbdo.P3.ChartArea = "aireAbdo";
+            areaAbdo.P5.ChartArea = "aireAbdo";
+            areaAbdo.P10.ChartArea = "aireAbdo";
+            areaAbdo.P25.ChartArea = "aireAbdo";
+            areaAbdo.P50.ChartArea = "aireAbdo";
+            areaAbdo.P75.ChartArea = "aireAbdo";
+            areaAbdo.P90.ChartArea = "aireAbdo";
+            areaAbdo.P95.ChartArea = "aireAbdo";
+            areaAbdo.P97.ChartArea = "aireAbdo";
+            areaAbdo.P99.ChartArea = "aireAbdo";
 
             areaHead.P3.Color = System.Drawing.Color.Red;
             areaHead.P97.Color = System.Drawing.Color.Red;

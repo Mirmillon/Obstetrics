@@ -77,22 +77,10 @@ namespace Echographie.Utilitaires
             DataBiometrique P97 = new DataBiometrique();
             DataBiometrique P99 = new DataBiometrique();
 
+
+
+
             return listes;
-        }
-
-        public List<DataBiometrique> ListeDataP3(List<DataBiometrique> liste)
-        {
-            List<DataBiometrique> listeP3 = new List<DataBiometrique>();
-            foreach(DataBiometrique data in liste)
-            {
-                if (data.Percentile == "P3")
-                {
-                    listeP3.Add(data);
-                }
-            }
-
-            return listeP3;
-
         }
 
         public List<DataBiometrique> ListeData(List<DataBiometrique> liste, string percentile)
@@ -100,14 +88,13 @@ namespace Echographie.Utilitaires
             List<DataBiometrique> l = new List<DataBiometrique>();
             foreach (DataBiometrique data in liste)
             {
-                if (data.Percentile == percentile)
+                if (data.Percentile.Equals(percentile))
                 {
                     l.Add(data);
                 }
             }
 
             return l;
-
         }
     }
     

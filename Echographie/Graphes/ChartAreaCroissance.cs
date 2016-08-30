@@ -7,8 +7,10 @@
             Name = "aireCroissance";
 
             AxisY.Minimum = 200;
-            AxisY.Maximum = 5250;
+            AxisY.Maximum = 5000;
             AxisY.Interval = 250;
+
+            AxisX.Minimum = 20;
         }
     }
 }
