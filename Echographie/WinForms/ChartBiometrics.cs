@@ -3,7 +3,6 @@ using Echographie.Classes;
 using Echographie.Utilitaires;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace Echographie.WinForms
 {
@@ -11,22 +10,24 @@ namespace Echographie.WinForms
     {
         ChartAreaBiometricHeadCircum areaHead = null;
         ChartAreaBiometricAbdoCircum areaAbdo = null;
-
+        ChartAreaFemur areaFemur = null;
 
         public ChartBiometrics():base()
         {
             areaHead = new ChartAreaBiometricHeadCircum();
             areaAbdo = new ChartAreaBiometricAbdoCircum();
+            areaFemur = new ChartAreaFemur();
         }
 
         public ChartAreaBiometricHeadCircum AreaHead  {get {return areaHead; }}
         public ChartAreaBiometricAbdoCircum AreaAbdo  {get {return areaAbdo; }}
+        public ChartAreaFemur AreaFemur { get { return areaFemur; } }
 
         public void ChartBiometricsLoader()
         {
             ChartAreas.Add(areaHead);
             ChartAreas.Add(areaAbdo);
-
+            ChartAreas.Add(areaFemur);
 
             Series.Add(areaHead.P1);
             Series.Add(areaHead.P3);
@@ -52,8 +53,29 @@ namespace Echographie.WinForms
             Series.Add(areaAbdo.P97);
             Series.Add(areaAbdo.P99);
 
+            Series.Add(areaFemur.P1);
+            Series.Add(areaFemur.P3);
+            Series.Add(areaFemur.P5);
+            Series.Add(areaFemur.P10);
+            Series.Add(areaFemur.P25);
+            Series.Add(areaFemur.P50);
+            Series.Add(areaFemur.P75);
+            Series.Add(areaFemur.P90);
+            Series.Add(areaFemur.P95);
+            Series.Add(areaFemur.P97);
+            Series.Add(areaFemur.P99);
 
-
+            areaFemur.P1.ChartArea = "aireFemur";
+            areaFemur.P3.ChartArea = "aireFemur";
+            areaFemur.P5.ChartArea = "aireFemur";
+            areaFemur.P10.ChartArea = "aireFemur";
+            areaFemur.P25.ChartArea = "aireFemur";
+            areaFemur.P50.ChartArea = "aireFemur";
+            areaFemur.P75.ChartArea = "aireFemur";
+            areaFemur.P90.ChartArea = "aireFemur";
+            areaFemur.P95.ChartArea = "aireFemur";
+            areaFemur.P97.ChartArea = "aireFemur";
+            areaFemur.P99.ChartArea = "aireFemur";
 
             areaHead.P1.ChartArea = "aireHead";
             areaHead.P3.ChartArea = "aireHead";
@@ -66,7 +88,6 @@ namespace Echographie.WinForms
             areaHead.P95.ChartArea = "aireHead";
             areaHead.P97.ChartArea = "aireHead";
             areaHead.P99.ChartArea = "aireHead";
-
 
             areaAbdo.P1.ChartArea = "aireAbdo";
             areaAbdo.P3.ChartArea = "aireAbdo";
@@ -85,38 +106,12 @@ namespace Echographie.WinForms
 
             List<DataBiometrique> listes = new List<DataBiometrique>();
             listes = new Fichier().ListeDataP3P10P50P90P97(@"H:\ProjetObstetric\Biometrics\PerimetreCranien.txt");
-            List<DataBiometrique> listesP3 = new Fichier().ListeData(listes, "P3");
-            List<DataBiometrique> listesP10 = new Fichier().ListeData(listes, "P10");
-            List<DataBiometrique> listesP50 = new Fichier().ListeData(listes, "P50");
-            List<DataBiometrique> listesP90 = new Fichier().ListeData(listes, "P90");
-            List<DataBiometrique> listesP97 = new Fichier().ListeData(listes, "P97");
-            foreach (DataBiometrique d in listesP3)
-            {
-                DataPoint p = new DataPoint(d.Terme, d.Resultat);
-                Series[1].Points.Add(p);
-            }
-            foreach(DataBiometrique d in listesP10)
-            {
-                DataPoint p = new DataPoint(d.Terme, d.Resultat);
-                areaHead.P10.Points.Add(p);
-            }
-            foreach (DataBiometrique d in listesP50)
-            {
-                DataPoint p = new DataPoint(d.Terme, d.Resultat);
-                areaHead.P50.Points.Add(p);
-            }
-            foreach (DataBiometrique d in listesP90)
-            {
-                DataPoint p = new DataPoint(d.Terme, d.Resultat);
-                areaHead.P90.Points.Add(p);
-            }
-            foreach (DataBiometrique d in listesP97)
-            {
-                DataPoint p = new DataPoint(d.Terme, d.Resultat);
-                areaHead.P97.Points.Add(p);
-            }
 
-
+            new Graphiques().SetPoint(new Fichier().ListeData(listes, "P3"), areaHead.P3);
+            new Graphiques().SetPoint(new Fichier().ListeData(listes, "P10"), areaHead.P10);
+            new Graphiques().SetPoint(new Fichier().ListeData(listes, "P50"), areaHead.P50);
+            new Graphiques().SetPoint(new Fichier().ListeData(listes, "P90"), areaHead.P90);
+            new Graphiques().SetPoint(new Fichier().ListeData(listes, "P97"), areaHead.P97);
 
         }
     }
