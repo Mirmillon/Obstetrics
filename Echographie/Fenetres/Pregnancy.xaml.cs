@@ -57,10 +57,61 @@ namespace Echographie.Fenetres
 
         }
 
+   
+        //////////////////////////////////////////////////////////////////////
+
         private void Test_Click(object sender, RoutedEventArgs e)
         {
-            textBoxRisqueAgeMaternel.Text = Convert.ToString(new DownSyndrome().RisqueT21AgeMaternelTerme(33, false));
-            textBoxRisqueRelatifAgeEcho.Text = new DownSyndrome().RisqueRelatifAgeEcho(11);
+            
+            
+        }
+
+        private void TextBoxLcc_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (textBoxLcc.Text.Trim().Length == 2 && (Convert.ToInt32(textBoxLcc.Text) > 44 && Convert.ToInt32(textBoxLcc.Text) < 85))
+            {
+
+                textBoxRisqueRelatifAgeEcho.Text = new DownSyndrome().RisqueRelatifAgeEcho(new Calcul().NbrSemParLcc(textBoxLcc.Text));
+
+                textBoxMedianeCn.Text = new DownSyndrome().ClarteNuqualeAttendue(Convert.ToInt32(textBoxLcc.Text)).ToString() ;
+                if(textBoxCn.Text.Trim().Length == 3 && textBoxLcc.Text.Trim().Length == 2)
+                { 
+                    if (Convert.ToDouble(textBoxCn.Text) / new DownSyndrome().ClarteNuqualeAttendue(Convert.ToInt32(textBoxLcc.Text)) < 0.78)
+                    {
+                        textBoxMom.Text = "0,78";
+                    }
+                    else
+                    {
+                        textBoxMom.Text = (Convert.ToDouble(textBoxCn.Text) / new DownSyndrome().ClarteNuqualeAttendue(Convert.ToInt32(textBoxLcc.Text))).ToString();
+                    }
+                }
+                else
+                {
+                    textBoxMom.Text = String.Empty;
+                }
+            }
+            else
+            {
+                textBoxMedianeCn.Text = String.Empty;
+            }
+        }
+
+        private void TextBoxAge_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if(textBoxAge.Text.Trim().Length == 2 && (Convert.ToInt32(textBoxAge.Text) > 14 && Convert.ToInt32(textBoxAge.Text) < 51))
+            {
+                bool? b = checkBoxAtcd.IsChecked;
+                textBoxRisqueAgeMaternelTerme.Text = Convert.ToString(new DownSyndrome().RisqueT21AgeMaternelTerme(Convert.ToInt32(textBoxAge.Text), (bool)b));
+                if (textBoxMom.Text.Trim().Length > 0)
+                {
+                    textBoxRisqueAgeMaternel.Text = Math.Round(Convert.ToDouble(textBoxRisqueAgeMaternelTerme.Text)/Convert.ToDouble(textBoxRisqueRelatifAgeEcho.Text)).ToString();
+                }
+            }
+            else
+            {
+                textBoxRisqueAgeMaternelTerme.Text = String.Empty;
+                textBoxRisqueAgeMaternel.Text = String.Empty;
+            }
         }
     }
 }
