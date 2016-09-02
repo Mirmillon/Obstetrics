@@ -34,6 +34,11 @@ namespace Echographie.Utilitaires
             return Convert.ToInt32(Math.Round(8.052 * Math.Sqrt(Convert.ToDouble(lcc)) + 23.73))/7;
         }
 
+        public int NbreSemParDdg(DateTime ddg)
+        {
+            return NbrJour( ddg)/7;
+        }
+
 
         public DateTime CalculerDdgParLcc(string lcc, DateTime dtDateEcho)
         {

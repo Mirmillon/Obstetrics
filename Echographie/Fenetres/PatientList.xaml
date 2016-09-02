@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Echographie.Fenetres"
         mc:Ignorable="d"
-        Title="PatientList" Style="{StaticResource ListWindow}" WindowStartupLocation="CenterScreen">
+        Title="PatientList" Style="{StaticResource ListWindow}" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -71,7 +71,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Style="{StaticResource stackPanelBas}">
-            <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
+           
+ <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
+            <Button x:Name="buttonEchographie" Style="{StaticResource buttonStackPanelBas}" Click="ButtonEchographie_Click">U.S Scan</Button>
         </StackPanel>
     </Grid>
 </Window>

@@ -71,7 +71,7 @@
     <Compile Include="Classes\ElementAnatomique.cs" />
     <Compile Include="Classes\ElementBiometrique.cs" />
     <Compile Include="Classes\ElmentEchographique.cs" />
-    <Compile Include="Classes\UsScan.cs" />
+    <Compile Include="Classes\Echo.cs" />
     <Compile Include="Classes\Grossesse.cs" />
     <Compile Include="Classes\Reference.cs" />
     <Compile Include="Fenetres\Patiente.xaml.cs">

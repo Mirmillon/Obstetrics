@@ -6,6 +6,8 @@ using Echographie.Utilitaires;
 using Echographie.RDMS;
 using Echographie.Classes;
 using Echographie.WinForms;
+using Echographie.Acteurs;
+using System.Windows.Data;
 
 namespace Echographie.Fenetres
 {
@@ -16,6 +18,10 @@ namespace Echographie.Fenetres
     {
         private ChartBiometrics chartBiometrie = null;
         private ChartCroissancePonderale chartCroissance = null;
+        private Patient patient = null;
+        private Grossesse pregnancy = null;
+        private Echo _echographie = null;
+   
 
         public UsScan()
         {
@@ -38,6 +44,38 @@ namespace Echographie.Fenetres
             hostGrapheCroissance.Child = chartCroissance;
 
             comboBoxPregnancyUscKind.SelectedIndex = 0;
+            
+
+        }
+
+        public UsScan(int clePeople):this()
+        {
+            patient = new Patient();
+            patient.ClePeople = clePeople;
+            patient = new DataBase().GetPeopleFemaleByKey(patient.ClePeople);
+            labelTitre.Content = patient.FullName + " - " + patient.AgeToday().ToString() + " Y.O";
+        }
+
+        public UsScan(int clePeople, int cleGrossesse) : this()
+        {
+            patient = new Patient();
+            patient.ClePeople = clePeople;
+            patient = new DataBase().GetPeopleFemaleByKey(patient.ClePeople);
+            labelTitre.Content = patient.FullName + " - " + patient.AgeToday().ToString() + " Y.O";
+
+            pregnancy = new Grossesse();
+            pregnancy.CleGrossesse = cleGrossesse;
+            pregnancy = new DataBase().GetPregnancyByKey(pregnancy.CleGrossesse);
+            stackPanelHautSup.DataContext = pregnancy;
+            if (new Calcul().NbreSemParDdg(pregnancy.Ddg) > 15)
+            {
+                comboBoxPregnancyUscKind.SelectedIndex = 1;
+            }
+            else
+            {
+                comboBoxPregnancyUscKind.SelectedIndex = 0;
+            }
+            //SetFoetus(pregnancy.NombreFoetus);
         }
 
         #region BUTTON
@@ -83,6 +121,34 @@ namespace Echographie.Fenetres
             chartBiometrie.AreaFemur.Visible = true;
         }
 
+        private void ButtonValidate_Click(object sender, RoutedEventArgs e)
+        {
+            //Si la personne n'a pas de numero patient
+            if (patient.NumeroPatient < 1)
+            {
+                //JE Cree un numero patient
+                patient.NumeroPatient = new DataBase().SetPatient(patient.ClePeople);
+                // Puis un num grossesse
+                SetGrossesse();
+                // Puis un num echo
+                _echographie = new Echo(new DataBase().SetUS(pregnancy.CleGrossesse));
+                SetDataBase();
+            }
+            else if (pregnancy.CleGrossesse < 1)
+            {
+                //Je cree un dossier obs
+                SetGrossesse();
+                // Puis un num echo
+                _echographie = new Echo(new DataBase().SetUS(pregnancy.CleGrossesse));
+                SetDataBase();
+            }
+            else
+            {
+                _echographie = new Echo(new DataBase().SetUS(pregnancy.CleGrossesse));
+                SetDataBase();
+            }
+        }
+
         #endregion END BUTTON
 
         #region COMBOBOX
@@ -92,6 +158,7 @@ namespace Echographie.Fenetres
             switch (comboBoxPregnancyUscKind.SelectedIndex)
             {
                 case 0://1 Trimestre
+                    AddTextChanged();
                     SetFirstQuarter();
                     new GestionGrille().GridVisibilty(gridCentre, 0);//Demarre sur le 1T
                     switch (comboBoxPregnancyKind.SelectedIndex)
@@ -111,6 +178,7 @@ namespace Echographie.Fenetres
                     break;
                 case 1:
                 case 2://2 et 3 Trimestre
+                    RemoveTextChanged();
                     SetSecondQuarter();
                     new GestionGrille().GridVisibilty(gridCentre, 1);//Demarre sur le 2T
                     break;
@@ -118,12 +186,12 @@ namespace Echographie.Fenetres
                 case 4://Morphologie
                 case 5://Pathologie maternelle
                 case 6://Pathologie foetale
+                    RemoveTextChanged();
                     SetSecondQuarter();
                     break;
                 default:
+                    RemoveTextChanged();
                     SetSecondQuarter();
-                    labelWeightEstimation.Visibility = Visibility.Visible;
-                    comboBoxWeightEstimation.Visibility = Visibility.Visible;
                     break;
             }
 
@@ -215,11 +283,22 @@ namespace Echographie.Fenetres
             {
                 textBoxTerme.Text = String.Empty;
             }
+
+
         }
 
         private void TextBoxTerme_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
 
+        }
+
+        private void TextBoxCn_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            if (t.Text.Trim().Length == 3 && textBoxLlc.Text.Trim().Length == 2)
+            {
+                textBoxMedianeCn.Text = new DownSyndrome().ClarteNuqualeAttendue(Convert.ToInt32(textBoxLlc.Text)).ToString();
+            }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -463,8 +542,6 @@ namespace Echographie.Fenetres
             buttonBiometricsBoneChart.Visibility = Visibility.Collapsed;
             buttonBiometricsChart.Visibility = Visibility.Collapsed;
             buttonGrowthChart.Visibility = Visibility.Collapsed;
-            labelWeightEstimation.Visibility = Visibility.Collapsed;
-            comboBoxWeightEstimation.Visibility = Visibility.Collapsed;
         }
 
         private void SetSecondQuarter()
@@ -476,22 +553,144 @@ namespace Echographie.Fenetres
             buttonBiometricsBoneChart.Visibility = Visibility.Visible;
             buttonBiometricsChart.Visibility = Visibility.Visible;
             buttonGrowthChart.Visibility = Visibility.Visible;
-            labelWeightEstimation.Visibility = Visibility.Visible;
-            comboBoxWeightEstimation.Visibility = Visibility.Visible;
         }
+
+        private void SetDataBase()
+        {
+            switch (comboBoxPregnancyUscKind.SelectedIndex)
+            {
+                case 0://1 Trimestre
+                    switch (comboBoxPregnancyKind.SelectedIndex)
+                    {
+                        case 0://Single
+                            List<ElementBiometrique> l = GetBindingBiometrics(gridBiometricUnique1T);
+                            List<ElementAnatomique> listeAnatomique = GetBindingAnatomie(gridMorphologyUnique1T);
+                            SetListeElmentsBiometricsDataBase(l, 1);
+                            SetListeElementsAnatomieDataBase(listeAnatomique, 1);
+                            break;
+                        case 1://Twin
+                            List<ElementBiometrique> l1 = GetBindingBiometrics(gridBiometricNonUnique1TTwin1);
+                            List<ElementAnatomique> listeAnatomiqueT1 = GetBindingAnatomie(gridMorphologyNonUnique1TTwin1);
+                            SetListeElmentsBiometricsDataBase(l1, 1);
+                            SetListeElementsAnatomieDataBase(listeAnatomiqueT1, 1);
+                            List<ElementBiometrique> l2 = GetBindingBiometrics(gridBiometricNonUnique1TTwin2);
+                            List<ElementAnatomique> listeAnatomiqueT2 = GetBindingAnatomie(gridMorphologyNonUnique1TTwin2);
+                            SetListeElementsAnatomieDataBase(listeAnatomiqueT2, 2);
+                            SetListeElmentsBiometricsDataBase(l2, 2);
+                            break;
+                        case 2://Multiple
+                            
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 1:
+                case 2://2 et 3 Trimestre
+                    switch (comboBoxPregnancyKind.SelectedIndex)
+                    {
+                        case 0://Single
+
+                            break;
+                        case 1://Twin
+
+                            break;
+                        case 2://Multiple
+
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 3://Croissance             
+                case 4://Morphologie
+                case 5://Pathologie maternelle
+                case 6://Pathologie foetale
+                    switch (comboBoxPregnancyKind.SelectedIndex)
+                    {
+                        case 0://Single
+
+                            break;
+                        case 1://Twin
+
+                            break;
+                        case 2://Multiple
+
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    switch (comboBoxPregnancyKind.SelectedIndex)
+                    {
+                        case 0://Single
+
+                            break;
+                        case 1://Twin
+
+                            break;
+                        case 2://Multiple
+
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        private void SetListeElmentsBiometricsDataBase(List<ElementBiometrique> l, int numFoetus)
+        {
+            for (int i = 0; i < l.Count; ++i)
+            {
+
+                new DataBase().SetBiometrieFoetus(_echographie.CleEchographie, numFoetus, l[i].CleElement, l[i].CleDimension, l[i].Dimension);
+            }
+        }
+
+        private void SetListeElementsAnatomieDataBase(List<ElementAnatomique> l, int numFoetus)
+        {
+            for (int i = 0; i < l.Count; ++i)
+            {
+                new DataBase().SetMorphologie(_echographie.CleEchographie, numFoetus, l[i].CleElement, l[i].Evaluation);
+
+            }
+        }
+
+        private void SetGrossesse()
+        {
+            pregnancy = new Grossesse();
+            pregnancy.Ddg = Convert.ToDateTime(textBoxDdg.Text);
+            pregnancy.PregnancyKind = ((Reference)comboBoxPregnancyKind.SelectedItem).Cle;
+            pregnancy.NombreFoetus = Convert.ToInt32(textBoxNumberFoetus.Text);
+            pregnancy.CleGrossesse = new DataBase().SetPregnancy(patient.ClePeople, pregnancy.Ddr, pregnancy.Ddr, pregnancy.PregnancyKind);
+            stackPanelHautSup.DataContext = pregnancy;
+        }
+
+        private void RemoveTextChanged()
+        {
+            textBoxLlc.TextChanged -= TextBox_TextChanged;
+            textBoxLlcTwin1.TextChanged -= TextBox_TextChanged;
+            textBoxLlctwin2.TextChanged -= TextBox_TextChanged;
+        }
+
+        private void AddTextChanged()
+        {
+            textBoxLlc.TextChanged += TextBox_TextChanged;
+            textBoxLlcTwin1.TextChanged += TextBox_TextChanged;
+            textBoxLlctwin2.TextChanged += TextBox_TextChanged;
+        }
+
+
 
 
 
 
         #endregion END METHODES LOCALES
 
-        private void TextBoxCn_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox t = (TextBox)sender;
-            if(t.Text.Trim().Length == 3 && textBoxLlc.Text.Trim().Length == 2)
-            {
-                textBoxMedianeCn.Text = new DownSyndrome().ClarteNuqualeAttendue(Convert.ToInt32(textBoxLlc.Text)).ToString();
-            }
-        }
+
+
+
     }
 }

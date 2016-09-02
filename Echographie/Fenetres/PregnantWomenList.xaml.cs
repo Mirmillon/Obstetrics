@@ -21,13 +21,19 @@ namespace Echographie.Fenetres
             gridData.ItemsSource = pregnantWomen;
 
             new GestionComboBox().SetComboxReference(new DataBase().GetPregnancyKind(), dataGridComboBoxKind);
-
-            
-           
-
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e) { Close(); }
+
+        private void ButtonEchographie_Click(object sender, RoutedEventArgs e)
+        {
+            PregnantWoman p = (PregnantWoman)gridData.SelectedItem as PregnantWoman;
+            if (p!=null)
+            {
+                new UsScan(p.ClePeople,p.UneGrossesse.CleGrossesse).Show();
+                Close();
+            }
+        }
 
         private void TextBoxFilter_TextChanged(object sender, TextChangedEventArgs e)
         {

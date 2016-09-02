@@ -3,17 +3,17 @@ using Echographie.Utilitaires;
 
 namespace Echographie.Classes
 {
-    public class UsScan : Grossesse
+    public class Echo : Grossesse
     {
         int cleEchographie;
         DateTime dateUsc;
 
-        public UsScan()
+        public Echo()
         {
             dateUsc = DateTime.Today;
         }
 
-        public UsScan(int cleEchographie) : this()
+        public Echo(int cleEchographie) : this()
         {
             this.cleEchographie = cleEchographie;
         }

@@ -2,7 +2,7 @@
 
 namespace Echographie.Acteurs
 {
-    public class Foetus : UsScan
+    public class Foetus : Echo
     {
         int numeroFoetus;
         int poids;

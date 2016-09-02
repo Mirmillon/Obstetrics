@@ -35,11 +35,11 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="stackPanelHaut" Style="{StaticResource stackPanelHautSup}">
+        <StackPanel x:Name="stackPanelHautSup" Style="{StaticResource stackPanelHautSup}">
             <Label x:Name="labelTitre" Style="{DynamicResource LabelTitre}">ULTRASOUND SCAN</Label>
             <Label Style="{DynamicResource LabelStandard}">D.D.G</Label>
-            <TextBox x:Name="textBoxDdg"  Style="{StaticResource TextBoxStandard }" Width="90"  TextChanged="TextBoxDdg_TextChanged" Text="{Binding Ddg,StringFormat=dd/MM/yyyy}"></TextBox>
-            <TextBox x:Name="textBoxTerme"  Style="{StaticResource TextBoxStandard }" Width="50"   TextChanged="TextBoxTerme_TextChanged" Background="LightGray"></TextBox>
+            <TextBox x:Name="textBoxDdg"  Style="{StaticResource TextBoxStandard }" Width="90"  TextChanged="TextBoxDdg_TextChanged" Text="{Binding Ddg, StringFormat=dd/MM/yyyy}"></TextBox>
+            <TextBox x:Name="textBoxTerme"  Style="{StaticResource TextBoxStandard }" Width="50"   TextChanged="TextBoxTerme_TextChanged" Background="LightGray" Text="{Binding Terme}"></TextBox>
             <Label Style="{DynamicResource LabelStandard}">U.S.C KIND</Label>
             <ComboBox x:Name="comboBoxPregnancyUscKind"   Style="{StaticResource ComboBoxStandard}"  SelectionChanged="ComboBoxPregnancyUscKind_SelectionChanged" ></ComboBox>
             <Label Style="{DynamicResource LabelStandard}">PREGNANCY KIND</Label>
@@ -47,8 +47,8 @@
             <ComboBox x:Name="comboBoxTwin"  Style="{DynamicResource ComboBoxStandard}"  Width="220" Visibility="Collapsed" SelectedValue="{Binding Twin}"></ComboBox>
             <Label  x:Name="labelNumberFoetus" Style="{DynamicResource LabelStandard}" Visibility="Collapsed" >NUMBER FOETUS</Label>
             <TextBox x:Name="textBoxNumberFoetus"  Style="{StaticResource TextBoxStandard }" Width="40" Visibility="Collapsed"  Text="{Binding NombreFoetus}"></TextBox>
-            <Label  x:Name="labelWeightEstimation"    Style="{DynamicResource LabelStandard}"  >FORMULA</Label>
-            <ComboBox x:Name="comboBoxWeightEstimation"    Style="{StaticResource ComboBoxStandard}" ></ComboBox>
+            <!--<Label  x:Name="labelWeightEstimation"    Style="{DynamicResource LabelStandard}"  >FORMULA</Label>
+            <ComboBox x:Name="comboBoxWeightEstimation"    Style="{StaticResource ComboBoxStandard}" ></ComboBox>-->
         </StackPanel>
         <StackPanel x:Name="stackPanelGauche" Style="{StaticResource stackPanelVerticalgauche}">
             <Button x:Name="buttonEcho1T" Style="{DynamicResource buttonStackPanelGauche}" Click="ButtonIdentification_Click" >BIO MORPHO 1T</Button>
@@ -122,7 +122,7 @@
                             <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >L.C.C</Label>
                             <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red" Text="{Binding CleElement}" Visibility="Hidden"></TextBox>
                             <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green" Text="{Binding CleDimension}"  Visibility="Hidden"></TextBox>
-                            <TextBox x:Name="textBoxLlc"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" BorderBrush="#FFDCF108" TextChanged="TextBox_TextChanged"></TextBox>
+                            <TextBox x:Name="textBoxLlc"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" BorderBrush="#FFDCF108" ></TextBox>
                             <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource LabelMm}"  >MM</Label>
                         </Grid>
                         <Grid Grid.Row="0" Grid.Column="3"   Style="{StaticResource gridUnitData}">
@@ -351,7 +351,7 @@
                                         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >L.C.C</Label>
                                         <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red" Text="{Binding CleElement}" Visibility="Hidden"></TextBox>
                                         <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green" Text="{Binding CleDimension}"  Visibility="Hidden"></TextBox>
-                                        <TextBox x:Name="textBoxLlcTwin1"  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" BorderBrush="#FFDCF108" TextChanged="TextBox_TextChanged"></TextBox>
+                                        <TextBox x:Name="textBoxLlcTwin1"  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" BorderBrush="#FFDCF108" ></TextBox>
                                         <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource LabelMm}"  >MM</Label>
                                     </Grid>
                                     <Grid Grid.Row="0" Grid.Column="4"   Style="{StaticResource gridUnitData}">
@@ -575,7 +575,7 @@
                                         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >L.C.C</Label>
                                         <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red" Text="{Binding CleElement}" Visibility="Hidden"></TextBox>
                                         <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green" Text="{Binding CleDimension}"  Visibility="Hidden"></TextBox>
-                                        <TextBox x:Name="textBoxLlctwin2"  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" BorderBrush="#FFDCF108" TextChanged="TextBox_TextChanged"></TextBox>
+                                        <TextBox x:Name="textBoxLlctwin2"  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" BorderBrush="#FFDCF108" ></TextBox>
                                         <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource LabelMm}"  >MM</Label>
                                     </Grid>
                                     <Grid Grid.Row="0" Grid.Column="4"   Style="{StaticResource gridUnitData}">
@@ -1134,6 +1134,8 @@
         </Grid>
         <StackPanel x:Name="stackPanelBas" Style="{StaticResource stackPanelBas}">
             <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
+            <Button x:Name="buttoValidate" Style="{DynamicResource buttonStackPanelBas}" IsEnabled="True" Click="ButtonValidate_Click">Validate</Button>
+            <Button x:Name="buttonCancel" Style="{DynamicResource buttonStackPanelBas}" IsCancel="True" >Cancel</Button>
         </StackPanel>  
     </Grid>
 </Window>

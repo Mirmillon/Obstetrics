@@ -58,20 +58,21 @@
             </DataGrid.RowStyle>-->
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="dataGridColKey" Header="KEY"  Binding="{Binding ClePeople}"/>
-            <DataGridTextColumn x:Name="dataGridColNumPatient" Header="NUMERO"  Binding="{Binding NumeroPatient}"/>
-            <DataGridTextColumn x:Name="dataGridColMiddleName" Header="NAME"  Binding="{Binding FirstName}"/>
-            <DataGridTextColumn x:Name="dataGridColName" Header="MIDDLE NAME"  Binding="{Binding MiddleName}"/>
-            <DataGridTextColumn x:Name="dataGridColLastName" Header="LAST NAME"  Binding="{Binding LastName}"/>
-            <DataGridTextColumn x:Name="dataGridColDob" Header="D.O.B"  Binding="{Binding DateBirth,StringFormat=dd/MM/yyyy}"/>
-            <DataGridTextColumn x:Name="dataGridColNumdossier" Header="FOLDER"  Binding="{Binding UneGrossesse.KeyDossier}"/>
-            <DataGridTextColumn x:Name="dataGridColDdg" Header="D.D.G"  Binding="{Binding UneGrossesse.Ddg, StringFormat=dd/MM/yyyy}"/>
-            <DataGridComboBoxColumn x:Name="dataGridComboBoxKind" Header="KIND"  SelectedValueBinding="{Binding UneGrossesse.PregnancyKind}"></DataGridComboBoxColumn>
-            <DataGridTextColumn x:Name="dataGridColTerme" Header="TERME"  Binding="{Binding UneGrossesse.Terme}"/>
-            <DataGridTextColumn x:Name="dataGridColEdd" Header="E.D.D" Binding="{Binding UneGrossesse.EddD40,StringFormat=dd/MM/yyyy}" />
-                </DataGrid.Columns>
+                <DataGridTextColumn x:Name="dataGridColNumPatient" Header="NUMERO"  Binding="{Binding NumeroPatient}"/>
+                <DataGridTextColumn x:Name="dataGridColMiddleName" Header="NAME"  Binding="{Binding FirstName}"/>
+                <DataGridTextColumn x:Name="dataGridColName" Header="MIDDLE NAME"  Binding="{Binding MiddleName}"/>
+                <DataGridTextColumn x:Name="dataGridColLastName" Header="LAST NAME"  Binding="{Binding LastName}"/>
+                <DataGridTextColumn x:Name="dataGridColDob" Header="D.O.B"  Binding="{Binding DateBirth,StringFormat=dd/MM/yyyy}"/>
+                <DataGridTextColumn x:Name="dataGridColNumdossier" Header="FOLDER"  Binding="{Binding UneGrossesse.CleGrossesse}"/>
+                <DataGridTextColumn x:Name="dataGridColDdg" Header="D.D.G"  Binding="{Binding UneGrossesse.Ddg, StringFormat=dd/MM/yyyy}"/>
+                <DataGridComboBoxColumn x:Name="dataGridComboBoxKind" Header="KIND"  SelectedValueBinding="{Binding UneGrossesse.PregnancyKind}"></DataGridComboBoxColumn>
+                <DataGridTextColumn x:Name="dataGridColTerme" Header="TERME"  Binding="{Binding UneGrossesse.Terme}"/>
+                <DataGridTextColumn x:Name="dataGridColEdd" Header="E.D.D" Binding="{Binding UneGrossesse.EddD40,StringFormat=dd/MM/yyyy}" />
+            </DataGrid.Columns>
         </DataGrid>
         <StackPanel Style="{StaticResource stackPanelBas}">
             <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
+            <Button x:Name="buttonEchographie" Style="{StaticResource buttonStackPanelBas}" Click="ButtonEchographie_Click">U.S Scan</Button>
         </StackPanel>
     </Grid>
 </Window>

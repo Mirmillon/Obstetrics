@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Echographie.RDMS;
 using Echographie.Utilitaires;
+using Echographie.Acteurs;
 
 namespace Echographie.Fenetres
 {
@@ -21,6 +22,24 @@ namespace Echographie.Fenetres
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e) { Close(); }
+
+        private void ButtonEchographie_Click(object sender, RoutedEventArgs e)
+        {
+            PregnantWoman p = (PregnantWoman)gridData.SelectedItem as PregnantWoman;
+            if (p != null)
+            {
+                if (p.UneGrossesse.CleGrossesse > 0)
+                {
+                    new UsScan(p.ClePeople, p.UneGrossesse.CleGrossesse).Show();
+                    Close();
+                }
+                else
+                {
+                    new UsScan(p.ClePeople).Show();
+                    Close();
+                }
+            }
+        }
 
         private void RadionButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -48,6 +67,11 @@ namespace Echographie.Fenetres
                 gridData.ItemsSource = null;
                 dataGridComboBoxGender.Visibility = Visibility.Visible;
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
