@@ -2027,7 +2027,7 @@ namespace Echographie.RDMS
                 using (FbCommand commande = connexion.CreateCommand())
                 {
                     commande.CommandText = "GET_PEOPLE_MALE";
-                    commande.CommandType = System.Data.CommandType.StoredProcedure;
+                    commande.CommandType = CommandType.StoredProcedure;
                     try
                     {
                         connexion.Open();
@@ -2089,7 +2089,7 @@ namespace Echographie.RDMS
                 using (FbCommand commande = connexion.CreateCommand())
                 {
                     commande.CommandText = "GET_PEOPLE_FEMALE";
-                    commande.CommandType = System.Data.CommandType.StoredProcedure;
+                    commande.CommandType = CommandType.StoredProcedure;
                     try
                     {
                         connexion.Open();

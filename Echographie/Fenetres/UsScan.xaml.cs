@@ -14,7 +14,7 @@ namespace Echographie.Fenetres
     /// </summary>
     public partial class UsScan : Window
     {
-        private ChartBiometrics biometrie = null;
+        private ChartBiometrics chartBiometrie = null;
         private ChartCroissancePonderale chartCroissance = null;
 
         public UsScan()
@@ -29,9 +29,9 @@ namespace Echographie.Fenetres
             chartHumerus.ChartHumerusLoaded();
             hostGrapheHumerus.Child = chartHumerus;
 
-            biometrie = new ChartBiometrics();
-            biometrie.ChartBiometricsLoader();
-            hostGrapheBiometrics.Child = biometrie;
+            chartBiometrie = new ChartBiometrics();
+            chartBiometrie.ChartBiometricsLoader();
+            hostGrapheBiometrics.Child = chartBiometrie;
 
             chartCroissance = new ChartCroissancePonderale();
             chartCroissance.CroissancePonderaleLoaded();
@@ -57,26 +57,30 @@ namespace Echographie.Fenetres
         private void ButtonBiometricsChart_Click(object sender, RoutedEventArgs e)
         {
             new GestionGrille().GridVisibilty(gridCentre, stackPanelGauche.Children.IndexOf((UIElement)sender));
-            biometrie.AreaHead.Visible = true;
-            biometrie.AreaAbdo.Visible = false;
+            chartBiometrie.AreaHead.Visible = true;
+            chartBiometrie.AreaAbdo.Visible = false;
+            chartBiometrie.AreaFemur.Visible = false;
         }
 
         private void ButtonChartAreaHead_Click(object sender, RoutedEventArgs e)
         {
-            biometrie.AreaHead.Visible = true;
-            biometrie.AreaAbdo.Visible = false;
+            chartBiometrie.AreaHead.Visible = true;
+            chartBiometrie.AreaAbdo.Visible = false;
+            chartBiometrie.AreaFemur.Visible = false;
         }
 
         private void ButtonChartAreaAddo_Click(object sender, RoutedEventArgs e)
         {
-            biometrie.AreaHead.Visible = false;
-            biometrie.AreaAbdo.Visible = true;
+            chartBiometrie.AreaHead.Visible = false;
+            chartBiometrie.AreaAbdo.Visible = true;
+            chartBiometrie.AreaFemur.Visible = false;
         }
 
         private void ButtonChartAreaFemur_Click(object sender, RoutedEventArgs e)
         {
-            biometrie.AreaHead.Visible = false;
-            biometrie.AreaAbdo.Visible = false;
+            chartBiometrie.AreaHead.Visible = false;
+            chartBiometrie.AreaAbdo.Visible = false;
+            chartBiometrie.AreaFemur.Visible = true;
         }
 
         #endregion END BUTTON
@@ -476,10 +480,18 @@ namespace Echographie.Fenetres
             comboBoxWeightEstimation.Visibility = Visibility.Visible;
         }
 
+
+
+
         #endregion END METHODES LOCALES
 
-       
-
-
+        private void TextBoxCn_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            if(t.Text.Trim().Length == 3 && textBoxLlc.Text.Trim().Length == 2)
+            {
+                textBoxMedianeCn.Text = new DownSyndrome().ClarteNuqualeAttendue(Convert.ToInt32(textBoxLlc.Text)).ToString();
+            }
+        }
     }
 }

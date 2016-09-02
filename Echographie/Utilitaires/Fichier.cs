@@ -83,6 +83,52 @@ namespace Echographie.Utilitaires
             return listes;
         }
 
+        public List<DataBiometrique> ListeDataP10P50P90(string fichierCsv)
+        {
+            // on cree une table
+            List<DataBiometrique> listes = new List<DataBiometrique>();
+
+
+            // on lit et on insert une nvelle ligne
+            StreamReader fichier = File.OpenText(fichierCsv);
+
+            while (fichier.Peek() >= 0)
+            {
+                // on lit 1 ligne et on ajoute
+                string ligne = fichier.ReadLine();
+                string[] vals = ligne.Split(',');
+          
+                DataBiometrique P10 = new DataBiometrique();
+                DataBiometrique P50 = new DataBiometrique();
+                DataBiometrique P90 = new DataBiometrique();
+
+                P10.Terme = Convert.ToDouble(vals[0]);
+                P10.Percentile = "P10";
+                vals[1] = vals[1].Replace('.', ',');
+                P10.Resultat = Convert.ToDouble(vals[1]);
+
+                P50.Terme = Convert.ToDouble(vals[0]);
+                P50.Percentile = "P50";
+                vals[2] = vals[2].Replace('.', ',');
+                P50.Resultat = Convert.ToDouble(vals[2]);
+
+                P90.Terme = Convert.ToDouble(vals[0]);
+                P90.Percentile = "P90";
+                vals[3] = vals[3].Replace('.', ',');
+                P90.Resultat = Convert.ToDouble(vals[3]);
+
+                // on ajoute la ligne
+             
+                listes.Add(P10);
+                listes.Add(P50);
+                listes.Add(P90);
+               
+            }
+            fichier.Close();
+            return listes;
+
+        }
+
         public List<DataBiometrique> ListeData(List<DataBiometrique> liste, string percentile)
         {
             List<DataBiometrique> l = new List<DataBiometrique>();

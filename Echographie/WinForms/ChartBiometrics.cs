@@ -20,7 +20,7 @@ namespace Echographie.WinForms
         }
 
         public ChartAreaBiometricHeadCircum AreaHead  {get {return areaHead; }}
-        public ChartAreaBiometricAbdoCircum AreaAbdo  {get {return areaAbdo; }}
+        public ChartAreaBiometricAbdoCircum AreaAbdo { get { return areaAbdo; } }
         public ChartAreaFemur AreaFemur { get { return areaFemur; } }
 
         public void ChartBiometricsLoader()

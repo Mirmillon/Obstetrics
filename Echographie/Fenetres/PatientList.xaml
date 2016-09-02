@@ -41,11 +41,11 @@
             <RadioButton x:Name="radionButtonFemale" Style="{DynamicResource RadioButtonTitre}"  Checked="RadionButton_Checked">FEMALE</RadioButton>
             <RadioButton x:Name="radionButtonAll" Style="{DynamicResource RadioButtonTitre}"  Checked="RadionButton_Checked">ALL</RadioButton>
         </StackPanel>
-        <DataGrid x:Name="gridData" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="12" Grid.RowSpan="10">
+        <DataGrid x:Name="gridData" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="12" Grid.RowSpan="10" AutoGenerateColumns="False">
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding UneGrossesse.KeyDossier}" Value="-1">
+                        <DataTrigger Binding="{Binding UneGrossesse.CleGrossesse}" Value="-1">
                             <Setter Property="Background" Value="LightGray"></Setter>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding UneGrossesse.Outcome}" Value="1">
@@ -58,15 +58,15 @@
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="dataGridColClePatient" Header="KEY"  Binding="{Binding Key}"/>
-                <DataGridTextColumn x:Name="dataGridColNumeroPatient" Header="PATIENT NUMBER"  Binding="{Binding NumPatient}"/>
+                <DataGridTextColumn x:Name="dataGridColClePatient" Header="KEY"  Binding="{Binding ClePeople}"/>
+                <DataGridTextColumn x:Name="dataGridColNumeroPatient" Header="PATIENT NUMBER"  Binding="{Binding NumeroPatient}"/>
                 <DataGridTextColumn x:Name="dataGridColMiddleName" Header="FIRST NAME"  Binding="{Binding FirstName}"/>
                 <DataGridTextColumn x:Name="dataGridColName" Header="MIDDLE NAME"  Binding="{Binding MiddleName}"/>
                 <DataGridTextColumn x:Name="dataGridColLastName" Header="LAST NAME"  Binding="{Binding LastName}"/>
                 <DataGridTextColumn x:Name="dataGridColDob" Header="D.O.B"  Binding="{Binding DateBirth,StringFormat=dd/MM/yyyy}"/>
                 <DataGridComboBoxColumn x:Name="dataGridComboBoxGender" Header="GENDER"  SelectedValueBinding="{Binding Gender}"/>
                 <DataGridComboBoxColumn x:Name="dataGridComboBoxStatut" Header="STATUT" SelectedValueBinding="{Binding Statut}"></DataGridComboBoxColumn>
-                <DataGridTextColumn x:Name="dataGridColCle" Header="CLEGRO" Binding="{Binding UneGrossesse.KeyDossier}"></DataGridTextColumn>
+                <DataGridTextColumn x:Name="dataGridColCle" Header="CLEGRO" Binding="{Binding UneGrossesse.CleGrossesse}"></DataGridTextColumn>
                 <DataGridComboBoxColumn x:Name="dataGridComboBoxOutcome" Header="OUTCOME" SelectedValueBinding="{Binding UneGrossesse.Outcome}"></DataGridComboBoxColumn>
             </DataGrid.Columns>
         </DataGrid>

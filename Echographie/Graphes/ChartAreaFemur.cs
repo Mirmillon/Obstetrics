@@ -6,7 +6,7 @@
         {
             Name = "aireFemur";
             AxisY.Maximum = 80;
-            BackColor = System.Drawing.Color.LightPink;
+            BackColor = System.Drawing.Color.LightSlateGray;
 
         }
     }

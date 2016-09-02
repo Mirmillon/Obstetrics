@@ -20,12 +20,13 @@ namespace Echographie.Classes
 
         public Grossesse() 
         { 
-            pregnancyKind = 1;
-            outcome = 1;
+           
         }
 
         public Grossesse(DateTime ddg) : this()
         {
+            pregnancyKind = 1;
+            outcome = 1;
             this.Ddg = ddg; 
         }
 
@@ -62,7 +63,17 @@ namespace Echographie.Classes
 
         public string Terme
         {
-            get { return new Calcul().AfficherTerme(new Calcul().NbrJour(ddg)); }
+            get
+            {
+                if(ddg > DateTime.Today.AddDays(-300))
+                {
+                    return new Calcul().AfficherTerme(new Calcul().NbrJour(ddg));
+                }
+                else
+                {
+                    return null;
+                } 
+            }
             set { terme = value; }
         }
 

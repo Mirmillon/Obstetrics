@@ -35,9 +35,13 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Style="{StaticResource stackPanelHautSup}"></StackPanel>
-        <DataGrid x:Name="gridData" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="12" Grid.RowSpan="10">
-            <DataGrid.RowStyle>
+        <StackPanel Style="{StaticResource stackPanelHautSup}">
+            <Label Style="{StaticResource LabelTitre}">PREGNANT WOMERN LIST</Label>
+            <Label Style="{StaticResource LabelTitre}">SEARCH : </Label>
+            <TextBox x:Name="textBoxFilter" Style="{StaticResource TextBoxStandard}"></TextBox>
+        </StackPanel>
+        <DataGrid x:Name="gridData" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="12" Grid.RowSpan="10" AutoGenerateColumns="False">
+            <!--<DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding UneGrossesse.KeyDossier}" Value="-1">
@@ -51,7 +55,20 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </DataGrid.RowStyle>
+            </DataGrid.RowStyle>-->
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="dataGridColKey" Header="KEY"  Binding="{Binding ClePeople}"/>
+            <DataGridTextColumn x:Name="dataGridColNumPatient" Header="NUMERO"  Binding="{Binding NumeroPatient}"/>
+            <DataGridTextColumn x:Name="dataGridColMiddleName" Header="NAME"  Binding="{Binding FirstName}"/>
+            <DataGridTextColumn x:Name="dataGridColName" Header="MIDDLE NAME"  Binding="{Binding MiddleName}"/>
+            <DataGridTextColumn x:Name="dataGridColLastName" Header="LAST NAME"  Binding="{Binding LastName}"/>
+            <DataGridTextColumn x:Name="dataGridColDob" Header="D.O.B"  Binding="{Binding DateBirth,StringFormat=dd/MM/yyyy}"/>
+            <DataGridTextColumn x:Name="dataGridColNumdossier" Header="FOLDER"  Binding="{Binding UneGrossesse.KeyDossier}"/>
+            <DataGridTextColumn x:Name="dataGridColDdg" Header="D.D.G"  Binding="{Binding UneGrossesse.Ddg, StringFormat=dd/MM/yyyy}"/>
+            <DataGridComboBoxColumn x:Name="dataGridComboBoxKind" Header="KIND"  SelectedValueBinding="{Binding UneGrossesse.PregnancyKind}"></DataGridComboBoxColumn>
+            <DataGridTextColumn x:Name="dataGridColTerme" Header="TERME"  Binding="{Binding UneGrossesse.Terme}"/>
+            <DataGridTextColumn x:Name="dataGridColEdd" Header="E.D.D" Binding="{Binding UneGrossesse.EddD40,StringFormat=dd/MM/yyyy}" />
+                </DataGrid.Columns>
         </DataGrid>
         <StackPanel Style="{StaticResource stackPanelBas}">
             <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>

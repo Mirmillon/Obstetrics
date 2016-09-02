@@ -1,6 +1,9 @@
 ﻿using System;
 using Echographie.Graphes;
 using System.Windows.Forms.DataVisualization.Charting;
+using Echographie.Classes;
+using Echographie.Utilitaires;
+using System.Collections.Generic;
 
 namespace Echographie.WinForms
 {
@@ -45,16 +48,14 @@ namespace Echographie.WinForms
             aireHumerus.P97.ChartArea = "aireHumerus";
             aireHumerus.P99.ChartArea = "aireHumerus";
 
-            Series[3].Points.AddXY(Convert.ToDouble(13), Convert.ToDouble(6.5));
-            Series[3].Points.AddXY(Convert.ToDouble(14), Convert.ToDouble(9.9));
-            Series[3].Points.AddXY(Convert.ToDouble(15), Convert.ToDouble(11.6));
-            Series[3].Points.AddXY(Convert.ToDouble(16), Convert.ToDouble(13.7));
-            Series[3].Points.AddXY(Convert.ToDouble(17), Convert.ToDouble(18.2));
-            Series[3].Points.AddXY(Convert.ToDouble(18), Convert.ToDouble(21.3));
-            Series[3].Points.AddXY(Convert.ToDouble(19), Convert.ToDouble(23));
+            List<DataBiometrique> listes = new List<DataBiometrique>();
+            listes = new Fichier().ListeDataP10P50P90(@"H:\ProjetObstetric\Biometrics\Humerus.csv");
 
-
-            Series[3].Points.AddXY(Convert.ToDouble(29), Convert.ToDouble(48));
+           
+            new Graphiques().SetPoint(new Fichier().ListeData(listes, "P10"), aireHumerus.P10);
+            new Graphiques().SetPoint(new Fichier().ListeData(listes, "P50"), aireHumerus.P50);
+            new Graphiques().SetPoint(new Fichier().ListeData(listes, "P90"), aireHumerus.P90);
+          
 
 
         }
