@@ -44,7 +44,10 @@ namespace Echographie.Fenetres
             hostGrapheCroissance.Child = chartCroissance;
 
             comboBoxPregnancyUscKind.SelectedIndex = 0;
-            
+
+            new GestionGrille().GridAjout(gridMorphologyUnique);
+
+
 
         }
 

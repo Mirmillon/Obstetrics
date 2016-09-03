@@ -122,6 +122,7 @@
     <Compile Include="Utilitaires\GestionComboBox.cs" />
     <Compile Include="Utilitaires\GestionGrille.cs" />
     <Compile Include="Utilitaires\Graphiques.cs" />
+    <Compile Include="Utilitaires\UnitData.cs" />
     <Compile Include="WinForms\ChartBiometrics.cs">
       <SubType>Component</SubType>
     </Compile>
