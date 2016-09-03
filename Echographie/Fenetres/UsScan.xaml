@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Echographie.Fenetres"
+        xmlns:lib="clr-namespace:Echographie.ControlUser"
         mc:Ignorable="d"
         Title="UsScan" Style="{StaticResource MaximumWindow}" >
     <Grid x:Name="gridMain">
@@ -153,6 +154,7 @@
                             <TextBox  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding DownSyndrome}"></TextBox>
 
                         </Grid>
+                      
                     </Grid>
                     <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >MORPHOLOGY</Label>
                     <Grid x:Name="gridMorphologyUnique1T" Grid.Row="6" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="12">
@@ -772,6 +774,8 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
+                    
+                    <lib:UnitBiometrie Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="200" Height="25"></lib:UnitBiometrie>
                 </Grid>
                 <Grid x:Name="gridBiometricNonUnique">
                     <TabControl>
