@@ -25,12 +25,21 @@ namespace Echographie.Utilitaires
 
         public void GridAjout(Grid g)
         {
-           g.ShowGridLines = false;
            for(int j = 0; j < g.RowDefinitions.Count; ++j)
             {
                 for (int i = 0; i < g.ColumnDefinitions.Count; i = i + 3)
                 {
                     Grid grid = new Grid();
+
+                    Label label1 = new Label();
+                    label1.Content = "Anatomie";
+                    Grid.SetColumn(label1, 0);
+                    Grid.SetRow(label1, 0);
+                    Grid.SetRowSpan(label1, 1);
+                    Grid.SetColumnSpan(label1, 2);
+                    label1.Background = System.Windows.Media.Brushes.Lavender;
+                    grid.Children.Add(label1);
+
                     grid.Background = System.Windows.Media.Brushes.LightSeaGreen;
                     for (int k = 0; k < 4; ++k)
                     {
@@ -42,6 +51,22 @@ namespace Echographie.Utilitaires
                     Grid.SetRow(grid, j);
                     Grid.SetColumn(grid, i);
                     g.Children.Add(grid);
+
+                }
+            }
+        }
+
+        public void GridAjoutUserData(Grid g)
+        {
+            for (int j = 0; j < g.RowDefinitions.Count; ++j)
+            {
+                for (int i = 0; i < g.ColumnDefinitions.Count; i = i + 3)
+                {
+                    Control c = new UnitData();
+                    Grid.SetColumnSpan(c, 3);
+                    Grid.SetRow(c, j);
+                    Grid.SetColumn(c, i);
+                    g.Children.Add(c);
 
                 }
             }

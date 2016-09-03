@@ -14,8 +14,7 @@ namespace Echographie.Utilitaires
         {
             //CAracteristique de la grille
             grid = new Grid();
-            Grid.SetColumnSpan(grid, 4);
-            Grid.SetRowSpan(grid, 1);
+          
             grid.Background = System.Windows.Media.Brushes.Transparent;
             for (int k = 0; k < 4; ++k)
             {
