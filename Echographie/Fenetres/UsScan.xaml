@@ -64,7 +64,7 @@
         </StackPanel>
         <Grid x:Name="gridCentre" Style="{StaticResource gridCentre}">
             <Grid x:Name="gridEcho1T" Background="LightCyan">
-                <Grid x:Name="gridEcho1TUnique" ShowGridLines="True">
+                <Grid x:Name="gridEcho1TUnique" ShowGridLines="False">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -142,7 +142,6 @@
                         <Grid Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="LightCyan">
                             <TextBox x:Name="textBoxMedianeCn"  Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" Background="LightGray"></TextBox>
                         </Grid>
-                       
                         <Grid Grid.Row="0" Grid.Column="8" Style="{StaticResource gridUnitNonData}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -774,8 +773,11 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    
-                    <lib:UnitBiometrie Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="200" Height="25"></lib:UnitBiometrie>
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >CEPHALIC BIOMETRIC</Label>
+                    <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >ABDOMINAL BIOMETRIC</Label>
+                    <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >LIMPS</Label>
+                    <Label Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >PLACENTA</Label>
+
                 </Grid>
                 <Grid x:Name="gridBiometricNonUnique">
                     <TabControl>
@@ -809,6 +811,10 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >CEPHALIC BIOMETRIC</Label>
+                                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >ABDOMINAL BIOMETRIC</Label>
+                                <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >LIMPS</Label>
+                                <Label Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >PLACENTA</Label>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Twin 2">
@@ -841,6 +847,10 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >CEPHALIC BIOMETRIC</Label>
+                                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >ABDOMINAL BIOMETRIC</Label>
+                                <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >LIMPS</Label>
+                                <Label Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >PLACENTA</Label>
                             </Grid>
                         </TabItem>
                     </TabControl>
@@ -876,6 +886,9 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >CEPHALIC - NECK</Label>
+                    <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >CHEST - ABDOMEN</Label>
+                    <Label Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >LIMPS</Label>
                 </Grid>
                 <Grid x:Name="gridMorphologyNonUnique">
                     <TabControl>
@@ -909,6 +922,9 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >CEPHALIC - NECK</Label>
+                                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >CHEST - ABDOMEN</Label>
+                                <Label Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >LIMPS</Label>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Twin 2">
@@ -941,6 +957,9 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >CEPHALIC - NECK</Label>
+                                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >CHEST - ABDOMEN</Label>
+                                <Label Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >LIMPS</Label>
                             </Grid>
                         </TabItem>
                     </TabControl>

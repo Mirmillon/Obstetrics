@@ -74,12 +74,6 @@
     <Compile Include="Classes\Echo.cs" />
     <Compile Include="Classes\Grossesse.cs" />
     <Compile Include="Classes\Reference.cs" />
-    <Compile Include="ControlUser\ColorPicker.xaml.cs">
-      <DependentUpon>ColorPicker.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ControlUser\Test.xaml.cs">
-      <DependentUpon>Test.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ControlUser\UnitBiometrie.xaml.cs">
       <DependentUpon>UnitBiometrie.xaml</DependentUpon>
     </Compile>
@@ -130,8 +124,11 @@
     <Compile Include="Utilitaires\Fichier.cs" />
     <Compile Include="Utilitaires\GestionComboBox.cs" />
     <Compile Include="Utilitaires\GestionGrille.cs" />
+    <Compile Include="Utilitaires\GestionTextBox.cs" />
     <Compile Include="Utilitaires\Graphiques.cs" />
     <Compile Include="Utilitaires\UnitData.cs" />
+    <Compile Include="Utilitaires\UnitDataAnatomie.cs" />
+    <Compile Include="Utilitaires\UnitDataBiometrie.cs" />
     <Compile Include="WinForms\ChartBiometrics.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -156,14 +153,6 @@
     <Compile Include="WinForms\ChartTibia.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Page Include="ControlUser\ColorPicker.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ControlUser\Test.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ControlUser\UnitBiometrie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

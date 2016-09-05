@@ -14,10 +14,10 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Content="{Binding ElementName=unitBiometrie ,Path=Element}"  ></Label>
-        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red"   Visibility="Hidden" Text="{Binding ElementName=unitBiometrie ,Path=Cle}" ></TextBox>
-        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green"  Visibility="Hidden" Text="{Binding ElementName=unitBiometrie ,Path=Dimension}"></TextBox>
-        <TextBox  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1"  Text="{Binding ElementName=unitBiometrie ,Path=Taille}"></TextBox>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Content="{Binding Element}"  ></Label>
+        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red"   Visibility="Hidden" Text="{Binding Cle}" ></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green"  Visibility="Hidden" Text="{Binding Dimension}"></TextBox>
+        <TextBox  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1"  Text="{Binding Taille}"></TextBox>
         <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"   >MM</Label>
     </Grid>
 </UserControl>

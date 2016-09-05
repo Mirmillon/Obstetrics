@@ -1723,51 +1723,16 @@ namespace Echographie.RDMS
 
         #endregion FIN GET FEMALE PEOPLE BY IDENTITE
 
+            #region REQUETES GET BY KEY
 
-        #region REQUETES GET BY KEY
-
-        public Grossesse GetKeyGrossesseByKeyPatient(int cle)
-        {
-            FbConnection connexion = new FbConnection(ChaineConnection());
-            Grossesse p = new Grossesse();
-            using (FbCommand commande = connexion.CreateCommand())
+            public Grossesse GetKeyGrossesseByKeyPatient(int cle)
             {
-                commande.CommandText = "GET_KEY_GRO_BY_CLE_PATIENT";
-                commande.CommandType = CommandType.StoredProcedure;
-                FbParameterCollection pc = commande.Parameters;
-                pc.Add("KEY", FbDbType.Integer, 0).Value = cle;
-                try
-                {
-                    connexion.Open();
-                    FbDataReader reader = commande.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            p.CleGrossesse = (int)reader[0]; 
-                        }
-                        connexion.Close();
-                        return p;
-                    }
-                    connexion.Close();
-                    return null;
-                }
-                catch (Exception ex)
-                {
-                    System.Windows.Forms.MessageBox.Show(ex.ToString());
-                    connexion.Close();
-                    return null;
-                }
-            }
-        }
 
-        public Patient GetPatientByKeyGrossesse(int cle)
-            {
                 FbConnection connexion = new FbConnection(ChaineConnection());
-                Patient p = new Patient();
+                Grossesse p = new Grossesse();
                 using (FbCommand commande = connexion.CreateCommand())
                 {
-                    commande.CommandText = "GET_PATIENT_KEY_DOSSIER_OBS";
+                    commande.CommandText = "GET_KEY_GRO_BY_CLE_PATIENT";
                     commande.CommandType = CommandType.StoredProcedure;
                     FbParameterCollection pc = commande.Parameters;
                     pc.Add("KEY", FbDbType.Integer, 0).Value = cle;
@@ -1779,16 +1744,7 @@ namespace Echographie.RDMS
                         {
                             while (reader.Read())
                             {
-
-                                p.ClePeople = (int)reader[0];
-                                p.FirstName = (string)reader[1];
-                                if (!(reader[2] == DBNull.Value))
-                                {
-                                    p.MiddleName = (string)reader[2];
-                                }
-                                p.LastName = (string)reader[3];
-                                p.DateBirth = Convert.ToDateTime(reader[4]);
-
+                                p.CleGrossesse = (int)reader[0];
                             }
                             connexion.Close();
                             return p;
@@ -1805,13 +1761,209 @@ namespace Echographie.RDMS
                 }
             }
 
+            public Patient GetPatientByKeyGrossesse(int cle)
+                {
+                    FbConnection connexion = new FbConnection(ChaineConnection());
+                    Patient p = new Patient();
+                    using (FbCommand commande = connexion.CreateCommand())
+                    {
+                        commande.CommandText = "GET_PATIENT_KEY_DOSSIER_OBS";
+                        commande.CommandType = CommandType.StoredProcedure;
+                        FbParameterCollection pc = commande.Parameters;
+                        pc.Add("KEY", FbDbType.Integer, 0).Value = cle;
+                        try
+                        {
+                            connexion.Open();
+                            FbDataReader reader = commande.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+
+                                    p.ClePeople = (int)reader[0];
+                                    p.FirstName = (string)reader[1];
+                                    if (!(reader[2] == DBNull.Value))
+                                    {
+                                        p.MiddleName = (string)reader[2];
+                                    }
+                                    p.LastName = (string)reader[3];
+                                    p.DateBirth = Convert.ToDateTime(reader[4]);
+
+                                }
+                                connexion.Close();
+                                return p;
+                            }
+                            connexion.Close();
+                            return null;
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Windows.Forms.MessageBox.Show(ex.ToString());
+                            connexion.Close();
+                            return null;
+                        }
+                    }
+                }
+
             public Patient GetPeopleByKey(int cle)
+                {
+                    FbConnection connexion = new FbConnection(ChaineConnection());
+                    Patient p = new Patient();
+                    using (FbCommand commande = connexion.CreateCommand())
+                    {
+                        commande.CommandText = "GET_PEOPLE_BY_KEY";
+                        commande.CommandType = CommandType.StoredProcedure;
+                        FbParameterCollection pc = commande.Parameters;
+                        pc.Add("KEY", FbDbType.Integer, 0).Value = cle;
+                        try
+                        {
+                            connexion.Open();
+                            FbDataReader reader = commande.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+
+                                    p.ClePeople = (int)reader[0];
+                                    if (!(reader[1] == DBNull.Value))
+                                    {
+                                        p.NumeroPatient = (int)reader[1];
+                                    }
+                                    p.FirstName = (string)reader[2];
+                                    if (!(reader[3] == DBNull.Value))
+                                    {
+                                        p.MiddleName = (string)reader[3];
+                                    }
+                                    p.LastName = (string)reader[4];
+                                    p.DateBirth = Convert.ToDateTime(reader[5]);
+                                    if (!(reader[6] == DBNull.Value))
+                                    {
+                                        p.Gender = (int)reader[6];
+                                    }
+                                    if (!(reader[7] == DBNull.Value))
+                                    {
+                                        p.Statut = (int)reader[7];
+                                    }
+
+                                }
+                                connexion.Close();
+                                return p;
+                            }
+                            connexion.Close();
+                            return null;
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Windows.Forms.MessageBox.Show(ex.ToString());
+                            connexion.Close();
+                            return null;
+                        }
+                    }
+                }
+
+            public Grossesse GetPregnancyByKey(int cle)
+                {
+                    FbConnection connexion = new FbConnection(ChaineConnection());
+                    Grossesse g = new Grossesse();
+                    using (FbCommand commande = connexion.CreateCommand())
+                    {
+                        commande.CommandText = "GET_PREGNANCY_KEY";
+                        commande.CommandType = CommandType.StoredProcedure;
+                        FbParameterCollection pc = commande.Parameters;
+                        pc.Add("KEY", FbDbType.Integer, 0).Value = cle;
+                        try
+                        {
+                            connexion.Open();
+                            FbDataReader reader = commande.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    g.CleGrossesse = (int)reader[0];
+                                    g.Ddg = Convert.ToDateTime(reader[1]);
+                                    g.PregnancyKind = (int)reader[2];
+                                    if (g.PregnancyKind == 1)
+                                    {
+                                        g.NombreFoetus = 1;
+                                    }
+                                    else if (g.PregnancyKind == 2)
+                                    {
+                                        g.NombreFoetus = 2;
+                                    }
+                                }
+                                connexion.Close();
+                                return g;
+                            }
+                            connexion.Close();
+                            return null;
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Windows.Forms.MessageBox.Show(ex.ToString());
+                            connexion.Close();
+                            return null;
+                        }
+                    }
+                }
+
+            public int GetKeyPatientByKeyPregnancy(int cle)
+            {
+                return SetForeignKey("GET_KEY_PATIENT_KEY_DOSSIER", cle);                
+            }
+
+            //TODO Refaire cette methode
+            public List<Foetus> GetPoidsFoetus(int keyGrossesse)
+                {
+                    FbConnection connexion = new FbConnection(ChaineConnection());
+                    List<Foetus> poids = new List<Foetus>();
+                    using (FbCommand commande = connexion.CreateCommand())
+                    {
+                        commande.CommandText = "GET_POIDS_FOETUS";
+                        commande.CommandType = CommandType.StoredProcedure;
+                        FbParameterCollection pc = commande.Parameters;
+                        pc.Add("KEY", FbDbType.Integer, 0).Value = keyGrossesse;
+                        try
+                        {
+                            connexion.Open();
+                            FbDataReader reader = commande.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                connexion.Open();
+                                commande.ExecuteNonQuery();
+                                while (reader.Read())
+                                {
+                                    Foetus e = new Foetus();
+                                    e.CleGrossesse = (int)reader[0];
+                                    e.Ddg = Convert.ToDateTime(reader[1]);
+                                    e.NumeroFoetus = (int)reader[2];
+                                    e.DateUsc = Convert.ToDateTime(reader[3]);
+                                    e.Poids = (int)reader[4];
+                                    poids.Add(e);
+                                }
+                                connexion.Close();
+                                return poids;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Windows.Forms.MessageBox.Show(ex.ToString());
+                            connexion.Close();
+                            return null;
+                        }
+                    }
+
+                }
+
+            public Patient GetPeopleFemaleByKey(int cle)
             {
                 FbConnection connexion = new FbConnection(ChaineConnection());
-                Patient p = new Patient();
                 using (FbCommand commande = connexion.CreateCommand())
                 {
-                    commande.CommandText = "GET_PEOPLE_BY_KEY";
+                    commande.CommandText = "GET_PEOPLE_FEMALE_BY_KEY";
                     commande.CommandType = CommandType.StoredProcedure;
                     FbParameterCollection pc = commande.Parameters;
                     pc.Add("KEY", FbDbType.Integer, 0).Value = cle;
@@ -1819,11 +1971,11 @@ namespace Echographie.RDMS
                     {
                         connexion.Open();
                         FbDataReader reader = commande.ExecuteReader();
+                        Patient p = new Patient();
                         if (reader.HasRows)
                         {
                             while (reader.Read())
                             {
-
                                 p.ClePeople = (int)reader[0];
                                 if (!(reader[1] == DBNull.Value))
                                 {
@@ -1835,7 +1987,11 @@ namespace Echographie.RDMS
                                     p.MiddleName = (string)reader[3];
                                 }
                                 p.LastName = (string)reader[4];
-                                p.DateBirth = Convert.ToDateTime(reader[5]);
+                                if (!(reader[5] == DBNull.Value))
+                                {
+                                    p.DateBirth = Convert.ToDateTime(reader[5]);
+                                }
+
                                 if (!(reader[6] == DBNull.Value))
                                 {
                                     p.Gender = (int)reader[6];
@@ -1844,7 +2000,6 @@ namespace Echographie.RDMS
                                 {
                                     p.Statut = (int)reader[7];
                                 }
-
                             }
                             connexion.Close();
                             return p;
@@ -1861,211 +2016,15 @@ namespace Echographie.RDMS
                 }
             }
 
-            public Grossesse GetPregnancyByKey(int cle)
-            {
-                FbConnection connexion = new FbConnection(ChaineConnection());
-                Grossesse g = new Grossesse();
-                using (FbCommand commande = connexion.CreateCommand())
-                {
-                    commande.CommandText = "GET_PREGNANCY_KEY";
-                    commande.CommandType = CommandType.StoredProcedure;
-                    FbParameterCollection pc = commande.Parameters;
-                    pc.Add("KEY", FbDbType.Integer, 0).Value = cle;
-                    try
-                    {
-                        connexion.Open();
-                        FbDataReader reader = commande.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                g.CleGrossesse = (int)reader[0];
-                                g.Ddg = Convert.ToDateTime(reader[1]);
-                                g.PregnancyKind = (int)reader[2];
-                                if (g.PregnancyKind == 1)
-                                {
-                                    g.NombreFoetus = 1;
-                                }
-                                else if (g.PregnancyKind == 2)
-                                {
-                                    g.NombreFoetus = 2;
-                                }
-                            }
-                            connexion.Close();
-                            return g;
-                        }
-                        connexion.Close();
-                        return null;
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Windows.Forms.MessageBox.Show(ex.ToString());
-                        connexion.Close();
-                        return null;
-                    }
-                }
-            }
 
-            public int GetKeyPatientByKeyPregnancy(int cle)
-            {
-                FbConnection connexion = new FbConnection(ChaineConnection());
-                using (FbCommand commande = connexion.CreateCommand())
-                {
-                    commande.CommandText = "GET_KEY_PATIENT_KEY_DOSSIER";
-                    commande.CommandType = CommandType.StoredProcedure;
-                    FbParameterCollection pc = commande.Parameters;
-                    pc.Add("KEYDOSSIER", FbDbType.Integer, 0).Direction = ParameterDirection.Output;
-                    pc.Add("KEY", FbDbType.Integer, 0).Value = cle;
-                    try
-                    {
-                        connexion.Open();
-                        FbDataReader reader = commande.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            connexion.Open();
-                            commande.ExecuteNonQuery();
-                            int clePatient;
-                            if (pc[0].Value is int)
-                            {
-                                clePatient = (int)pc[0].Value;
-                                return clePatient;
-
-                            }
-                            else
-                            {
-                                clePatient = -1;
-                            }
-
-                            connexion.Close();
-                            return clePatient;
-                        }
-                        else
-                        {
-                            return -2;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Windows.Forms.MessageBox.Show(ex.ToString());
-                        connexion.Close();
-                        return -3;
-                    }
-                }
-            }
-            //TODO Refaire cette methode
-            public List<Foetus> GetPoidsFoetus(int keyGrossesse)
-            {
-                FbConnection connexion = new FbConnection(ChaineConnection());
-                List<Foetus> poids = new List<Foetus>();
-                using (FbCommand commande = connexion.CreateCommand())
-                {
-                    commande.CommandText = "GET_POIDS_FOETUS";
-                    commande.CommandType = CommandType.StoredProcedure;
-                    FbParameterCollection pc = commande.Parameters;
-                    pc.Add("KEY", FbDbType.Integer, 0).Value = keyGrossesse;
-                    try
-                    {
-                        connexion.Open();
-                        FbDataReader reader = commande.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            connexion.Open();
-                            commande.ExecuteNonQuery();
-                            while (reader.Read())
-                            {
-                                Foetus e = new Foetus();
-                                e.CleGrossesse = (int)reader[0];
-                                e.Ddg = Convert.ToDateTime(reader[1]);
-                                e.NumeroFoetus = (int)reader[2];
-                                e.DateUsc = Convert.ToDateTime(reader[3]);
-                                e.Poids = (int)reader[4];
-                                poids.Add(e);
-                            }
-                            connexion.Close();
-                            return poids;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Windows.Forms.MessageBox.Show(ex.ToString());
-                        connexion.Close();
-                        return null;
-                    }
-                }
-
-            }
-
-        public Patient GetPeopleFemaleByKey(int cle)
-        {
-            FbConnection connexion = new FbConnection(ChaineConnection());
-            using (FbCommand commande = connexion.CreateCommand())
-            {
-                commande.CommandText = "GET_PEOPLE_FEMALE_BY_KEY";
-                commande.CommandType = CommandType.StoredProcedure;
-                FbParameterCollection pc = commande.Parameters;
-                pc.Add("KEY", FbDbType.Integer, 0).Value = cle;
-                try
-                {
-                    connexion.Open();
-                    FbDataReader reader = commande.ExecuteReader();
-                    Patient p = new Patient();
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            p.ClePeople = (int)reader[0];
-                            if (!(reader[1] == DBNull.Value))
-                            {
-                                p.NumeroPatient = (int)reader[1];
-                            }
-                            p.FirstName = (string)reader[2];
-                            if (!(reader[3] == DBNull.Value))
-                            {
-                                p.MiddleName = (string)reader[3];
-                            }
-                            p.LastName = (string)reader[4];
-                            if (!(reader[5] == DBNull.Value))
-                            {
-                                p.DateBirth = Convert.ToDateTime(reader[5]);
-                            }
-
-                            if (!(reader[6] == DBNull.Value))
-                            {
-                                p.Gender = (int)reader[6];
-                            }
-                            if (!(reader[7] == DBNull.Value))
-                            {
-                                p.Statut = (int)reader[7];
-                            }
-                        }
-                        connexion.Close();
-                        return p;
-                    }
-                    connexion.Close();
-                    return null;
-                }
-                catch (Exception ex)
-                {
-                    System.Windows.Forms.MessageBox.Show(ex.ToString());
-                    connexion.Close();
-                    return null;
-                }
-            }
-        }
-
-
-        #endregion FIN REQUETES GET BY KEY
+            #endregion FIN REQUETES GET BY KEY
 
         /////////////////////////////////////////////////////////////////////////////////////////
 
 
-        #region REQUETES LISTES
+            #region REQUETES LISTES
 
-        public List<PregnantWoman> GetListPregnantWomen()
+            public List<PregnantWoman> GetListPregnantWomen()
             {
                 FbConnection connexion = new FbConnection(ChaineConnection());
                 List<PregnantWoman> pregnantWomen = new List<PregnantWoman>();
@@ -2275,7 +2234,6 @@ namespace Echographie.RDMS
                             connexion.Close();
                             return elements;
                         }
-
                         connexion.Close();
                         return null;
                     }
@@ -2313,7 +2271,6 @@ namespace Echographie.RDMS
                             connexion.Close();
                             return l;
                         }
-
                         connexion.Close();
                         return null;
                     }
@@ -2428,40 +2385,7 @@ namespace Echographie.RDMS
 
             public int SetPatient(int clePer)
             {
-
-                //return SetForeignKey("SET_PATIENT", clePer);
-                FbConnection connexion = new FbConnection(ChaineConnection());
-                using (FbCommand commande = connexion.CreateCommand())
-                {
-                    commande.CommandText = "SET_PATIENT";
-                    commande.CommandType = CommandType.StoredProcedure;
-                    FbParameterCollection pc = commande.Parameters;
-                    pc.Add("CLE", FbDbType.Integer, 0).Direction = ParameterDirection.Output;
-                    pc.Add("CLEPER", FbDbType.Integer, 0).Value = clePer;
-                    try
-                    {
-                        connexion.Open();
-                        commande.ExecuteNonQuery();
-                        int cle;
-                        if (pc[0].Value is int)
-                        {
-                            cle = (int)pc[0].Value;
-                            return cle;
-                        }
-                        else
-                        {
-                            cle = -2;
-                        }
-                        connexion.Close();
-                        return cle;
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Windows.Forms.MessageBox.Show(ex.ToString());
-                        connexion.Close();
-                        return -1;
-                    }
-                }
+                return SetForeignKey("SET_PATIENT", clePer);
             }
 
             public int SetUS(int cleGro)
@@ -2474,45 +2398,6 @@ namespace Echographie.RDMS
                 for (int i = 1; i < number + 1; ++i)
                 {
                     Foetus("SET_FOETUS", cle, i);
-                }
-            }
-
-            public int SetUltrasoundScan(int cle)
-            {
-                FbConnection connexion = new FbConnection(ChaineConnection());
-                using (FbCommand commande = connexion.CreateCommand())
-                {
-
-                    FbParameterCollection pc = commande.Parameters;
-                    pc.Add("PK", FbDbType.Integer, 0).Direction = ParameterDirection.Output;
-                    pc.Add("FK", FbDbType.Integer, 0).Value = cle;
-                    commande.CommandText = "SET_ULS";
-                    commande.CommandType = CommandType.StoredProcedure;
-
-                    try
-                    {
-                        connexion.Open();
-                        commande.ExecuteNonQuery();
-                        int cleUS;
-                        if (pc[0].Value is int)
-                        {
-                            cleUS = (int)pc[0].Value;
-                            return cleUS;
-                        }
-                        else
-                        {
-                            cleUS = -2;
-                        }
-
-                        connexion.Close();
-                        return cleUS;
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Windows.Forms.MessageBox.Show(ex.ToString());
-                        connexion.Close();
-                        return -2;
-                    }
                 }
             }
 
@@ -2543,8 +2428,6 @@ namespace Echographie.RDMS
                 }
             }
 
-
-
             public void SetMorphologie(int numEcho, int numFoetus, int element, int check)
             {
                 FbConnection connexion = new FbConnection(ChaineConnection());
@@ -2557,7 +2440,6 @@ namespace Echographie.RDMS
                     pc.Add("FOETUS", FbDbType.Integer, 0).Value = numFoetus;
                     pc.Add("ELEMENT", FbDbType.Integer, 0).Value = element;
                     pc.Add("CHECK", FbDbType.Integer, 0).Value = check;
-
                     try
                     {
                         connexion.Open();
@@ -2585,7 +2467,6 @@ namespace Echographie.RDMS
                     pc.Add("ELEMENT", FbDbType.Integer, 0).Value = element;
                     pc.Add("DIMENSION", FbDbType.Integer, 0).Value = dimension;
                     pc.Add("TAILLE", FbDbType.Double, 0).Value = taile;
-
                     try
                     {
                         connexion.Open();
@@ -2596,7 +2477,6 @@ namespace Echographie.RDMS
                     {
                         System.Windows.Forms.MessageBox.Show(ex.ToString());
                         connexion.Close();
-
                     }
                 }
             }
@@ -2676,33 +2556,11 @@ namespace Echographie.RDMS
                 }
             }
 
-
             private void Foetus(string ps, int cle, int number)
             {
-
-                //List<FbParameter> p1 = new List<FbParameter>();
-                //List<FbParameter> p2 = new List<FbParameter>();
-                //for (int i = 1; i < number + 1; ++i)
-                //{
-                //    FbParameter para1 = new FbParameter("CLE" + i.ToString(), FbDbType.Integer, 0);
-                //    para1.Value = cle;
-                //    FbParameter para2 = new FbParameter("NUMBER " + i.ToString(), FbDbType.Integer, 0);
-                //    para1.Value = i;
-                //    p1.Add(para1);
-                //    p2.Add(para2);
-                //}
-
-
-
                 FbConnection connexion = new FbConnection(ChaineConnection());
                 using (FbCommand commande = connexion.CreateCommand())
                 {
-
-
-
-
-                    //for (int j = 1; j < number + 1; ++j)
-                    //{
                     commande.CommandText = ps;
                     commande.CommandType = CommandType.StoredProcedure;
                     FbParameterCollection pc = commande.Parameters;
@@ -2710,34 +2568,23 @@ namespace Echographie.RDMS
                     pc.Add("NUMBER", FbDbType.Integer, 0).Value = number;
                     try
                     {
-
-                        //pc.Add(p1[j-1]);
-                        //pc.Add(p2[j - 1]);
                         connexion.Open();
                         commande.ExecuteNonQuery();
                         connexion.Close();
-
-
-
                     }
-
                     catch (Exception ex)
                     {
                         System.Windows.Forms.MessageBox.Show(ex.ToString());
                         connexion.Close();
-
                     }
-                    //}
                 }
             }
 
             private int SetForeignKey(string ps, int fK)
-            {
-                int cle;
+            {               
                 FbConnection connexion = new FbConnection(ChaineConnection());
                 using (FbCommand commande = connexion.CreateCommand())
                 {
-
                     commande.CommandText = ps;
                     commande.CommandType = CommandType.StoredProcedure;
                     FbParameterCollection pc = commande.Parameters;
@@ -2746,32 +2593,10 @@ namespace Echographie.RDMS
 
                     try
                     {
-
                         connexion.Open();
-                        FbDataReader reader = commande.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-
-                                if (pc[0].Value is int)
-                                {
-                                    cle = (int)pc[0].Value;
-                                    return cle;
-
-                                }
-                                else
-                                {
-                                    return -1;
-                                }
-                            }
-                        }
+                        commande.ExecuteNonQuery();
                         connexion.Close();
-                        return -4;
-
-
-
-
+                        return (int)pc[0].Value;
                     }
                     catch (Exception ex)
                     {
@@ -2783,7 +2608,6 @@ namespace Echographie.RDMS
             }
 
             #endregion END REQUETES GENERIQUES
-
         }
     }
 

@@ -45,10 +45,42 @@ namespace Echographie.Fenetres
 
             comboBoxPregnancyUscKind.SelectedIndex = 0;
 
-            new GestionGrille().GridAjout(gridMorphologyUnique);
+            new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyUnique, 0, 0);
+            new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyUnique,1,3);
+            new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyUnique, 4, 4);
+            new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyUnique, 5, 8);
+            new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyUnique, 9, 9);
+            new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyUnique, 10, 11);
+
+            new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyTNonUniqueTwin1, 0, 0);
+            new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyTNonUniqueTwin1, 1, 3);
+            new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyTNonUniqueTwin1, 4, 4);
+            new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyTNonUniqueTwin1, 5, 8);
+            new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyTNonUniqueTwin1, 9, 9);
+            new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyTNonUniqueTwin1, 10, 11);
+
+            new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyTNonUniqueTwin2, 0, 0);
+            new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyTNonUniqueTwin2, 1, 3);
+            new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyTNonUniqueTwin2, 4, 4);
+            new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyTNonUniqueTwin2, 5, 8);
+            new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyTNonUniqueTwin2, 9, 9);
+            new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyTNonUniqueTwin2, 10, 11);
 
 
+            new GestionGrille().GridAjoutUserDataBiometrieLigne(gridBiometricUnique, 0, 0);
+            new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricUnique,1,3);
+            new GestionGrille().GridAjoutUserDataBiometrieLigne(gridBiometricUnique, 4, 4);
+            new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricUnique, 5, 6);
+            new GestionGrille().GridAjoutUserDataBiometrieLigne(gridBiometricUnique, 7, 7);
+            new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricUnique, 8, 9);
 
+            new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricTNonUniqueTwin1, 1, 3);
+            new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricTNonUniqueTwin1, 5, 6);
+            new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricTNonUniqueTwin1, 8, 9);
+
+            new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricTNonUniqueTwin2, 1, 3);
+            new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricTNonUniqueTwin2, 5, 6);
+            new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricTNonUniqueTwin2, 8, 9);
         }
 
         public UsScan(int clePeople):this()
@@ -347,22 +379,7 @@ namespace Echographie.Fenetres
 
         #region LISTS
 
-        private List<TextBox> GetMandatoryTextBox(Grid g)
-        {
-            List<TextBox> listes = new List<TextBox>();
-            foreach (Control control in g.Children)
-            {
-                TextBox t = control as TextBox;
-                if (t is TextBox)
-                {
-                    if (t.BorderBrush.ToString() == "#FFFFFF00")
-                    {
-                        listes.Add(t);
-                    }
-                }
-            }
-            return listes;
-        }
+      
 
         private List<TextBox> GetTextBoxPoids(Grid g)
         {
@@ -384,132 +401,28 @@ namespace Echographie.Fenetres
 
         #endregion FIN LISTS
 
-        #region BINDINGS
-
-        private void SetBindingMorphology(Grid grid)
-        {
-            //Liste des elements du 1T
-            List<ElementAnatomique> elements = new List<ElementAnatomique>();
-            elements = new DataBase().GetElementsAnatomiques1T();
-            //Liaison DataContext pour chaque uniteData de la grid biometric 1T
-            //Le seul moyen en attendant les UserControl eest de slectionner les UnitData sur leur nom gridUD
-            //1.Liste des gridUnit
-            List<Grid> grids = new List<Grid>();
-            foreach (Panel control in grid.Children)
-            {
-                Grid g = control as Grid;
-                if (g is Grid)
-                {
-                    if (g.Background.ToString() == "#00FFFFFF")
-                    {
-                        grids.Add(g);
-                    }
-                }
-            }
-            //2.Affection du DataContext
-            for (int i = 0; i < grids.Count; ++i)
-            {
-                grids[i].DataContext = elements[i];
-            }
-        }
-
-        private void SetBindingBiometrics(Grid grid)
-        {
-            //Liste des elements du 1T
-            List<ElementBiometrique> elements = new List<ElementBiometrique>();
-            elements = new DataBase().GetElement1T();
-            //Liaison DataContext pour chaque uniteData de la grid biometric 1T
-            //Le seul moyen en attendant les UserControl eest de slectionner les UnitData sur leur nom gridUD
-            //1.Liste des gridUnit
-            List<Grid> grids = new List<Grid>();
-            foreach (Panel control in grid.Children)
-            {
-                Grid g = control as Grid;
-                if (g is Grid)
-                {
-
-                    if (g.Background.ToString() == "#00FFFFFF")
-                    {
-                        grids.Add(g);
-                    }
-                }
-            }
-            //2.Affection du DataContext
-            for (int i = 0; i < grids.Count; ++i)
-            {
-                grids[i].DataContext = elements[i];
-            }
-        }
-
-        private List<ElementBiometrique> GetBindingBiometrics(Grid grid)
-        {
-            //Liste des elements du 1T
-            List<ElementBiometrique> elements = new List<ElementBiometrique>();
-
-            //Liaison DataContext pour chaque uniteData de la grid biometric 1T
-            //Le seul moyen en attendant les UserControl eest de slectionner les UnitData sur leur nom gridUD
-            //1.Liste des gridUnit
-
-            foreach (Panel control in grid.Children)
-            {
-                Grid g = control as Grid;
-                if (g is Grid)
-                {
-                    if (g.Background.ToString() == "#00FFFFFF")
-                    //if (new GestionGrille().GridName(g, "gridUD"))
-                    {
-                        object o = g.DataContext;
-                        ElementBiometrique elt = o as ElementBiometrique;
-                        if (elt is ElementBiometrique)
-                        {
-                            elements.Add(elt);
-                        }
-                    }
-                }
-            }
-            return elements;
-        }
-
-        private List<ElementAnatomique> GetBindingAnatomie(Grid grid)
-        {
-            //Liste des elements du 1T
-            List<ElementAnatomique> elements = new List<ElementAnatomique>();
-
-            //1.Liste des gridUnit
-            foreach (Panel control in grid.Children)
-            {
-                Grid g = control as Grid;
-                if (g is Grid)
-                {
-                    if (g.Background.ToString() == "#00FFFFFF")
-                    {
-                        object o = g.DataContext;
-                        ElementAnatomique elt = o as ElementAnatomique;
-                        if (elt is ElementAnatomique)
-                        {
-                            elements.Add(elt);
-                        }
-                    }
-                }
-            }
-            return elements;
-        }
-        #endregion END BINDINGS
-
         #region METHODES LOCALES
 
         private void SetBindingUnique1T()
         {
-            SetBindingBiometrics(gridBiometricUnique1T);
-            SetBindingMorphology(gridMorphologyUnique1T);
+            List<ElementAnatomique> elements = new List<ElementAnatomique>();
+            elements = new DataBase().GetElementsAnatomiques1T();
+            List<ElementBiometrique> elementsBio = new List<ElementBiometrique>();
+            elementsBio = new DataBase().GetElement1T();
+            new GestionGrille().SetBindingBiometrics(gridBiometricUnique1T, elementsBio);
+            new GestionGrille().SetBindingMorphology(gridMorphologyUnique1T,elements);
         }
 
         private void SetBindingTwin1T()
         {
-            SetBindingBiometrics(gridBiometricNonUnique1TTwin1);
-            SetBindingMorphology(gridMorphologyNonUnique1TTwin1);
-            SetBindingBiometrics(gridBiometricNonUnique1TTwin2);
-            SetBindingMorphology(gridMorphologyNonUnique1TTwin2);
+            List<ElementAnatomique> elements = new List<ElementAnatomique>();
+            elements = new DataBase().GetElementsAnatomiques1T();
+            List<ElementBiometrique> elementsBio = new List<ElementBiometrique>();
+            elementsBio = new DataBase().GetElement1T();
+            new GestionGrille().SetBindingBiometrics(gridBiometricNonUnique1TTwin1, elementsBio);
+            new GestionGrille().SetBindingMorphology(gridMorphologyNonUnique1TTwin1, elements);
+            new GestionGrille().SetBindingBiometrics(gridBiometricNonUnique1TTwin2, elementsBio);
+            new GestionGrille().SetBindingMorphology(gridMorphologyNonUnique1TTwin2, elements);
         }
 
         private void SetPregnancyUnique()
@@ -566,18 +479,18 @@ namespace Echographie.Fenetres
                     switch (comboBoxPregnancyKind.SelectedIndex)
                     {
                         case 0://Single
-                            List<ElementBiometrique> l = GetBindingBiometrics(gridBiometricUnique1T);
-                            List<ElementAnatomique> listeAnatomique = GetBindingAnatomie(gridMorphologyUnique1T);
+                            List<ElementBiometrique> l = new GestionGrille().GetBindingBiometrics(gridBiometricUnique1T);
+                            List<ElementAnatomique> listeAnatomique = new GestionGrille().GetBindingAnatomie(gridMorphologyUnique1T);
                             SetListeElmentsBiometricsDataBase(l, 1);
                             SetListeElementsAnatomieDataBase(listeAnatomique, 1);
                             break;
                         case 1://Twin
-                            List<ElementBiometrique> l1 = GetBindingBiometrics(gridBiometricNonUnique1TTwin1);
-                            List<ElementAnatomique> listeAnatomiqueT1 = GetBindingAnatomie(gridMorphologyNonUnique1TTwin1);
+                            List<ElementBiometrique> l1 = new GestionGrille().GetBindingBiometrics(gridBiometricNonUnique1TTwin1);
+                            List<ElementAnatomique> listeAnatomiqueT1 = new GestionGrille().GetBindingAnatomie(gridMorphologyNonUnique1TTwin1);
                             SetListeElmentsBiometricsDataBase(l1, 1);
                             SetListeElementsAnatomieDataBase(listeAnatomiqueT1, 1);
-                            List<ElementBiometrique> l2 = GetBindingBiometrics(gridBiometricNonUnique1TTwin2);
-                            List<ElementAnatomique> listeAnatomiqueT2 = GetBindingAnatomie(gridMorphologyNonUnique1TTwin2);
+                            List<ElementBiometrique> l2 = new GestionGrille().GetBindingBiometrics(gridBiometricNonUnique1TTwin2);
+                            List<ElementAnatomique> listeAnatomiqueT2 = new GestionGrille().GetBindingAnatomie(gridMorphologyNonUnique1TTwin2);
                             SetListeElementsAnatomieDataBase(listeAnatomiqueT2, 2);
                             SetListeElmentsBiometricsDataBase(l2, 2);
                             break;
@@ -593,7 +506,8 @@ namespace Echographie.Fenetres
                     switch (comboBoxPregnancyKind.SelectedIndex)
                     {
                         case 0://Single
-
+                            List<ElementBiometrique> l = new GestionGrille().GetBindingUnitDataBiometrics(gridBiometricUnique);
+                            SetListeElmentsBiometricsDataBase(l, 1);
                             break;
                         case 1://Twin
 
@@ -684,16 +598,6 @@ namespace Echographie.Fenetres
             textBoxLlcTwin1.TextChanged += TextBox_TextChanged;
             textBoxLlctwin2.TextChanged += TextBox_TextChanged;
         }
-
-
-
-
-
-
         #endregion END METHODES LOCALES
-
-
-
-
     }
 }
