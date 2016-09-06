@@ -525,7 +525,7 @@ namespace Echographie.Fenetres
                     switch (comboBoxPregnancyKind.SelectedIndex)
                     {
                         case 0://Single
-                            List<ElementBiometrique> l = new GestionGrille().GetBindingUnitDataBiometrics(gridBiometricUnique);
+                            List<ElementBiometrique> l = new GestionGrille().GetBindingUnitDataBiometrie(gridBiometricUnique);
                             SetListeElmentsBiometricsDataBase(l, 1);
                             break;
                         case 1://Twin

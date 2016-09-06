@@ -6,6 +6,8 @@
 
         int localisation;
         int evaluation;
+        bool? evalue;
+        string labelEvaluation;
 
         public ElementAnatomique() : base() { }
 
@@ -24,6 +26,18 @@
         {
             get { return evaluation; }
             set { evaluation = value; }
+        }
+
+        public bool? Evalue
+        {
+            get {return evalue;}
+            set {evalue = value;}
+        }
+
+        public string LabelEvaluation
+        {
+            get{return labelEvaluation;}
+            set{labelEvaluation = value;}
         }
     }
 }
