@@ -2,9 +2,9 @@
 
 namespace Echographie.Graphes
 {
-    public class SerieWeight : Series
+    public class SeriePoidsFoetale : Series
     {
-        public SerieWeight()
+        public SeriePoidsFoetale()
         {
             ChartType = SeriesChartType.Point;
             IsValueShownAsLabel = true;

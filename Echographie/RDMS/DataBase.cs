@@ -2206,7 +2206,7 @@ namespace Echographie.RDMS
             }
 
         //TODO Verifier cette methode
-            public List<ElementBiometrique> GetElement1T()
+            public List<ElementBiometrique> GetElementBiometrie1T()
             {
                 FbConnection connexion = new FbConnection(ChaineConnection());
                 List<ElementBiometrique> elements = new List<ElementBiometrique>();

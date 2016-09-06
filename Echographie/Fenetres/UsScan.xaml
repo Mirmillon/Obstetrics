@@ -95,7 +95,7 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >OEUF</Label>
                     <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >BIOMETRICS</Label>
-                    <Grid x:Name="gridBiometricUnique1T" Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="12">
+                    <Grid x:Name="gridBiometricUnique1T" Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="12" PreviewTextInput="pnl_PreviewTextInput" PreviewKeyDown="pnl_PreviewKeyDown">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
@@ -113,7 +113,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Row="0" Grid.Column="0"  Style="{StaticResource gridUnitData}">
+                        <!--<Grid Grid.Row="0" Grid.Column="0"  Style="{StaticResource gridUnitData}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
@@ -152,7 +152,7 @@
                             <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >DOWN SYNDROME RISK</Label>
                             <TextBox  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding DownSyndrome}"></TextBox>
 
-                        </Grid>
+                        </Grid>-->
                       
                     </Grid>
                     <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >MORPHOLOGY</Label>
@@ -324,7 +324,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >OEUF</Label>
                                 <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >BIOMETRICS</Label>
-                                <Grid x:Name="gridBiometricNonUnique1TTwin1" Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="12">
+                                <Grid x:Name="gridBiometricNonUnique1TTwin1" Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="12"  PreviewTextInput="pnl_PreviewTextInput" PreviewKeyDown="pnl_PreviewKeyDown">
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
@@ -548,7 +548,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >OEUF</Label>
                                 <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >BIOMETRICS</Label>
-                                <Grid x:Name="gridBiometricNonUnique1TTwin2" Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="12">
+                                <Grid x:Name="gridBiometricNonUnique1TTwin2" Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="12" PreviewTextInput="pnl_PreviewTextInput" PreviewKeyDown="pnl_PreviewKeyDown">
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
@@ -744,7 +744,7 @@
                 </Grid>
             </Grid>
             <Grid x:Name="gridBiometric" Background="Yellow">
-                <Grid x:Name="gridBiometricUnique">
+                <Grid x:Name="gridBiometricUnique" PreviewTextInput="pnl_PreviewTextInput" PreviewKeyDown="pnl_PreviewKeyDown">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -779,7 +779,7 @@
                     <Label Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >PLACENTA</Label>
 
                 </Grid>
-                <Grid x:Name="gridBiometricNonUnique">
+                <Grid x:Name="gridBiometricNonUnique" PreviewTextInput="pnl_PreviewTextInput" PreviewKeyDown="pnl_PreviewKeyDown">
                     <TabControl>
                         <TabItem Header="Twin 1">
                             <Grid x:Name="gridBiometricTNonUniqueTwin1">

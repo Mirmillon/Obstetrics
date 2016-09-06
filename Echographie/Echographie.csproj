@@ -116,7 +116,7 @@
     <Compile Include="Graphes\ChartAreaRadius.cs" />
     <Compile Include="Graphes\ChartAreaTibia.cs" />
     <Compile Include="Graphes\SerieCroissance.cs" />
-    <Compile Include="Graphes\SerieWeight.cs" />
+    <Compile Include="Graphes\SeriePoidsFoetale.cs" />
     <Compile Include="RDMS\DataBase.cs" />
     <Compile Include="Utilitaires\Calcul.cs" />
     <Compile Include="Utilitaires\DownSyndrome.cs" />
