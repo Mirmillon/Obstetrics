@@ -52,29 +52,28 @@ namespace Echographie.Utilitaires
             //Nombre max UnitDataBiometric par ligne
             int nombre = 4;
             //Nombre de lignes complete à afficher
-            int nombreLigneComplete = liste.Count / 4;
-            //Nombre d'unitDataBiometrie derniere ligne peut etre égale à 0!
-            int nombreUnitDataBiometrieLastLigne = liste.Count % 4;
+            int nombreUnites = liste.Count;
 
             int nb = (indexFin - indexDebut) + 1;
-            for (int j = 0; j < nb; ++j)
+            while(nombreUnites > 0)
             {
+                for (int j = 0; j < nb; ++j)
+                {
 
-                for (int i = 0; i < g.ColumnDefinitions.Count; i = i + 3)
-                { 
-                    while(nombre > 0)
+                    for (int i = 0; i < g.ColumnDefinitions.Count; i = i + 3)
                     {
-                        UnitDataBiometrie c = new UnitDataBiometrie();
-                        Grid.SetColumnSpan(c, 3);
-                        Grid.SetRow(c, indexDebut);
-                        Grid.SetColumn(c, i);
-                        g.Children.Add(c);
-                        --nombre;
-                        i = i + 3;
+                            UnitDataBiometrie c = new UnitDataBiometrie();
+                            Grid.SetColumnSpan(c, 3);
+                            Grid.SetRow(c, indexDebut);
+                            Grid.SetColumn(c, i);
+                            g.Children.Add(c);
+                            --nombre;
+
                     }
+                    indexDebut = indexDebut + 1;
                 }
-                indexDebut = indexDebut + 1;
             }
+          
         }
 
         public void GridAjoutUserDataBiometrie(Grid g, int indexDebut, int indexFin)
@@ -280,17 +279,13 @@ namespace Echographie.Utilitaires
             }
             for (int i = 0; i < unites.Count; ++i)
             {
+                unites[i].DataContext = elements[i];
+
                 Binding bElement = new Binding();
                 Binding bCle = new Binding();
                 //Binding bEvaluation = new Binding();
                 Binding bBool = new Binding();
                 Binding bLabelEvaluation = new Binding();
-
-                bElement.Source = elements[i];
-                bCle.Source = elements[i];
-                //bEvaluation.Source = elements[i];
-                bBool.Source = elements[i];
-                bLabelEvaluation.Source = elements[i];
 
                 bElement.Path = new System.Windows.PropertyPath("Label");
                 bCle.Path = new System.Windows.PropertyPath("CleElement");
@@ -330,15 +325,12 @@ namespace Echographie.Utilitaires
             }
             for (int i = 0; i < unites.Count; ++i)
             {
+                unites[i].DataContext = elements[i];
+
                 Binding bElement = new Binding();
                 Binding bCle = new Binding();
                 Binding bDimension = new Binding();
                 Binding bTaille = new Binding();
-
-                bElement.Source = elements[i];
-                bCle.Source = elements[i];
-                bDimension.Source = elements[i];
-                bTaille.Source = elements[i];
 
                 bElement.Path = new System.Windows.PropertyPath("Label");
                 bCle.Path = new System.Windows.PropertyPath("CleElement");
@@ -349,7 +341,6 @@ namespace Echographie.Utilitaires
                 unites[i].Tb1.SetBinding(TextBox.TextProperty, bCle);
                 unites[i].Tb2.SetBinding(TextBox.TextProperty, bDimension);
                 unites[i].Tb3.SetBinding(TextBox.TextProperty, bTaille);
-
             }
         }
 
