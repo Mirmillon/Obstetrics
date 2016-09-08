@@ -2192,7 +2192,6 @@ namespace Echographie.RDMS
                             connexion.Close();
                             return pregnantWomen;
                         }
-
                         connexion.Close();
                         return null;
                     }
@@ -2222,13 +2221,10 @@ namespace Echographie.RDMS
                         {
                             while (reader.Read())
                             {
-
                                 ElementBiometrique p = new ElementBiometrique();
                                 p.CleElement = (int)reader[0];
                                 p.CleDimension = (int)reader[1];
                                 p.Label = (string)reader[2];
-                                p.Label = (string)reader[3];
-
                                 elements.Add(p);
                             }
                             connexion.Close();

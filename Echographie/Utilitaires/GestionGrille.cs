@@ -26,108 +26,51 @@ namespace Echographie.Utilitaires
 
         #endregion END VISIBILITY
 
-        #region AJOUT GRID CLASSIQUE
+        #region AJOUT UNITDATA
 
-        //public void GridAjout(Grid g)
-        //{
-        //    for (int j = 0; j < g.RowDefinitions.Count; ++j)
-        //    {
-        //        for (int i = 0; i < g.ColumnDefinitions.Count; i = i + 3)
-        //        {                   
-        //            UnitDataAnatomie grid = new UnitDataAnatomie();
-        //            Grid.SetColumnSpan(grid, 3);
-        //            Grid.SetRow(grid, j);
-        //            Grid.SetColumn(grid, i);
-        //            g.Children.Add(grid);
-        //        }
-        //    }
-        //}
-
-        #endregion FIN AJOUT GRID CLASSIQUE
-
-        #region AJOUT UNITBIOMETRIE
-
+        #region UNITDATABIOMETRIE
         public void GridAjoutUnitDataBiometrie(Grid g, int indexDebut, int indexFin, List<ElementBiometrique> liste)
         {
-            //Nombre max UnitDataBiometric par ligne
-            int nombre = 4;
-            //Nombre de lignes complete à afficher
-            int nombreUnites = liste.Count;
-
+            //Verification de la taillle de la liste et du nombre de case
+            //Si taille superieure
             int nb = (indexFin - indexDebut) + 1;
-            while(nombreUnites > 0)
+            if (liste.Count > nb * 4)
             {
+
                 for (int j = 0; j < nb; ++j)
                 {
-
                     for (int i = 0; i < g.ColumnDefinitions.Count; i = i + 3)
                     {
-                            UnitDataBiometrie c = new UnitDataBiometrie();
-                            Grid.SetColumnSpan(c, 3);
-                            Grid.SetRow(c, indexDebut);
-                            Grid.SetColumn(c, i);
-                            g.Children.Add(c);
-                            --nombre;
-
+                        UnitDataBiometrie c = new UnitDataBiometrie();
+                        Grid.SetColumnSpan(c, 3);
+                        Grid.SetRow(c, indexDebut);
+                        Grid.SetColumn(c, i);
+                        g.Children.Add(c);
                     }
                     indexDebut = indexDebut + 1;
                 }
             }
-          
-        }
-
-        public void GridAjoutUserDataBiometrie(Grid g, int indexDebut, int indexFin)
-        {
-            int nb = (indexFin - indexDebut) + 1;
-            for (int j = 0; j < nb; ++j)
+            else
             {
-                for (int i = 0; i < g.ColumnDefinitions.Count; i = i + 3)
-                {                   
-                    UnitDataBiometrie c = new UnitDataBiometrie();
-                    Grid.SetColumnSpan(c, 3);
-                    Grid.SetRow(c, indexDebut);
-                    Grid.SetColumn(c, i);
-                    g.Children.Add(c);                                    
-                }
-                indexDebut = indexDebut + 1;
-            }
-        }
-
-        public void GridAjoutUserDataBiometrieLigne(Grid g, int indexDebut, int indexFin)
-        {
-            int nb = (indexFin - indexDebut) + 1;
-            for (int j = 0; j < nb; ++j)
-            {
-                for (int i = 3; i < g.ColumnDefinitions.Count; i = i + 3)
+                for (int j = 0; j < nb; ++j)
                 {
-                    UnitDataBiometrie c = new UnitDataBiometrie();
-                    Grid.SetColumnSpan(c, 3);
-                    Grid.SetRow(c, indexDebut);
-                    Grid.SetColumn(c, i);
-                    g.Children.Add(c);
+                    for (int i = 0; i < g.ColumnDefinitions.Count; i = i + 3)
+                    {
+                        UnitDataBiometrie c = new UnitDataBiometrie();
+                        Grid.SetColumnSpan(c, 3);
+                        Grid.SetRow(c, indexDebut);
+                        Grid.SetColumn(c, i);
+                        g.Children.Add(c);
+                    }
+                    indexDebut = indexDebut + 1;
                 }
-                indexDebut = indexDebut + 1;
             }
-        }
 
-        public void GridAjoutUserDataAnatomieLigne(Grid g, int indexDebut, int indexFin)
-        {
-            int nb = (indexFin - indexDebut) + 1;
-            for (int j = 0; j < nb; ++j)
-            {
-                for (int i = 3; i < g.ColumnDefinitions.Count; i = i + 3)
-                {
-                    UnitDataAnatomie c = new UnitDataAnatomie();
-                    Grid.SetColumnSpan(c, 3);
-                    Grid.SetRow(c, indexDebut);
-                    Grid.SetColumn(c, i);
-                    g.Children.Add(c);
-                }
-                indexDebut = indexDebut + 1;
-            }
         }
+        #endregion
 
-        public void GridAjoutUserDataAnatomie(Grid g, int indexDebut, int indexFin)
+        #region UNITDATAANATOMIE
+        public void GridAjoutUnitDataAnatomie(Grid g, int indexDebut, int indexFin)
         {
             int nb = (indexFin - indexDebut) + 1;
             for (int j = 0; j < nb; ++j)
@@ -143,8 +86,163 @@ namespace Echographie.Utilitaires
                 indexDebut = indexDebut + 1;
             }
         }
-        #endregion FIN AJOUT UNITBIOMETRIE
+        #endregion
 
+        //public void GridAjoutUserDataBiometrieLigne(Grid g, int indexDebut, int indexFin)
+        //{
+        //    int nb = (indexFin - indexDebut) + 1;
+        //    for (int j = 0; j < nb; ++j)
+        //    {
+        //        for (int i = 3; i < g.ColumnDefinitions.Count; i = i + 3)
+        //        {
+        //            UnitDataBiometrie c = new UnitDataBiometrie();
+        //            Grid.SetColumnSpan(c, 3);
+        //            Grid.SetRow(c, indexDebut);
+        //            Grid.SetColumn(c, i);
+        //            g.Children.Add(c);
+        //        }
+        //        indexDebut = indexDebut + 1;
+        //    }
+        //}
+
+        //public void GridAjoutUserDataAnatomieLigne(Grid g, int indexDebut, int indexFin)
+        //{
+        //    int nb = (indexFin - indexDebut) + 1;
+        //    for (int j = 0; j < nb; ++j)
+        //    {
+        //        for (int i = 3; i < g.ColumnDefinitions.Count; i = i + 3)
+        //        {
+        //            UnitDataAnatomie c = new UnitDataAnatomie();
+        //            Grid.SetColumnSpan(c, 3);
+        //            Grid.SetRow(c, indexDebut);
+        //            Grid.SetColumn(c, i);
+        //            g.Children.Add(c);
+        //        }
+        //        indexDebut = indexDebut + 1;
+        //    }
+        //}
+
+
+        #endregion FIN AJOUT UNITDATA
+
+        #region REMOVE UNITDATA
+        public void RemoveUnitDataAnatomie(Grid g, List<Element> l)
+        {
+            List<UnitData> elements = new List<UnitData>();
+            foreach (UnitData element in g.Children)
+            {
+                //UnitData u = (UnitData)element;
+
+                elements.Add(element);
+            }
+
+            while (elements.Count > l.Count)
+            {
+                g.Children.RemoveAt(elements.Count - 1);
+                elements.RemoveAt(elements.Count - 1);
+
+            }
+        }
+        #endregion
+
+        #region BINDINGS UNITDATA
+
+        #region UNITDATAANATOMIE
+        public void SetBindingUnitDatAnatomie(Grid grid, List<ElementAnatomique> elements)
+        {
+            List<UnitDataAnatomie> unites = new List<UnitDataAnatomie>();
+            foreach (UnitDataAnatomie unite in grid.Children)
+            {
+                unites.Add(unite);
+            }
+            for (int i = 0; i < elements.Count; ++i)
+            {
+                unites[i].DataContext = elements[i];
+
+                Binding bElement = new Binding();
+                Binding bCle = new Binding();
+                //Binding bEvaluation = new Binding();
+                Binding bBool = new Binding();
+                Binding bLabelEvaluation = new Binding();
+
+                bElement.Path = new System.Windows.PropertyPath("Label");
+                bCle.Path = new System.Windows.PropertyPath("CleElement");
+                //bEvaluation.Path = new System.Windows.PropertyPath("Evaluation");
+                bBool.Path = new System.Windows.PropertyPath("Evalue");
+                bLabelEvaluation.Path = new System.Windows.PropertyPath("LabelEvaluation");
+
+                unites[i].Label1.SetBinding(ContentControl.ContentProperty, bElement);
+                unites[i].Tb1.SetBinding(TextBox.TextProperty, bCle);
+                //unites[i].Cb1.SetBinding(CheckBox.IsCheckedProperty, bEvaluation);
+                //unites[i].Cb1.SetBinding(CheckBox.ContentProperty, bLabelEvaluation);
+                //unites[i].Cb1.SetBinding(CheckBox.IsCheckedProperty, bLabelEvaluation);
+            }
+        }
+
+        public List<ElementAnatomique> GetBindingUnitDataAnatomie(Grid grid)
+        {
+            List<ElementAnatomique> elements = new List<ElementAnatomique>();
+            foreach (UnitDataBiometrie control in grid.Children)
+            {
+                object o = control.DataContext;
+                ElementAnatomique elt = o as ElementAnatomique;
+                if (elt is ElementAnatomique)
+                {
+                    elements.Add(elt);
+                }
+            }
+            return elements;
+        }
+        #endregion
+
+        #region DATABIOMETRIE
+        public void SetBindingUnitDataBiometrie(Grid grid, List<ElementBiometrique> elements)
+        {
+            List<UnitDataBiometrie> unites = new List<UnitDataBiometrie>();
+            foreach (UnitDataBiometrie unite in grid.Children)
+            {
+                unites.Add(unite);
+            }
+            for (int i = 0; i < unites.Count; ++i)
+            {
+                unites[i].DataContext = elements[i];
+
+                Binding bElement = new Binding();
+                Binding bCle = new Binding();
+                Binding bDimension = new Binding();
+                Binding bTaille = new Binding();
+
+                bElement.Path = new System.Windows.PropertyPath("Label");
+                bCle.Path = new System.Windows.PropertyPath("CleElement");
+                bDimension.Path = new System.Windows.PropertyPath("CleDimension");
+                bTaille.Path = new System.Windows.PropertyPath("Dimension");
+
+                unites[i].Label1.SetBinding(ContentControl.ContentProperty, bElement);
+                unites[i].Tb1.SetBinding(TextBox.TextProperty, bCle);
+                unites[i].Tb2.SetBinding(TextBox.TextProperty, bDimension);
+                unites[i].Tb3.SetBinding(TextBox.TextProperty, bTaille);
+            }
+        }
+
+        public List<ElementBiometrique> GetBindingUnitDataBiometrie(Grid grid)
+        {
+            List<ElementBiometrique> elements = new List<ElementBiometrique>();
+            foreach (UnitDataBiometrie control in grid.Children)
+            {
+                object o = control.DataContext;
+                ElementBiometrique elt = o as ElementBiometrique;
+                if (elt is ElementBiometrique)
+                {
+                    elements.Add(elt);
+                }
+            }
+            return elements;
+        }
+        #endregion
+
+        #endregion END BINDINGS UNITDATA
+
+        ///////////////////////////////////////////////////////////////////
         #region BINDINGS CLASSIQUE AVEC OU SANS LIST COMME PARAMETRE
 
         public void SetBindingMorphology(Grid grid, List<ElementAnatomique> elements)
@@ -267,98 +365,5 @@ namespace Echographie.Utilitaires
         }
 
         #endregion FINBINDINGS CLASSIQUE AVEC OU SANS LIST COMME PARAMETRE
-
-        #region BINDINGS UNITDATABIOMETRIE
-
-        public void SetBindingUnitDatAnatomie(Grid grid, List<ElementAnatomique> elements)
-        {
-            List<UnitDataAnatomie> unites = new List<UnitDataAnatomie>();
-            foreach (UnitDataAnatomie unite in grid.Children)
-            {
-                unites.Add(unite);
-            }
-            for (int i = 0; i < unites.Count; ++i)
-            {
-                unites[i].DataContext = elements[i];
-
-                Binding bElement = new Binding();
-                Binding bCle = new Binding();
-                //Binding bEvaluation = new Binding();
-                Binding bBool = new Binding();
-                Binding bLabelEvaluation = new Binding();
-
-                bElement.Path = new System.Windows.PropertyPath("Label");
-                bCle.Path = new System.Windows.PropertyPath("CleElement");
-                //bEvaluation.Path = new System.Windows.PropertyPath("Evaluation");
-                bBool.Path = new System.Windows.PropertyPath("Evalue");
-                bLabelEvaluation.Path = new System.Windows.PropertyPath("LabelEvaluation");
-
-                unites[i].Label1.SetBinding(ContentControl.ContentProperty, bElement);
-                unites[i].Tb1.SetBinding(TextBox.TextProperty, bCle);
-                //unites[i].Cb1.SetBinding(CheckBox.IsCheckedProperty, bEvaluation);
-                unites[i].Cb1.SetBinding(CheckBox.ContentProperty, bLabelEvaluation);
-                unites[i].Cb1.SetBinding(CheckBox.IsCheckedProperty, bLabelEvaluation);
-            }
-        }
-
-        public List<ElementAnatomique> GetBindingUnitDataAnatomie(Grid grid)
-        {
-            List<ElementAnatomique> elements = new List<ElementAnatomique>();
-            foreach (UnitDataBiometrie control in grid.Children)
-            {
-                object o = control.DataContext;
-                ElementAnatomique elt = o as ElementAnatomique;
-                if (elt is ElementAnatomique)
-                {
-                    elements.Add(elt);
-                }
-            }
-            return elements;
-        }
-
-        public void SetBindingUnitDataBiometrie(Grid grid, List<ElementBiometrique> elements)
-        {
-            List<UnitDataBiometrie> unites = new List<UnitDataBiometrie>();
-            foreach (UnitDataBiometrie unite in grid.Children)
-            {
-                unites.Add(unite);
-            }
-            for (int i = 0; i < unites.Count; ++i)
-            {
-                unites[i].DataContext = elements[i];
-
-                Binding bElement = new Binding();
-                Binding bCle = new Binding();
-                Binding bDimension = new Binding();
-                Binding bTaille = new Binding();
-
-                bElement.Path = new System.Windows.PropertyPath("Label");
-                bCle.Path = new System.Windows.PropertyPath("CleElement");
-                bDimension.Path = new System.Windows.PropertyPath("CleDimension");
-                bTaille.Path = new System.Windows.PropertyPath("Dimension");
-
-                unites[i].Label1.SetBinding(ContentControl.ContentProperty, bElement);
-                unites[i].Tb1.SetBinding(TextBox.TextProperty, bCle);
-                unites[i].Tb2.SetBinding(TextBox.TextProperty, bDimension);
-                unites[i].Tb3.SetBinding(TextBox.TextProperty, bTaille);
-            }
-        }
-
-        public List<ElementBiometrique> GetBindingUnitDataBiometrie(Grid grid)
-        {
-            List<ElementBiometrique> elements = new List<ElementBiometrique>();
-            foreach (UnitDataBiometrie control in grid.Children)
-            {
-                object o = control.DataContext;
-                ElementBiometrique elt = o as ElementBiometrique;
-                if (elt is ElementBiometrique)
-                {
-                    elements.Add(elt);
-                }
-            }
-            return elements;
-        }
-
-        #endregion END BINDINGS UNITDATABIOMETRIE
     }
 }

@@ -113,32 +113,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <!--<Grid Grid.Row="0" Grid.Column="0"  Style="{StaticResource gridUnitData}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >L.C.C</Label>
-                            <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red" Text="{Binding CleElement}" Visibility="Hidden"></TextBox>
-                            <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green" Text="{Binding CleDimension}"  Visibility="Hidden"></TextBox>
-                            <TextBox x:Name="textBoxLlc"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" BorderBrush="#FFDCF108" ></TextBox>
-                            <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource LabelMm}"  >MM</Label>
-                        </Grid>
-                        <Grid Grid.Row="0" Grid.Column="3"   Style="{StaticResource gridUnitData}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >NUCHAL THICKNESS</Label>
-                            <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red" Text="{Binding CleElement}"  Visibility="Hidden"></TextBox>
-                            <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green" Text="{Binding CleDimension}"  Visibility="Hidden"></TextBox>
-                            <TextBox  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" TextChanged="TextBoxCn_TextChanged"></TextBox>
-                            <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource LabelMm}"  >MM</Label>
-                        </Grid>
+                        <!--
                         <Grid Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="LightCyan">
                             <TextBox x:Name="textBoxMedianeCn"  Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" Background="LightGray"></TextBox>
                         </Grid>
@@ -177,7 +152,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Row="0" Grid.Column="0"  Style="{StaticResource gridUnitData}">
+                        <!--<Grid Grid.Row="0" Grid.Column="0"  Style="{StaticResource gridUnitData}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
@@ -286,7 +261,7 @@
                             <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" Content="{Binding Label}" ></Label>
                             <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red" Text="{Binding CleElement}" Visibility="Hidden"></TextBox>
                             <CheckBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{StaticResource CheckBoxAnatomie}" Click="CheckBoxAnatomie_Click"></CheckBox>
-                        </Grid>
+                        </Grid>-->
                     </Grid>
                     <Label Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >PLACENTA</Label>
                 </Grid>
@@ -342,32 +317,7 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Grid Grid.Row="0" Grid.Column="0"  Style="{StaticResource gridUnitData}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >L.C.C</Label>
-                                        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red" Text="{Binding CleElement}" Visibility="Hidden"></TextBox>
-                                        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green" Text="{Binding CleDimension}"  Visibility="Hidden"></TextBox>
-                                        <TextBox x:Name="textBoxLlcTwin1"  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" BorderBrush="#FFDCF108" ></TextBox>
-                                        <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource LabelMm}"  >MM</Label>
-                                    </Grid>
-                                    <Grid Grid.Row="0" Grid.Column="4"   Style="{StaticResource gridUnitData}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >NUCHAL THICKNESS</Label>
-                                        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red" Text="{Binding CleElement}"  Visibility="Hidden"></TextBox>
-                                        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green" Text="{Binding CleDimension}"  Visibility="Hidden"></TextBox>
-                                        <TextBox  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}"></TextBox>
-                                        <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource LabelMm}"  >MM</Label>
-                                    </Grid>
+                                    <!--
                                     <Grid Grid.Row="0" Grid.Column="8" Style="{StaticResource gridUnitNonData}">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition/>
@@ -376,9 +326,9 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >DOWN SYNDROME RISK</Label>
-                                        <TextBox  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding DownSyndrome}"></TextBox>
+                                        <TextBox  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding DownSyndrome}"></TextBox>-->
 
-                                    </Grid>
+                                    <!--</Grid>-->
                                 </Grid>
                                 <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >MORPHOLOGY</Label>
                                 <Grid x:Name="gridMorphologyNonUnique1TTwin1" Grid.Row="6" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="12">
@@ -566,33 +516,8 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Grid Grid.Row="0" Grid.Column="0"  Style="{StaticResource gridUnitData}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >L.C.C</Label>
-                                        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red" Text="{Binding CleElement}" Visibility="Hidden"></TextBox>
-                                        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green" Text="{Binding CleDimension}"  Visibility="Hidden"></TextBox>
-                                        <TextBox x:Name="textBoxLlctwin2"  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}" BorderBrush="#FFDCF108" ></TextBox>
-                                        <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource LabelMm}"  >MM</Label>
-                                    </Grid>
-                                    <Grid Grid.Row="0" Grid.Column="4"   Style="{StaticResource gridUnitData}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >NUCHAL THICKNESS</Label>
-                                        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red" Text="{Binding CleElement}"  Visibility="Hidden"></TextBox>
-                                        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green" Text="{Binding CleDimension}"  Visibility="Hidden"></TextBox>
-                                        <TextBox  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding Dimension}"></TextBox>
-                                        <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource LabelMm}"  >MM</Label>
-                                    </Grid>
-                                    <Grid Grid.Row="0" Grid.Column="8" Style="{StaticResource gridUnitNonData}">
+                                  
+                                    <!--<Grid Grid.Row="0" Grid.Column="8" Style="{StaticResource gridUnitNonData}">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition/>
                                             <ColumnDefinition/>
@@ -602,7 +527,7 @@
                                         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >DOWN SYNDROME RISK</Label>
                                         <TextBox  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{DynamicResource TextBoxBiometric}" Text="{Binding DownSyndrome}"></TextBox>
 
-                                    </Grid>
+                                    </Grid>-->
                                 </Grid>
                                 <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Style="{DynamicResource LabelSousTitre}"  >MORPHOLOGY</Label>
                                 <Grid x:Name="gridMorphologyNonUnique1TTwin2" Grid.Row="6" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="12">
