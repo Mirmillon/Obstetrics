@@ -126,16 +126,28 @@ namespace Echographie.Utilitaires
         #endregion FIN AJOUT UNITDATA
 
         #region REMOVE UNITDATA
-        public void RemoveUnitDataAnatomie(Grid g, List<Element> l)
+        public void RemoveUnitDataAnatomie(Grid g, List<ElementAnatomique> l)
         {
             List<UnitData> elements = new List<UnitData>();
             foreach (UnitData element in g.Children)
             {
-                //UnitData u = (UnitData)element;
-
                 elements.Add(element);
             }
+            while (elements.Count > l.Count)
+            {
+                g.Children.RemoveAt(elements.Count - 1);
+                elements.RemoveAt(elements.Count - 1);
 
+            }
+        }
+
+        public void RemoveUnitDataBiometrie(Grid g, List<ElementBiometrique> l)
+        {
+            List<UnitData> elements = new List<UnitData>();
+            foreach (UnitData element in g.Children)
+            {
+                elements.Add(element);
+            }
             while (elements.Count > l.Count)
             {
                 g.Children.RemoveAt(elements.Count - 1);
