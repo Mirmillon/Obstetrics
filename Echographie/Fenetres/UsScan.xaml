@@ -43,7 +43,7 @@
             <TextBox x:Name="textBoxTerme"  Style="{StaticResource TextBoxStandard }" Width="50"   TextChanged="TextBoxTerme_TextChanged" Background="LightGray" Text="{Binding Terme}"></TextBox>
             <Label Style="{DynamicResource LabelStandard}">U.S.C KIND</Label>
             <ComboBox x:Name="comboBoxPregnancyUscKind"   Style="{StaticResource ComboBoxStandard}"  SelectionChanged="ComboBoxPregnancyUscKind_SelectionChanged" ></ComboBox>
-            <Label Style="{DynamicResource LabelStandard}">PREGNANCY KIND</Label>
+            <Label x:Name="labelPregnancyKind" Style="{DynamicResource LabelStandard}">PREGNANCY KIND</Label>
             <ComboBox x:Name="comboBoxPregnancyKind"    Style="{StaticResource ComboBoxStandard}" Width="80" SelectionChanged="ComboBoxPregnancyKind_SelectionChanged" SelectedValue="{Binding PregnancyKind}" ></ComboBox>
             <ComboBox x:Name="comboBoxTwin"  Style="{DynamicResource ComboBoxStandard}"  Width="220" Visibility="Collapsed" SelectedValue="{Binding Twin}"></ComboBox>
             <Label  x:Name="labelNumberFoetus" Style="{DynamicResource LabelStandard}" Visibility="Collapsed" >NUMBER FOETUS</Label>
