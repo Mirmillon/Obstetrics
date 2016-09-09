@@ -1,0 +1,49 @@
+﻿<Window x:Class="Echographie.Fenetres.Parametres.ElementsList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Echographie.Fenetres.Parametres"
+        mc:Ignorable="d"
+        Title="ElementsList"  Style="{StaticResource ListWindow}" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Style="{StaticResource stackPanelHautSup}">
+            <Label Style="{DynamicResource LabelTitre}">PATIENTS LIST</Label>
+            <RadioButton x:Name="radionButtonBiometric" Style="{DynamicResource RadioButtonTitre}"  >BIOMETRIC</RadioButton>
+            <RadioButton x:Name="radionButtonMorphology" Style="{DynamicResource RadioButtonTitre}"  >MORPHOLOGY</RadioButton>
+            <Label Style="{StaticResource LabelStandard}">USC KIND</Label>
+            <ComboBox x:Name="comboBoxPregnancyUscKind" Style="{StaticResource ComboBoxStandard}"></ComboBox>
+        </StackPanel>
+        <StackPanel Style="{StaticResource stackPanelBas}">
+            <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
+        </StackPanel>
+    </Grid>
+</Window>

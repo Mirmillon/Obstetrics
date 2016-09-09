@@ -75,8 +75,8 @@
 
             <Button x:Name="buttonSearchPeople"  Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}" Click="ButtonSearchPeople_Click" >SEARCH PEOPLE</Button>
             <Button x:Name="buttonSearchFemalePatient"  Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}"  Click="ButtonSearchFemalePatientList_Click">SEARCH FEMALE PATIENTS</Button>
-         
 
+            <Button x:Name="buttonListeElement"  Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{DynamicResource buttonstartWindow}"  Click="ButtonElementList_Click">ELEMENTS LIST</Button>
 
         </Grid>
         <StackPanel x:Name="stackPanelBas" Style="{StaticResource stackPanelBas}">

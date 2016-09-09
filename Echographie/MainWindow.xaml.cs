@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Echographie.Fenetres;
+using Echographie.Fenetres.Parametres;
 
 namespace Echographie
 {
@@ -27,6 +28,8 @@ namespace Echographie
         private void ButtonSearchPeople_Click(object sender, RoutedEventArgs e) {Show(new SearchPeople());}
 
         private void ButtonSearchFemalePatientList_Click(object sender, RoutedEventArgs e){ Show(new SearchFemalePatient()); }
+
+        private void ButtonElementList_Click(object sender, RoutedEventArgs e) {Show(new ElementsList());}
 
         private void Show(Window w)
         {
