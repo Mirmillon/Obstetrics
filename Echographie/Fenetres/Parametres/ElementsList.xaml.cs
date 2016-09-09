@@ -1,18 +1,9 @@
-﻿using Echographie.RDMS;
+﻿using Echographie.Classes;
+using Echographie.RDMS;
+using Echographie.RDMS.Parametres;
 using Echographie.Utilitaires;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Echographie.Fenetres.Parametres
 {
@@ -21,13 +12,61 @@ namespace Echographie.Fenetres.Parametres
     /// </summary>
     public partial class ElementsList : Window
     {
+        List<ElementBiometrique> elementsBiometrique = null;
+        List<ElementAnatomique> elementsAnatomique = null;
+        List<Reference> dimensions = null;
+
         public ElementsList()
         {
             InitializeComponent();
 
             new GestionComboBox().SetComboxReference(new DataBase().GetPregnancyUscKind(), comboBoxPregnancyUscKind, 1);
+            elementsBiometrique = new ElementBase().GetElementBiometrie1T();
+            elementsAnatomique = new ElementBase().GetElementsAnatomiques1T();
+            dimensions = new DataBase().GetDimension();
+            new GestionComboBox().SetComboxReference(dimensions, dataGridComboBoxDimension);
+
+            radionButtonBiometric.IsChecked = true;
+            comboBoxPregnancyUscKind.SelectedIndex = 0;
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e) { Close(); }
+
+        private void RadioButtonElement_Click(object sender, RoutedEventArgs e)
+        {
+            if (radionButtonBiometric.IsChecked == true)
+            {
+                switch(comboBoxPregnancyUscKind.SelectedIndex)
+                {
+                    case 0:
+                        if(elementsBiometrique != null)
+                        {
+                            dataGrid.ItemsSource = null;
+                            dataGrid.ItemsSource = elementsBiometrique;
+                        }
+                        break;
+                    case 1:
+                        dataGrid.ItemsSource = null;
+                        break;
+                }
+            }
+            else
+            {
+                switch (comboBoxPregnancyUscKind.SelectedIndex)
+                {
+                    case 0:
+                        if(elementsAnatomique != null)
+                        {
+                            dataGrid.ItemsSource = null;
+                            dataGrid.ItemsSource = elementsAnatomique;
+                        }
+                        break;
+                    case 1:
+                        dataGrid.ItemsSource = null;
+                        break;
+                }
+            }
+
+        }
     }
 }

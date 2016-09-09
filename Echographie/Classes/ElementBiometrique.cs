@@ -4,6 +4,7 @@
     {
 
         int cleDimension;
+
         double dimension;
 
         public ElementBiometrique() : base() { }

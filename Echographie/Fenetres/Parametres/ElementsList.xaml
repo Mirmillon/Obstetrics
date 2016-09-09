@@ -36,12 +36,19 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Style="{StaticResource stackPanelHautSup}">
-            <Label Style="{DynamicResource LabelTitre}">PATIENTS LIST</Label>
-            <RadioButton x:Name="radionButtonBiometric" Style="{DynamicResource RadioButtonTitre}"  >BIOMETRIC</RadioButton>
-            <RadioButton x:Name="radionButtonMorphology" Style="{DynamicResource RadioButtonTitre}"  >MORPHOLOGY</RadioButton>
+            <Label Style="{DynamicResource LabelTitre}">ELEMENTS LIST</Label>
+            <RadioButton x:Name="radionButtonBiometric" Style="{DynamicResource RadioButtonTitre}" Click="RadioButtonElement_Click" >BIOMETRIC</RadioButton>
+            <RadioButton x:Name="radionButtonMorphology" Style="{DynamicResource RadioButtonTitre}" Click="RadioButtonElement_Click"  >MORPHOLOGY</RadioButton>
             <Label Style="{StaticResource LabelStandard}">USC KIND</Label>
-            <ComboBox x:Name="comboBoxPregnancyUscKind" Style="{StaticResource ComboBoxStandard}"></ComboBox>
+            <ComboBox x:Name="comboBoxPregnancyUscKind" Style="{StaticResource ComboBoxStandard}" SelectionChanged="RadioButtonElement_Click"></ComboBox>
         </StackPanel>
+        <DataGrid x:Name="dataGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="12" Grid.RowSpan="10" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="dataGridColKey" Header="KEY"  Binding="{Binding CleElement}"/>
+                <DataGridTextColumn x:Name="dataGridColLabel" Header="LABEL"  Binding="{Binding Label}"/>
+                <DataGridComboBoxColumn x:Name="dataGridComboBoxDimension" Header="DIMENSION" SelectedValueBinding="{Binding CleDimension}"></DataGridComboBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <StackPanel Style="{StaticResource stackPanelBas}">
             <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
         </StackPanel>
