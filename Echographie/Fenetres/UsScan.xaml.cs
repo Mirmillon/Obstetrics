@@ -45,33 +45,47 @@ namespace Echographie.Fenetres
             hostGrapheCroissance.Child = chartCroissance;
 
             comboBoxPregnancyUscKind.SelectedIndex = 0;
+            comboBoxPregnancyKind.SelectedIndex = 1;
 
             //PREMIER TRIMESTRE
-            new GestionGrille().GridAjoutUnitDataBiometrie(gridBiometricUnique1T, 4, 4, new DataBase().GetElementBiometrie1T());
-            new GestionGrille().SetBindingUnitDataBiometrie(gridBiometricUnique1T, new DataBase().GetElementBiometrie1T());
-            new GestionGrille().GridAjoutUnitDataAnatomie(gridMorphologyUnique1T, 0, 3);
-            new GestionGrille().RemoveUnitDataAnatomie(gridMorphologyUnique1T, new DataBase().GetElementsAnatomiques1T());
-            new GestionGrille().SetBindingUnitDatAnatomie(gridMorphologyUnique1T, new DataBase().GetElementsAnatomiques1T());
+            List<ElementAnatomique> elementsAnatomique1T = new DataBase().GetElementsAnatomiques1T();
+            List<ElementBiometrique> elementsBiometrique1T = new DataBase().GetElementBiometrie1T();
+            new GestionGrille().GridAjoutUnitDataBiometrie(gridBiometricUnique1T,0, 4, 4);
+            new GestionGrille().SetBindingUnitDataBiometrie(gridBiometricUnique1T, elementsBiometrique1T);
+            new GestionGrille().GridAjoutUnitDataAnatomie(gridMorphologyUnique1T,0, 0, 3);
+            new GestionGrille().RemoveUnitDataAnatomie(gridMorphologyUnique1T, elementsAnatomique1T);
+            new GestionGrille().SetBindingUnitDatAnatomie(gridMorphologyUnique1T, elementsAnatomique1T);
+            //Twin
+            new GestionGrille().GridAjoutUnitDataBiometrie(gridBiometricNonUnique1TTwin1,0, 4, 4);
+            new GestionGrille().SetBindingUnitDataBiometrie(gridBiometricNonUnique1TTwin1, elementsBiometrique1T);
+            new GestionGrille().GridAjoutUnitDataAnatomie(gridMorphologyNonUnique1TTwin1,0, 0, 3);
+            new GestionGrille().RemoveUnitDataAnatomie(gridMorphologyNonUnique1TTwin1, elementsAnatomique1T);
+            new GestionGrille().SetBindingUnitDatAnatomie(gridMorphologyNonUnique1TTwin1, elementsAnatomique1T);
 
+            new GestionGrille().GridAjoutUnitDataBiometrie(gridBiometricNonUnique1TTwin2,0, 4, 4);
+            new GestionGrille().SetBindingUnitDataBiometrie(gridBiometricNonUnique1TTwin2, elementsBiometrique1T);
+            new GestionGrille().GridAjoutUnitDataAnatomie(gridMorphologyNonUnique1TTwin2,0, 0, 3);
+            new GestionGrille().RemoveUnitDataAnatomie(gridMorphologyNonUnique1TTwin2, elementsAnatomique1T);
+            new GestionGrille().SetBindingUnitDatAnatomie(gridMorphologyNonUnique1TTwin2, elementsAnatomique1T);
+            //FIN PREMIER TRIMESTRE
 
-            new GestionGrille().GridAjoutUnitDataBiometrie(gridBiometricNonUnique1TTwin1, 4, 4, new DataBase().GetElementBiometrie1T());
-            new GestionGrille().SetBindingUnitDataBiometrie(gridBiometricNonUnique1TTwin1, new DataBase().GetElementBiometrie1T());
-
-            new GestionGrille().GridAjoutUnitDataBiometrie(gridBiometricNonUnique1TTwin2, 4, 4, new DataBase().GetElementBiometrie1T());
-            new GestionGrille().SetBindingUnitDataBiometrie(gridBiometricNonUnique1TTwin2, new DataBase().GetElementBiometrie1T());
-
-
-            //new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricTNonUniqueTwin2, 1, 3);
-
-
-
+            //SECOND TRIMESTRE
+            //Single
             //new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyUnique, 0, 0);
-            //new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyUnique,1,3);
+            new GestionGrille().GridAjoutUnitDataAnatomie(gridMorphologyUnique, 0, 1, 3);
             //new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyUnique, 4, 4);
-            //new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyUnique, 5, 8);
+            new GestionGrille().GridAjoutUnitDataAnatomie(gridMorphologyUnique,0, 5, 8);
             //new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyUnique, 9, 9);
-            //new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyUnique, 10, 11);
+            new GestionGrille().GridAjoutUnitDataAnatomie(gridMorphologyUnique,0, 10, 11);
 
+            //new GestionGrille().GridAjoutUserDataBiometrieLigne(gridBiometricUnique, 0, 0);
+            new GestionGrille().GridAjoutUnitDataBiometrie(gridBiometricUnique,0, 1, 3);
+            //new GestionGrille().GridAjoutUserDataBiometrieLigne(gridBiometricUnique, 4, 4);
+            new GestionGrille().GridAjoutUnitDataBiometrie(gridBiometricUnique,0, 5, 6);
+            //new GestionGrille().GridAjoutUserDataBiometrieLigne(gridBiometricUnique, 7, 7);
+            new GestionGrille().GridAjoutUnitDataBiometrie(gridBiometricUnique,0, 8, 9);
+
+            //Twin
             //new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyTNonUniqueTwin1, 0, 0);
             //new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyTNonUniqueTwin1, 1, 3);
             //new GestionGrille().GridAjoutUserDataAnatomieLigne(gridMorphologyTNonUniqueTwin1, 4, 4);
@@ -87,12 +101,7 @@ namespace Echographie.Fenetres
             //new GestionGrille().GridAjoutUserDataAnatomie(gridMorphologyTNonUniqueTwin2, 10, 11);
 
 
-            //new GestionGrille().GridAjoutUserDataBiometrieLigne(gridBiometricUnique, 0, 0);
-            //new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricUnique,1,3);
-            //new GestionGrille().GridAjoutUserDataBiometrieLigne(gridBiometricUnique, 4, 4);
-            //new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricUnique, 5, 6);
-            //new GestionGrille().GridAjoutUserDataBiometrieLigne(gridBiometricUnique, 7, 7);
-            //new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricUnique, 8, 9);
+
 
 
             //new GestionGrille().GridAjoutUserDataBiometrie(gridBiometricTNonUniqueTwin1, 5, 6);
@@ -218,13 +227,13 @@ namespace Echographie.Fenetres
                     switch (comboBoxPregnancyKind.SelectedIndex)
                     {
                         case 0://Single
-                            SetBindingUnique1T();
+                           
                             break;
                         case 1://Twin
-                            SetBindingTwin1T();
+                           
                             break;
                         case 2://Multiple
-                            SetBindingTwin1T();
+                          
                             break;
                         default:
                             break;
@@ -281,7 +290,7 @@ namespace Echographie.Fenetres
                     switch(comboBoxPregnancyUscKind.SelectedIndex)
                     {
                         case 0:
-                            SetBindingUnique1T();
+                            
                             break;
                         case 1:
                         case 2:
@@ -308,7 +317,7 @@ namespace Echographie.Fenetres
                     switch (comboBoxPregnancyUscKind.SelectedIndex)
                     {
                         case 0:
-                            SetBindingTwin1T();
+                            
                             break;
                         case 1:
                         case 2:
@@ -328,7 +337,7 @@ namespace Echographie.Fenetres
                     switch (comboBoxPregnancyUscKind.SelectedIndex)
                     {
                         case 0:
-                            SetBindingTwin1T();
+                            
                             break;
                         case 1:
                         case 2:
@@ -442,27 +451,27 @@ namespace Echographie.Fenetres
 
         #region METHODES LOCALES
 
-        private void SetBindingUnique1T()
-        {
-            List<ElementAnatomique> elements = new List<ElementAnatomique>();
-            elements = new DataBase().GetElementsAnatomiques1T();
-            //List<ElementBiometrique> elementsBio = new List<ElementBiometrique>();
-            //elementsBio = new DataBase().GetElementBiometrie1T();
-            //new GestionGrille().SetBindingBiometrics(gridBiometricUnique1T, elementsBio);
-            //new GestionGrille().SetBindingMorphology(gridMorphologyUnique1T,elements);
-        }
+        //private void SetBindingUnique1T()
+        //{
+        //    //List<ElementAnatomique> elements = new List<ElementAnatomique>();
+        //    //elements = new DataBase().GetElementsAnatomiques1T();
+        //    //List<ElementBiometrique> elementsBio = new List<ElementBiometrique>();
+        //    //elementsBio = new DataBase().GetElementBiometrie1T();
+        //    //new GestionGrille().SetBindingBiometrics(gridBiometricUnique1T, elementsBio);
+        //    //new GestionGrille().SetBindingMorphology(gridMorphologyUnique1T,elements);
+        //}
 
-        private void SetBindingTwin1T()
-        {
-            List<ElementAnatomique> elements = new List<ElementAnatomique>();
-            elements = new DataBase().GetElementsAnatomiques1T();
-            //List<ElementBiometrique> elementsBio = new List<ElementBiometrique>();
-            //elementsBio = new DataBase().GetElementBiometrie1T();
-            //new GestionGrille().SetBindingBiometrics(gridBiometricNonUnique1TTwin1, elementsBio);
-            new GestionGrille().SetBindingMorphology(gridMorphologyNonUnique1TTwin1, elements);
-            //new GestionGrille().SetBindingBiometrics(gridBiometricNonUnique1TTwin2, elementsBio);
-            new GestionGrille().SetBindingMorphology(gridMorphologyNonUnique1TTwin2, elements);
-        }
+        //private void SetBindingTwin1T()
+        //{
+        //    //List<ElementAnatomique> elements = new List<ElementAnatomique>();
+        //    //elements = new DataBase().GetElementsAnatomiques1T();
+        //    //List<ElementBiometrique> elementsBio = new List<ElementBiometrique>();
+        //    //elementsBio = new DataBase().GetElementBiometrie1T();
+        //    //new GestionGrille().SetBindingBiometrics(gridBiometricNonUnique1TTwin1, elementsBio);
+        //    //new GestionGrille().SetBindingMorphology(gridMorphologyNonUnique1TTwin1, elements);
+        //    //new GestionGrille().SetBindingBiometrics(gridBiometricNonUnique1TTwin2, elementsBio);
+        //    //new GestionGrille().SetBindingMorphology(gridMorphologyNonUnique1TTwin2, elements);
+        //}
 
         private void SetPregnancyUnique()
         {

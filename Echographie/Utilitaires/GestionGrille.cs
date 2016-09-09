@@ -29,53 +29,32 @@ namespace Echographie.Utilitaires
         #region AJOUT UNITDATA
 
         #region UNITDATABIOMETRIE
-        public void GridAjoutUnitDataBiometrie(Grid g, int indexDebut, int indexFin, List<ElementBiometrique> liste)
-        {
-            //Verification de la taillle de la liste et du nombre de case
-            //Si taille superieure
-            int nb = (indexFin - indexDebut) + 1;
-            if (liste.Count > nb * 4)
-            {
 
-                for (int j = 0; j < nb; ++j)
-                {
-                    for (int i = 0; i < g.ColumnDefinitions.Count; i = i + 3)
-                    {
-                        UnitDataBiometrie c = new UnitDataBiometrie();
-                        Grid.SetColumnSpan(c, 3);
-                        Grid.SetRow(c, indexDebut);
-                        Grid.SetColumn(c, i);
-                        g.Children.Add(c);
-                    }
-                    indexDebut = indexDebut + 1;
-                }
-            }
-            else
-            {
-                for (int j = 0; j < nb; ++j)
-                {
-                    for (int i = 0; i < g.ColumnDefinitions.Count; i = i + 3)
-                    {
-                        UnitDataBiometrie c = new UnitDataBiometrie();
-                        Grid.SetColumnSpan(c, 3);
-                        Grid.SetRow(c, indexDebut);
-                        Grid.SetColumn(c, i);
-                        g.Children.Add(c);
-                    }
-                    indexDebut = indexDebut + 1;
-                }
-            }
-
-        }
-        #endregion
-
-        #region UNITDATAANATOMIE
-        public void GridAjoutUnitDataAnatomie(Grid g, int indexDebut, int indexFin)
+        public void GridAjoutUnitDataBiometrie(Grid g, int indexCol, int indexDebut, int indexFin)
         {
             int nb = (indexFin - indexDebut) + 1;
             for (int j = 0; j < nb; ++j)
             {
-                for (int i = 0; i < g.ColumnDefinitions.Count; i = i + 3)
+                for (int i = indexCol; i < g.ColumnDefinitions.Count; i = i + 3)
+                {
+                    UnitDataBiometrie c = new UnitDataBiometrie();
+                    Grid.SetColumnSpan(c, 3);
+                    Grid.SetRow(c, indexDebut);
+                    Grid.SetColumn(c, i);
+                    g.Children.Add(c);
+                }
+                indexDebut = indexDebut + 1;
+            }
+        }
+        #endregion
+
+        #region UNITDATAANATOMIE
+        public void GridAjoutUnitDataAnatomie(Grid g, int indexCol, int indexDebut, int indexFin)
+        {
+            int nb = (indexFin - indexDebut) + 1;
+            for (int j = 0; j < nb; ++j)
+            {
+                for (int i = indexCol; i < g.ColumnDefinitions.Count; i = i + 3)
                 {
                     UnitDataAnatomie c = new UnitDataAnatomie();
                     Grid.SetColumnSpan(c, 3);
@@ -87,41 +66,6 @@ namespace Echographie.Utilitaires
             }
         }
         #endregion
-
-        //public void GridAjoutUserDataBiometrieLigne(Grid g, int indexDebut, int indexFin)
-        //{
-        //    int nb = (indexFin - indexDebut) + 1;
-        //    for (int j = 0; j < nb; ++j)
-        //    {
-        //        for (int i = 3; i < g.ColumnDefinitions.Count; i = i + 3)
-        //        {
-        //            UnitDataBiometrie c = new UnitDataBiometrie();
-        //            Grid.SetColumnSpan(c, 3);
-        //            Grid.SetRow(c, indexDebut);
-        //            Grid.SetColumn(c, i);
-        //            g.Children.Add(c);
-        //        }
-        //        indexDebut = indexDebut + 1;
-        //    }
-        //}
-
-        //public void GridAjoutUserDataAnatomieLigne(Grid g, int indexDebut, int indexFin)
-        //{
-        //    int nb = (indexFin - indexDebut) + 1;
-        //    for (int j = 0; j < nb; ++j)
-        //    {
-        //        for (int i = 3; i < g.ColumnDefinitions.Count; i = i + 3)
-        //        {
-        //            UnitDataAnatomie c = new UnitDataAnatomie();
-        //            Grid.SetColumnSpan(c, 3);
-        //            Grid.SetRow(c, indexDebut);
-        //            Grid.SetColumn(c, i);
-        //            g.Children.Add(c);
-        //        }
-        //        indexDebut = indexDebut + 1;
-        //    }
-        //}
-
 
         #endregion FIN AJOUT UNITDATA
 
