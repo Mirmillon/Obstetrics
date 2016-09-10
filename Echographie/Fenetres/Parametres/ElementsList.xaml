@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Echographie.Fenetres.Parametres"
         mc:Ignorable="d"
-        Title="ElementsList"  Style="{StaticResource ListWindow}" WindowStartupLocation="CenterScreen">
+        Title="ElementsList"  Style="{StaticResource ListWindow}" Width="850" Height="750" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -35,13 +35,16 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Style="{StaticResource stackPanelHautSup}">
-            <Label Style="{DynamicResource LabelTitre}">ELEMENTS LIST</Label>
-            <RadioButton x:Name="radionButtonBiometric" Style="{DynamicResource RadioButtonTitre}" Click="RadioButtonElement_Click" >BIOMETRIC</RadioButton>
-            <RadioButton x:Name="radionButtonMorphology" Style="{DynamicResource RadioButtonTitre}" Click="RadioButtonElement_Click"  >MORPHOLOGY</RadioButton>
-            <Label Style="{StaticResource LabelStandard}">USC KIND</Label>
-            <ComboBox x:Name="comboBoxPregnancyUscKind" Style="{StaticResource ComboBoxStandard}" SelectionChanged="RadioButtonElement_Click"></ComboBox>
-        </StackPanel>
+        <WrapPanel Style="{StaticResource WrapPanelHautSup}">
+            <Label Style="{DynamicResource LabelTitre}" Margin="10,0">ELEMENTS LIST</Label>
+            <RadioButton x:Name="radionButtonBiometric" Style="{DynamicResource RadioButtonTitre}" Margin="10,0" Click="RadioButtonElement_Click" >BIOMETRIC</RadioButton>
+            <RadioButton x:Name="radionButtonMorphology" Style="{DynamicResource RadioButtonTitre}" Margin="10,0" Click="RadioButtonElement_Click"  >MORPHOLOGY</RadioButton>
+            <Label Style="{StaticResource LabelStandard}" Margin="10,0">LANGUAGE</Label>
+            <ComboBox x:Name="comboBoxLangue" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{StaticResource ComboBoxStandard}"  SelectionChanged="comboBoxLangue_SelectionChanged"  Margin="5,5,60,0"></ComboBox>
+            <Label Style="{StaticResource LabelStandard}" Margin="10,0">USC KIND</Label>
+            <ComboBox x:Name="comboBoxPregnancyUscKind" Style="{StaticResource ComboBoxStandard}" Margin="10,0" SelectionChanged="RadioButtonElement_Click"></ComboBox>
+            
+        </WrapPanel>
         <DataGrid x:Name="dataGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="12" Grid.RowSpan="10" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="dataGridColKey" Header="KEY"  Binding="{Binding CleElement}"/>
@@ -50,7 +53,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Style="{StaticResource stackPanelBas}">
-            <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="ButtonClose_Click">Close</Button>
+            <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="buttonClose_Click">Close</Button>
+            <Button x:Name="buttonAjouter" Style="{StaticResource buttonStackPanelBas}" Click="buttonAjouter_Click">...New</Button>
         </StackPanel>
     </Grid>
 </Window>

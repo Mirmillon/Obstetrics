@@ -176,6 +176,10 @@
     <!--END LABEL-->
 
     <!--TEXTBOX-->
+    <Style x:Key="TextBoxDescription" TargetType="TextBox" >
+            <Setter Property="Margin" Value="5,3"/>
+            <Setter Property="Padding" Value="3"/>
+    </Style>
     <Style x:Key="TextBoxStandard" TargetType="TextBox" >
         <Setter Property="Height" Value="25"/>
         <Setter Property="Width" Value="175"/>
@@ -306,7 +310,16 @@
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="FlowDirection" Value="LeftToRight"/>
     </Style>
-    <!--END  CHECK BOX-->
+        <Style x:Key="CheckBoxGroupBox" TargetType="CheckBox">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Regular"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <!--END  CHECK BOX-->
     <!--GRID-->
     <Style x:Key="gridUnitData" TargetType="Grid">
         <Setter Property="Background" Value="Transparent"/>
@@ -347,5 +360,29 @@
             <Setter Property="Background" Value="Black"/>
         </Style>
         <!--END SPLITTER-->
+        <!--GROUPBOX-->
+        <Style x:Key="GroupBoxStandard" TargetType="GroupBox" >
+            <Setter Property="Margin" Value="5,3"/>
+            <Setter Property="Padding" Value="3"/>
+        </Style>
+        <!--END GROUPBOX-->
+
+        <!--WRAPPANEL-->
+        <Style x:Key="WrapPanelGroupBox" TargetType="WrapPanel" >
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="ItemWidth" Value="180"/>
+            <Setter Property="ItemHeight" Value="25"/>
+        </Style>
+        <Style x:Key="WrapPanelHautSup" TargetType="WrapPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Grid.Row" Value="0"/>
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Grid.RowSpan" Value="1"/>
+            <Setter Property="Grid.ColumnSpan" Value="12"/>
+        </Style>
+        <!--END WRAPPANEL-->
     </Application.Resources>
 </Application>

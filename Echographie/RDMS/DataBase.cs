@@ -2211,7 +2211,7 @@ namespace Echographie.RDMS
                 List<ElementBiometrique> elements = new List<ElementBiometrique>();
                 using (FbCommand commande = connexion.CreateCommand())
                 {
-                    commande.CommandText = "GET_ELEMENT_DIMENSION";
+                    commande.CommandText = "GET_ELEMENT_DIMENSION_1T";
                     commande.CommandType = System.Data.CommandType.StoredProcedure;
                     try
                     {
@@ -2516,7 +2516,7 @@ namespace Echographie.RDMS
 
             #region REQUETES GENERIQUES
 
-            private List<Reference> GetReference(string sql)
+            public  List<Reference> GetReference(string sql)
             {
                 FbConnection connexion = new FbConnection(ChaineConnection());
                 List<Reference> references = new List<Reference>();

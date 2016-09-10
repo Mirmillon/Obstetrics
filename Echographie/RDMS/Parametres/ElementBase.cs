@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using FirebirdSql.Data.FirebirdClient;
 using Echographie.Classes;
-
+using Echographie.Classes.Parametres;
+using System.Data;
 
 namespace Echographie.RDMS.Parametres
 {
     class ElementBase
     {
+
         public string ChaineConnection()
         {
             return @"Database=H:\Echo project\RDMS\BASEECHO.GDB;user=SYSDBA;Password=Xrgc540108";
@@ -59,7 +61,7 @@ namespace Echographie.RDMS.Parametres
             List<ElementBiometrique> elements = new List<ElementBiometrique>();
             using (FbCommand commande = connexion.CreateCommand())
             {
-                commande.CommandText = "GET_ELEMENT_DIMENSION";
+                commande.CommandText = "GET_ELEMENT_DIMENSION_1T";
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
                 try
                 {
@@ -91,6 +93,129 @@ namespace Echographie.RDMS.Parametres
         }
         #endregion FIN PREMIER TRIMESTRE
 
+        #region REFERENCES
+
+        public List<Reference> GetLangue()
+        {
+            return new DataBase().GetReference("GET_LANGUE");
+        }
+
+        public List<ReferenceLangue> GetDimensionLangue()
+        {
+            return GetReferenceLangue("GET_DIMENSION_LANGUE");
+        }
+
+        public List<Reference> GetDimensionEng()
+        {
+            return new DataBase().GetReference("GET_DIMENSION_ENG");
+        }
+
+        public List<Reference> GetDimensionTag()
+        {
+            return new DataBase().GetReference("GET_DIMENSION_TAG");
+        }
+
+        public List<Reference> GetDimensionFr()
+        {
+            return new DataBase().GetReference("GET_DIMENSION_FR");
+        }
+
+        public List<ReferenceLangue> GetElementNameLangue()
+        {
+            return GetReferenceLangue("");
+        }
+
+        public List<Reference> GetElementNameEng()
+        {
+            return new DataBase().GetReference("");
+        }
+
+        public List<Reference> GetElementNameTag()
+        {
+            return new DataBase().GetReference("");
+        }
+
+        public List<Reference> GetElementNameFr()
+        {
+            return new DataBase().GetReference("");
+        }
+
+        public List<ReferenceLangue> GetDescriptionLangue()
+        {
+            return GetReferenceLangue("");
+        }
+
+        public List<Reference> GetDescriptionEng()
+        {
+            return new DataBase().GetReference("");
+        }
+
+        public List<Reference> GetDescriptionTag()
+        {
+            return new DataBase().GetReference("");
+        }
+
+        public List<Reference> GetDescriptionFr()
+        {
+            return new DataBase().GetReference("");
+        }
+
+        #endregion END REFERENCES
+
         #endregion END REQUETES GET
+
+        #region REQUETES SET
+
+        #endregion END REQUETES SET
+
+        #region REQUETES UPDATE
+
+        #endregion END REQUETES UPDATE
+
+        #region REQUETES DELETE
+
+        #endregion END REQUETES DELETE
+
+        #region REQUETES GENERIQUES
+
+        public List<ReferenceLangue> GetReferenceLangue(string sql)
+        {
+            FbConnection connexion = new FbConnection(ChaineConnection());
+            List<ReferenceLangue> references = new List<ReferenceLangue>();
+            using (FbCommand commande = connexion.CreateCommand())
+            {
+                commande.CommandText = sql;
+                commande.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    connexion.Open();
+                    FbDataReader reader = commande.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            ReferenceLangue p = new ReferenceLangue();
+                            p.Cle = (int)reader[0];
+                            p.CleLangue = (int)reader[1];
+                            p.Label = (string)reader[2];
+                            references.Add(p);
+                        }
+                        connexion.Close();
+                        return references;
+                    }
+                    connexion.Close();
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.ToString());
+                    connexion.Close();
+                    return null;
+                }
+            }
+        }
+
+        #endregion END REQUETES GENERIQUES
+
     }
 }

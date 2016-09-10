@@ -9,6 +9,12 @@ namespace Echographie.Classes
 
         public Reference() { }
 
+        public Reference(int cle , string label)
+        {
+            this.cle = cle;
+            this.label = label;
+        }
+
         public int Cle
         {
             get { return cle; }

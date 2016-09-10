@@ -28,9 +28,16 @@ namespace Echographie.Fenetres.Parametres
 
             radionButtonBiometric.IsChecked = true;
             comboBoxPregnancyUscKind.SelectedIndex = 0;
+
+            new GestionComboBox().SetComboxReference(new ElementBase().GetLangue(), comboBoxLangue, 1);
         }
 
-        private void ButtonClose_Click(object sender, RoutedEventArgs e) { Close(); }
+        private void buttonClose_Click(object sender, RoutedEventArgs e) { Close(); }
+
+        private void buttonAjouter_Click(object sender, RoutedEventArgs e)
+        {
+            new Element().Show();
+        }
 
         private void RadioButtonElement_Click(object sender, RoutedEventArgs e)
         {
@@ -66,6 +73,11 @@ namespace Echographie.Fenetres.Parametres
                         break;
                 }
             }
+
+        }
+
+        private void comboBoxLangue_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
 
         }
     }

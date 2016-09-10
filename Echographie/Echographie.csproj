@@ -73,9 +73,13 @@
     <Compile Include="Classes\ElmentEchographique.cs" />
     <Compile Include="Classes\Echo.cs" />
     <Compile Include="Classes\Grossesse.cs" />
+    <Compile Include="Classes\Parametres\ReferenceLangue.cs" />
     <Compile Include="Classes\Reference.cs" />
     <Compile Include="ControlUser\UnitBiometrie.xaml.cs">
       <DependentUpon>UnitBiometrie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fenetres\Parametres\Element.xaml.cs">
+      <DependentUpon>Element.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fenetres\Parametres\ElementsList.xaml.cs">
       <DependentUpon>ElementsList.xaml</DependentUpon>
@@ -129,7 +133,9 @@
     <Compile Include="Utilitaires\GestionComboBox.cs" />
     <Compile Include="Utilitaires\GestionGrille.cs" />
     <Compile Include="Utilitaires\GestionTextBox.cs" />
+    <Compile Include="Utilitaires\GestionWrapPanel.cs" />
     <Compile Include="Utilitaires\Graphiques.cs" />
+    <Compile Include="Utilitaires\UnitCheckBox.cs" />
     <Compile Include="Utilitaires\UnitData.cs" />
     <Compile Include="Utilitaires\UnitDataAnatomie.cs" />
     <Compile Include="Utilitaires\UnitDataBiometrie.cs" />
@@ -158,6 +164,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Page Include="ControlUser\UnitBiometrie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fenetres\Parametres\Element.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
