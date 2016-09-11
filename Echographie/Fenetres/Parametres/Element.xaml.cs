@@ -1,6 +1,9 @@
 ﻿using Echographie.Classes;
+using Echographie.RDMS;
 using Echographie.RDMS.Parametres;
 using Echographie.Utilitaires;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -24,6 +27,47 @@ namespace Echographie.Fenetres.Parametres
             new GestionComboBox().SetComboxReference(new ElementBase().GetLangue(), comboBoxLangue,0);
 
             elt = new Classes.Element();
+        }
+
+        public Element(int cleElement  ) : this()
+        {
+            List<Classes.Element> listes = new ElementBase().GetElementLangue(cleElement);
+            List<Reference> langues = new ElementBase().GetLangue();
+            List<Classes.Element> l = new List<Classes.Element>();
+            for (int i = 0; i < langues.Count; ++ i)
+            {
+                int cle = langues[i].Cle;
+                bool absent = true;
+                for (int j =0; j < listes.Count;++j)
+                {
+                    if (listes[j].CleLangue == cle)
+                    {
+                        absent = false;
+                    }
+                }
+                if(absent)
+                {
+                    Classes.Element elt = new Classes.Element();
+                    elt.CleElement = cleElement;
+                    elt.CleLangue = cle;
+                    elt.Label = string.Empty;
+                    l.Add(elt);
+                }
+            }
+            //MessageBox.Show(l.Count.ToString());
+            if (l.Count >0)
+            {
+                foreach(Classes.Element e in l)
+                {
+                    listes.Add(e);
+                }
+            }
+           
+            //foreach(Classes.Element e in listes)
+            //{
+            //    MessageBox.Show(e.CleLangue + " " + e.Label);
+            //}
+           
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e){Close();}
@@ -69,7 +113,7 @@ namespace Echographie.Fenetres.Parametres
             
         }
 
-        private void SetDataElement()
+        private void SetElement()
         {
            
             if (textBoxElementFrench.Text.Trim().Length > 0)

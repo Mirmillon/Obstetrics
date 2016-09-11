@@ -17,6 +17,56 @@ namespace Echographie.RDMS.Parametres
 
         #region REQUETES GET
 
+        public List<Element> GetElementLangue(int cle_element)
+        {
+            FbConnection connexion = new FbConnection(ChaineConnection());
+            List<Element> listes = new List<Element>();
+            using (FbCommand commande = connexion.CreateCommand())
+            {
+                commande.CommandText = "GET_ELE_LANGUE";
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                FbParameterCollection pc = commande.Parameters;
+                pc.Add("CLE", FbDbType.Integer, 0).Value = cle_element;
+                try
+                {
+                    connexion.Open();
+                    FbDataReader reader = commande.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Element a = new Element();
+                            a.CleElement = cle_element;
+                            if (!(reader[0] == DBNull.Value))
+                            {
+                                a.Label = (string)reader[0];
+                            }
+                            if (!(reader[1] == DBNull.Value))
+                            {
+                                a.CleLangue = (int)reader[1];
+                            }
+                            if (!(reader[2] == DBNull.Value))
+                            {
+                                a.Langue = (string)reader[2];
+                            }
+                            listes.Add(a);
+                        }
+                        connexion.Close();
+                        return listes;
+                    }
+                    connexion.Close();
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.ToString());
+                    connexion.Close();
+                    return null;
+                }
+            }
+        }
+
+
         #region PREMIER TRIMESTRE
         public List<ElementAnatomique> GetElementsAnatomiques1T()
         {

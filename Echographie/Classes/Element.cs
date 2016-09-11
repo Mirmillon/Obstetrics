@@ -7,7 +7,8 @@ namespace Echographie.Classes
     {
         private int cleElement;
         private string label;
-        private int langue;
+        private string langue;
+        private int cleLangue;
         private string description = null;
         private List<Reference> labels = null;
         private List<Reference> descriptions = null;
@@ -77,13 +78,24 @@ namespace Echographie.Classes
             }
         }
 
-        public int Langue
+        public string Langue
         {
             get {return langue;}
             set {langue = value;}
         }
 
-       
+        public int CleLangue
+        {
+            get
+            {
+                return cleLangue;
+            }
+
+            set
+            {
+                cleLangue = value;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

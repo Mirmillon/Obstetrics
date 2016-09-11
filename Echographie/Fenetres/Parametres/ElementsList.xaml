@@ -54,6 +54,7 @@
         </DataGrid>
         <StackPanel Style="{StaticResource stackPanelBas}">
             <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="buttonClose_Click">Close</Button>
+            <Button x:Name="buttonVoir" Style="{StaticResource buttonStackPanelBas}" Click="buttonVoir_Click">See</Button>
             <Button x:Name="buttonAjouter" Style="{StaticResource buttonStackPanelBas}" Click="buttonAjouter_Click">...New</Button>
         </StackPanel>
     </Grid>

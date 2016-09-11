@@ -80,5 +80,15 @@ namespace Echographie.Fenetres.Parametres
         {
 
         }
+
+        private void buttonVoir_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Element p = (Classes.Element)dataGrid.SelectedItem as Classes.Element;
+            if (p != null)
+            {
+                new Element(p.CleElement).Show();
+                Close();
+            }
+        }
     }
 }
