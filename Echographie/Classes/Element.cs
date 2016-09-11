@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace Echographie.Classes
 {
@@ -7,17 +6,12 @@ namespace Echographie.Classes
     {
         private int cleElement;
         private string label;
-        private string langue;
         private int cleLangue;
+        private string langue;
         private string description = null;
-        private List<Reference> labels = null;
-        private List<Reference> descriptions = null;
-
-        public Element()
-        {
-            labels = new List<Reference>();
-            descriptions = new List<Reference>();
-        }
+        private int[] indicateur = new int[] { -1, -1, -1,-1,-1};
+     
+        public Element(){ }
 
         public int CleElement
         {
@@ -30,50 +24,27 @@ namespace Echographie.Classes
             get { return label.ToUpper(); }
             set
             {
-                if (this.label != value)
+                if (label != value)
                 {
-                    this.label = value;
+                    label = value;
+                    indicateur[0] = 0;
                     OnPropertyChanged("Label");
-                }
-               
+                }               
             }
         }
 
-        public List<Reference> Labels
-        {
-            get { return labels;}
-            set
-            {
-                if (this.labels != value)
-                {
-                    this.labels = value;
-                    OnPropertyChanged("Labels");
-                }
-            }
-        }
+       
 
         public string Description
         {
             get { return description;}
             set
             {
-                if (this.description != value)
+                if (description != value)
                 {
-                    this.description = value;
+                    description = value;
+                    indicateur[1] = 0;
                     OnPropertyChanged("Description");
-                }
-            }
-        }
-
-        public List<Reference> Descriptions
-        {
-            get{return descriptions;}
-            set
-            {
-                if (this.descriptions != value)
-                {
-                    this.descriptions = value;
-                    OnPropertyChanged("Descriptions");
                 }
             }
         }
@@ -86,15 +57,13 @@ namespace Echographie.Classes
 
         public int CleLangue
         {
-            get
-            {
-                return cleLangue;
-            }
+            get { return cleLangue; }
+            set { cleLangue = value; }
+        }
 
-            set
-            {
-                cleLangue = value;
-            }
+        public int[] Indicateur
+        {
+            get {return indicateur;}
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

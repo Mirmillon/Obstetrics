@@ -75,11 +75,11 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >FRENCH NAME</Label>
-                <TextBox x:Name="textBoxElementFrench" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="6" Grid.RowSpan="1" Style="{DynamicResource TextBoxStandard}" Width="276"  Text="{Binding FrenchName}"></TextBox>
+                <TextBox x:Name="textBoxElementFrench" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="6" Grid.RowSpan="1" Style="{DynamicResource TextBoxBinding}" Width="276"  Text="{Binding FrenchName}"></TextBox>
                 <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  >ENGLISH NAME</Label>
-                <TextBox x:Name="textBoxElementEnglish" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="6" Grid.RowSpan="1" Style="{DynamicResource TextBoxStandard}"  Width="276" TextChanged="textBox_TextChanged" Text="{Binding EnglishName}"></TextBox>
+                <TextBox x:Name="textBoxElementEnglish" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="6" Grid.RowSpan="1" Style="{DynamicResource TextBoxBinding}"  Width="276" TextChanged="textBox_TextChanged" Text="{Binding EnglishName}"></TextBox>
                 <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" >TAGALOG NAME</Label>
-                <TextBox x:Name="textBoxElementTagalog" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="6" Grid.RowSpan="1" Style="{DynamicResource TextBoxStandard}"  Width="276" TextChanged="textBox_TextChanged" Text="{Binding TagalogName}"></TextBox>
+                <TextBox x:Name="textBoxElementTagalog" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="6" Grid.RowSpan="1" Style="{DynamicResource TextBoxBinding}"  Width="276" TextChanged="textBox_TextChanged" Text="{Binding TagalogName}"></TextBox>
                 <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  Margin="5,0">DESCRIPTION</Label>
                 <ComboBox x:Name="comboBoxLangue" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{StaticResource ComboBoxStandard}" SelectionChanged="comboBoxLangue_SelectionChanged"></ComboBox>
                 <TextBox x:Name="textBoxDescription" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="12" Grid.RowSpan="5" Style="{StaticResource TextBoxDescription}"  ></TextBox>
@@ -241,8 +241,8 @@
         </Grid>
         <StackPanel x:Name="stackPanelBas" Style="{StaticResource stackPanelBas}">
             <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="buttonClose_Click">Close</Button>
-            <Button x:Name="buttonValidate" Style="{DynamicResource buttonStackPanelBas}"  IsEnabled="False" Click="buttonValidate_Click" Visibility="Visible">Validate</Button>
-            <Button x:Name="buttonCancel" Style="{DynamicResource buttonStackPanelBas}"  >Cancel</Button>
+            <Button x:Name="buttonValidate" Style="{DynamicResource buttonStackPanelBas}"  IsEnabled="True" Click="buttonValidate_Click" Visibility="Visible">Validate</Button>
+            <Button x:Name="buttonCancel" Style="{DynamicResource buttonStackPanelBas}" Click="buttonCancel_Click" >Cancel</Button>
             <Label x:Name="labelInfo" Style="{StaticResource LabelInfo}"></Label>
         </StackPanel>
     </Grid>

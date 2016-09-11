@@ -229,11 +229,6 @@ namespace Echographie.Utilitaires
 
         public void SetBindingBiometrics(Grid grid, List<ElementBiometrique> elements)
         {
-            //Liste des elements du 1T
-
-            //Liaison DataContext pour chaque uniteData de la grid biometric 1T
-            //Le seul moyen en attendant les UserControl eest de slectionner les UnitData sur leur nom gridUD
-            //1.Liste des gridUnit
             List<Grid> grids = new List<Grid>();
             foreach (Panel control in grid.Children)
             {
@@ -247,7 +242,7 @@ namespace Echographie.Utilitaires
                     }
                 }
             }
-            //2.Affection du DataContext
+
             for (int i = 0; i < grids.Count; ++i)
             {
                 grids[i].DataContext = elements[i];
@@ -321,5 +316,7 @@ namespace Echographie.Utilitaires
         }
 
         #endregion FINBINDINGS CLASSIQUE AVEC OU SANS LIST COMME PARAMETRE
+
+       
     }
 }

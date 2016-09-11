@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Echographie.Fenetres.Parametres
 {
@@ -15,7 +16,8 @@ namespace Echographie.Fenetres.Parametres
     public partial class Element : Window
     {
 
-        private Classes.Element elt = null;
+      
+        List<Classes.Element> listes = null;
 
         public Element()
         {
@@ -26,12 +28,12 @@ namespace Echographie.Fenetres.Parametres
 
             new GestionComboBox().SetComboxReference(new ElementBase().GetLangue(), comboBoxLangue,0);
 
-            elt = new Classes.Element();
+           
         }
 
         public Element(int cleElement  ) : this()
         {
-            List<Classes.Element> listes = new ElementBase().GetElementLangue(cleElement);
+            listes = new ElementBase().GetElementLangue(cleElement);
             List<Reference> langues = new ElementBase().GetLangue();
             List<Classes.Element> l = new List<Classes.Element>();
             for (int i = 0; i < langues.Count; ++ i)
@@ -54,7 +56,7 @@ namespace Echographie.Fenetres.Parametres
                     l.Add(elt);
                 }
             }
-            //MessageBox.Show(l.Count.ToString());
+  
             if (l.Count >0)
             {
                 foreach(Classes.Element e in l)
@@ -62,12 +64,16 @@ namespace Echographie.Fenetres.Parametres
                     listes.Add(e);
                 }
             }
-           
-            //foreach(Classes.Element e in listes)
-            //{
-            //    MessageBox.Show(e.CleLangue + " " + e.Label);
-            //}
-           
+
+            var r = from e in listes
+                    orderby e.CleLangue
+                    select e;
+
+            listes = r.ToList();
+
+            SetBinding();
+            SetBindingGrid();
+
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e){Close();}
@@ -77,30 +83,38 @@ namespace Echographie.Fenetres.Parametres
        
         private void buttonValidate_Click(object sender, RoutedEventArgs e)
         {
-            //Recherche de la grille qui est visible
-            int i = -1;
-            foreach(Grid g in gridCentre.Children)
-            {
-                if(g.IsVisible)
-                {
-                    i = gridCentre.Children.IndexOf(g);
-                }
-            }
-            //L'action du bouton dépend le grille qui est visible
-            switch(i)
-            {
-                case 0:
 
-                    break;
-                case 1://Français
-                    break;
-                case 2://Anglais
-                    break;
-                case 3://Tagalog
-                    break;
-                default:
-                    break;
+            if (listes == null)
+            {
+                listes = new List<Classes.Element>();
+                List<Reference> langues = new ElementBase().GetLangue();
+                for (int j = 0; j < langues.Count; ++j)
+                {
+                    Classes.Element elt = new Classes.Element();
+                    elt.CleLangue = langues[j].Cle;
+                    elt.Label = string.Empty;
+                    listes.Add(elt);
+                }
+
+                SetBinding();
+                SetBindingGrid();
+
+                //TODO Insertion dans LE RDMS d'un elment n'existant pas
             }
+            else
+            {
+                for(int i = 0; i < listes.Count;++i )
+                {
+                    if(listes[i].Indicateur[0] == 0 || listes[i].Indicateur[1] == 0)
+                    {
+                        MessageBox.Show(listes[i].Label + " changé");
+                    }
+                }
+
+                //TODO Insertion dans le RDMS d'elment à modifier ou à ajouter
+            }
+
+            
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -110,38 +124,112 @@ namespace Echographie.Fenetres.Parametres
 
         private void comboBoxLangue_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            Binding b = new Binding();
+            b.Path = new PropertyPath("Text");
+            b.Mode = BindingMode.TwoWay;
+
+            switch (comboBoxLangue.SelectedIndex)
+            {
+                case 0://Francais
+                    b.Source = textBoxDescriptionFrench;
+                    textBoxDescription.SetBinding(TextBox.TextProperty, b);
+                    break;
+                case 1://Anglais
+                    b.Source = textBoxDescriptionEnglish;
+                    textBoxDescription.SetBinding(TextBox.TextProperty, b);
+                    break;
+                case 2://Tagalog
+                    b.Source = textBoxDescriptionTagalog;
+                    textBoxDescription.SetBinding(TextBox.TextProperty, b);
+                    break;
+                default:
+                    break;
+            }
         }
 
-        private void SetElement()
+        private  void SetBinding()
         {
-           
-            if (textBoxElementFrench.Text.Trim().Length > 0)
+            //Mettre le binding sur les textbox de la premiere page
+            List<TextBox> listesTb = GetTextBox();
+
+            for (int i = 0; i < listesTb.Count; ++i)
             {
-                elt.Labels.Add(new Reference(1, textBoxElementFrench.Text));
-                if (textBoxDescriptionFrench.Text.Trim().Length > 0)
-                {
-                    elt.Descriptions.Add(new Reference(1, textBoxDescriptionFrench.Text));
-                }
-            }
-            if (textBoxElementEnglish.Text.Trim().Length > 0)
-            {
-                elt.Labels.Add(new Reference(2, textBoxElementEnglish.Text));
-                if (textBoxDescriptionEnglish.Text.Trim().Length > 0)
-                {
-                    elt.Descriptions.Add(new Reference(2, textBoxDescriptionEnglish.Text));
-                }
-            }
-            if (textBoxElementTagalog.Text.Trim().Length > 0)
-            {
-                elt.Labels.Add(new Reference(3, textBoxElementTagalog.Text));
-                if (textBoxDescriptionTagalog.Text.Trim().Length > 0)
-                {
-                    elt.Descriptions.Add(new Reference(3, textBoxDescriptionTagalog.Text));
-                }
+                Binding b = new Binding();
+                b.Source = listes[i];
+                b.Mode = BindingMode.TwoWay;
+                b.Path = new PropertyPath("Label");
+                listesTb[i].SetBinding(TextBox.TextProperty, b);
             }
 
+         
+           
+        }
+
+        private void SetBindingGrid()
+        {
+            List<Grid> listesG = GetGrid();
+       
+            //if (listesG != null)
+            //{
+                for (int i = 0; i < listes.Count; ++i)
+                {
+                    listesG[i + 1].DataContext = listes[i];
+
+                }
+            //}
+        }
+
+        private List<TextBox> GetTextBox()
+        {
+            List<TextBox> listes = new List<TextBox>();
+            foreach (Control c in gridElement.Children)
+            {            
+                if(c is TextBox)
+                {                    
+                    if(c.BorderBrush.ToString() == "#FFFFFF00")
+                    {
+                        TextBox tb = (TextBox)c;
+                        listes.Add(tb);
+                    }
+                }
+            }
+            return listes;
+        }
+
+        private int GetIndexGrille()
+        {
+            //Recherche de la grille qui est visible
+            int i = -1;
+            foreach (Grid g in gridCentre.Children)
+            {
+                if (g.IsVisible)
+                {
+                    i = gridCentre.Children.IndexOf(g);
+                }
+            }
+            return i;
+        }
+
+        private List<Grid> GetGrid()
+        {
+            List<Grid> listes = new List<Grid>();
+            foreach (Grid g in gridCentre.Children)
+            {
+                listes.Add(g);
+            }
+            return listes;
+        }
+
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            List<Grid> listes =  GetGrid();
+            int i = GetIndexGrille();
+
+            Classes.Element elt = new Classes.Element();
+            elt = (Classes.Element)listes[i].DataContext;
+            MessageBox.Show(elt.Description);
 
         }
     }
 }
+
