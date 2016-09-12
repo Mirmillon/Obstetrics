@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using FirebirdSql.Data.FirebirdClient;
 using Echographie.Classes;
 using Echographie.Classes.Parametres;
-using System.Data;
+
 
 namespace Echographie.RDMS.Parametres
 {
@@ -216,9 +217,27 @@ namespace Echographie.RDMS.Parametres
 
         #region REQUETES SET
 
+        public void SetNewElement(int cleLangue,string element, string description)
+        {
+            throw new NotImplementedException();
+            //TODO A FAIRE AJOUTER PLUS DE PARAMETRE
+        }
+
+        public void SetNewElementLangue(int cleElement, int cleLangue, string label, string description)
+        {
+            throw new NotImplementedException();
+            //TODO A FAIRE AJOUTER PLUS DE PARAMETRE
+        }
+
         #endregion END REQUETES SET
 
         #region REQUETES UPDATE
+
+        public void UpdateElementLangue(int cleElement, int cleLangue, string label, string description)
+        {
+            throw new NotImplementedException();
+            //TODO A FAIRE AJOUTER PLUS DE PARAMETRE
+        }
 
         #endregion END REQUETES UPDATE
 
@@ -264,6 +283,10 @@ namespace Echographie.RDMS.Parametres
                 }
             }
         }
+
+       
+
+
 
         #endregion END REQUETES GENERIQUES
 

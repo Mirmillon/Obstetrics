@@ -73,6 +73,7 @@
     <Compile Include="Classes\ElmentEchographique.cs" />
     <Compile Include="Classes\Echo.cs" />
     <Compile Include="Classes\Grossesse.cs" />
+    <Compile Include="Classes\Parametres\DatabaseCommand.cs" />
     <Compile Include="Classes\Parametres\ReferenceLangue.cs" />
     <Compile Include="Classes\Reference.cs" />
     <Compile Include="ControlUser\UnitBiometrie.xaml.cs">

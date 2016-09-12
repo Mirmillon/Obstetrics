@@ -9,7 +9,7 @@ namespace Echographie.Classes
         private int cleLangue;
         private string langue;
         private string description = null;
-        private int[] indicateur = new int[] { -1, -1, -1,-1,-1};
+        
      
         public Element(){ }
 
@@ -26,8 +26,7 @@ namespace Echographie.Classes
             {
                 if (label != value)
                 {
-                    label = value;
-                    indicateur[0] = 0;
+                    label = value;                    
                     OnPropertyChanged("Label");
                 }               
             }
@@ -42,8 +41,7 @@ namespace Echographie.Classes
             {
                 if (description != value)
                 {
-                    description = value;
-                    indicateur[1] = 0;
+                    description = value;                    
                     OnPropertyChanged("Description");
                 }
             }
@@ -59,11 +57,6 @@ namespace Echographie.Classes
         {
             get { return cleLangue; }
             set { cleLangue = value; }
-        }
-
-        public int[] Indicateur
-        {
-            get {return indicateur;}
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

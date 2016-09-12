@@ -1,12 +1,14 @@
-﻿using Echographie.Classes;
-using Echographie.RDMS;
-using Echographie.RDMS.Parametres;
-using Echographie.Utilitaires;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
+using Echographie.Classes;
+using Echographie.Classes.Parametres;
+using Echographie.RDMS.Parametres;
+using Echographie.Utilitaires;
+
 
 namespace Echographie.Fenetres.Parametres
 {
@@ -16,8 +18,11 @@ namespace Echographie.Fenetres.Parametres
     public partial class Element : Window
     {
 
-      
         List<Classes.Element> listes = null;
+        List<Classes.Element> listesModifie = null;
+        List<Classes.Element> listesAjoute = null;
+
+
 
         public Element()
         {
@@ -28,14 +33,20 @@ namespace Echographie.Fenetres.Parametres
 
             new GestionComboBox().SetComboxReference(new ElementBase().GetLangue(), comboBoxLangue,0);
 
-           
+            buttonValidate.Command = DatabaseCommand.SendDatabase;
+
+            CommandBinding binding = new CommandBinding();
+            buttonValidate.Command = DatabaseCommand.SendDatabase;
+            binding.Executed += SendDatabase_Executed;
+            binding.CanExecute += SendDatabase_CanExecute;
+            CommandBindings.Add(binding);
         }
 
         public Element(int cleElement  ) : this()
         {
             listes = new ElementBase().GetElementLangue(cleElement);
             List<Reference> langues = new ElementBase().GetLangue();
-            List<Classes.Element> l = new List<Classes.Element>();
+            listesAjoute = new List<Classes.Element>();
             for (int i = 0; i < langues.Count; ++ i)
             {
                 int cle = langues[i].Cle;
@@ -53,16 +64,16 @@ namespace Echographie.Fenetres.Parametres
                     elt.CleElement = cleElement;
                     elt.CleLangue = cle;
                     elt.Label = string.Empty;
-                    l.Add(elt);
+                    listesAjoute.Add(elt);
                 }
             }
   
-            if (l.Count >0)
-            {
-                foreach(Classes.Element e in l)
+            if (listesAjoute.Count >0)
+            {             
+                foreach(Classes.Element e in listesAjoute)
                 {
                     listes.Add(e);
-                }
+                }              
             }
 
             var r = from e in listes
@@ -72,55 +83,19 @@ namespace Echographie.Fenetres.Parametres
             listes = r.ToList();
 
             SetBinding();
-            SetBindingGrid();
-
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e){Close();}
 
         private void buttonIdentification_Click(object sender, RoutedEventArgs e) { new GestionGrille().GridVisibilty(gridCentre, stackPanelGauche.Children.IndexOf((UIElement)sender)); }
 
-       
         private void buttonValidate_Click(object sender, RoutedEventArgs e)
         {
 
-            if (listes == null)
-            {
-                listes = new List<Classes.Element>();
-                List<Reference> langues = new ElementBase().GetLangue();
-                for (int j = 0; j < langues.Count; ++j)
-                {
-                    Classes.Element elt = new Classes.Element();
-                    elt.CleLangue = langues[j].Cle;
-                    elt.Label = string.Empty;
-                    listes.Add(elt);
-                }
-
-                SetBinding();
-                SetBindingGrid();
-
-                //TODO Insertion dans LE RDMS d'un elment n'existant pas
-            }
-            else
-            {
-                for(int i = 0; i < listes.Count;++i )
-                {
-                    if(listes[i].Indicateur[0] == 0 || listes[i].Indicateur[1] == 0)
-                    {
-                        MessageBox.Show(listes[i].Label + " changé");
-                    }
-                }
-
-                //TODO Insertion dans le RDMS d'elment à modifier ou à ajouter
-            }
-
-            
+             
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e){}
 
         private void comboBoxLangue_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -160,23 +135,24 @@ namespace Echographie.Fenetres.Parametres
                 b.Path = new PropertyPath("Label");
                 listesTb[i].SetBinding(TextBox.TextProperty, b);
             }
+            SetBindingGrid();
+         }
 
-         
-           
+        private List<Classes.Element> GetBinding()
+        {
+            List<Classes.Element> l = new List<Classes.Element>();
+            //TODO A FAIRE
+            return l;
         }
 
         private void SetBindingGrid()
         {
             List<Grid> listesG = GetGrid();
-       
-            //if (listesG != null)
-            //{
-                for (int i = 0; i < listes.Count; ++i)
-                {
-                    listesG[i + 1].DataContext = listes[i];
+            for (int i = 0; i < listes.Count; ++i)
+            {
+                listesG[i + 1].DataContext = listes[i];
 
-                }
-            //}
+            }
         }
 
         private List<TextBox> GetTextBox()
@@ -220,16 +196,98 @@ namespace Echographie.Fenetres.Parametres
             return listes;
         }
 
-        private void buttonCancel_Click(object sender, RoutedEventArgs e)
+        private void buttonCancel_Click(object sender, RoutedEventArgs arg)
         {
-            List<Grid> listes =  GetGrid();
-            int i = GetIndexGrille();
-
-            Classes.Element elt = new Classes.Element();
-            elt = (Classes.Element)listes[i].DataContext;
-            MessageBox.Show(elt.Description);
-
+           
         }
+
+        private void SendDatabase_CanExecute(object sender, CanExecuteRoutedEventArgs arg)
+        {
+            throw new System.Exception();
+        }
+
+        private void SendDatabase_Executed(object sender, ExecutedRoutedEventArgs arg)
+        {
+            //Appel du constructeur par defaut
+            if (listes == null)
+            {
+                listes = new List<Classes.Element>();
+                List<Reference> langues = new ElementBase().GetLangue();
+                for (int j = 0; j < langues.Count; ++j)
+                {
+                    Classes.Element elt = new Classes.Element();
+                    elt.CleLangue = langues[j].Cle;
+                    elt.Label = string.Empty;
+                    listes.Add(elt);
+                }
+
+                SetBinding();
+                listes = GetBinding();
+                foreach (Classes.Element e in listes)
+                {
+                    if (!string.IsNullOrEmpty(e.Label) || !string.IsNullOrEmpty(e.Description))
+                    {
+                        new ElementBase().SetNewElement(e.CleLangue, e.Label, e.Description);
+                    }
+                }
+            }
+            //Appel second constructeur
+            else
+            {
+                listesModifie = GetBinding();
+
+                var r = from e in listesModifie
+                        orderby e.CleLangue
+                        select e;
+
+                listesModifie = r.ToList();
+
+                #region Traitement 
+                if (listesAjoute.Count > 0)
+                {
+                    for (int j = listesAjoute.Count; j > 0; --j)
+                    {
+                        for (int i = listesModifie.Count; i > 0; --i)
+                        {
+                            if (listesAjoute[j].CleLangue == listesModifie[i].CleLangue)
+                            {
+                                if (listesAjoute[j].Equals(listesModifie[i]))
+                                {
+                                    listesAjoute.RemoveAt(j);
+                                    listesModifie.RemoveAt(i);
+                                }
+                                else
+                                {
+                                    new ElementBase().SetNewElementLangue(listesAjoute[j].CleElement, listesAjoute[j].CleLangue, listesAjoute[j].Label, listesAjoute[j].Description);
+                                }
+                            }
+                        }
+                    }
+                }
+                #endregion
+
+                /////////
+                for (int j = listes.Count; j > 0; --j)
+                {
+                    for (int i = listesModifie.Count; i > 0; --i)
+                    {
+                        if (listes[j].CleLangue == listesModifie[i].CleLangue)
+                        {
+                            if (!(listes[j].Equals(listesModifie[i])))
+                            {
+                                new ElementBase().UpdateElementLangue(listesAjoute[j].CleElement, listesAjoute[j].CleLangue, listesAjoute[j].Label, listesAjoute[j].Description);
+                            }
+                           
+                        }
+                    }
+                }
+
+
+
+            }
+        }
+
     }
 }
+
 
