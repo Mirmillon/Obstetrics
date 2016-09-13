@@ -244,32 +244,11 @@ namespace Echographie.Fenetres.Parametres
                 ///////////
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e) {}
 
-            //TextBox tb = (TextBox)sender;
-            //if(tb.Text.Trim().Length > 4)
-                //listesModifie = GetBinding();
-        }
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {}
 
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //listesModifie = GetBinding();
-        }
-
-        private void checkBox_Clicked(object sender, RoutedEventArgs e)
-        {
-            ////Conversion du sender
-            //CheckBox cb = (CheckBox)sender;
-            ////Recherche du parent du sender
-            //Panel panel = (Panel)cb.Parent;
-            //GroupBox groupBox = (GroupBox)panel.Parent;
-            //Grid grid = (Grid)groupBox.Parent;
-            //Grid grid1 = (Grid)grid.Parent;
-            //MessageBox.Show("Grid n° " + new GestionGrille().GetIndexGrille(grid1).ToString());
-            
-
-        }
+        private void checkBox_Clicked(object sender, RoutedEventArgs e) {}
 
         private void buttonTerminer_Click(object sender, RoutedEventArgs e)
         {
