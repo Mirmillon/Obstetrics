@@ -19,27 +19,52 @@ namespace Echographie.Fenetres.Parametres
     {
 
         List<Classes.Element> listes = null;
+        List<Classes.Element> listesNew = null;
         List<Classes.Element> listesModifie = null;
         List<Classes.Element> listesAjoute = null;
 
+        //Variable cree uniqueemnt pour la methode GETBINDING
+        List<Classes.Element> elements = null;
+        List<Grid> grids = null;
 
 
         public Element()
         {
             InitializeComponent();
-            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionFrench, new ElementBase().GetDimensionFr());
-            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionEnglish, new ElementBase().GetDimensionEng());
-            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionTagalog, new ElementBase().GetDimensionTag());
+            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionFrench, new ElementBase().GetDimensionFr(), checkBox_Clicked);
+            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionEnglish, new ElementBase().GetDimensionEng(), checkBox_Clicked);
+            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionTagalog, new ElementBase().GetDimensionTag(), checkBox_Clicked);
 
             new GestionComboBox().SetComboxReference(new ElementBase().GetLangue(), comboBoxLangue,0);
 
             buttonValidate.Command = DatabaseCommand.SendDatabase;
 
             CommandBinding binding = new CommandBinding();
-            buttonValidate.Command = DatabaseCommand.SendDatabase;
+            binding.Command = DatabaseCommand.SendDatabase;
             binding.Executed += SendDatabase_Executed;
             binding.CanExecute += SendDatabase_CanExecute;
+
             CommandBindings.Add(binding);
+            /////////
+            listes = new List<Classes.Element>();
+            List<Reference> langues = new ElementBase().GetLangue();
+            for (int j = 0; j < langues.Count; ++j)
+            {
+                Classes.Element elt = new Classes.Element();
+                elt.CleLangue = langues[j].Cle;
+                elt.Label = string.Empty;
+                listes.Add(elt);
+            }
+
+            listesNew = new List<Classes.Element>();
+            foreach(Classes.Element e in listes)
+            {
+                listesNew.Add(e);
+            }
+
+            SetBindingGrid();
+
+
         }
 
         public Element(int cleElement  ) : this()
@@ -83,7 +108,12 @@ namespace Echographie.Fenetres.Parametres
 
             listes = r.ToList();
             ///////////////////////////////////////////////
-            SetBinding();
+            listesNew = new List<Classes.Element>();
+            foreach (Classes.Element e in listes)
+            {
+                listesNew.Add(e);
+            }
+            SetBindingGrid(); 
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e){Close();}
@@ -121,35 +151,28 @@ namespace Echographie.Fenetres.Parametres
             }
         }
 
-        private  void SetBinding()
-        {
-            //Mettre le binding sur les textbox de la premiere page
-            List<TextBox> listesTb =new GestionGrille().GetTextBox(gridElement);
-
-            for (int i = 0; i < listesTb.Count; ++i)
-            {
-                Binding b = new Binding();
-                b.Source = listes[i];
-                b.Mode = BindingMode.TwoWay;
-                b.Path = new PropertyPath("Label");
-                listesTb[i].SetBinding(TextBox.TextProperty, b);
-            }
-            SetBindingGrid();
-         }
-
         private List<Classes.Element> GetBinding()
         {
-            List<Classes.Element> l = new List<Classes.Element>();
-            //TODO A FAIRE
-            return l;
+            //Creation d'une liste d'elements
+            elements = new List<Classes.Element>();
+            //Creation de la liste des grids
+            grids = new GestionGrille().GetGrid(gridCentre);
+            //Recuperation des datacontexts et conversion en elment ajoute à la liste des elelemntd
+            for (int i = 1; i < grids.Count;++i)
+            {
+                Classes.Element e = (Classes.Element)grids[i].DataContext;
+                elements.Add(e);
+            }
+            return elements;
         }
 
         private void SetBindingGrid()
         {
-            List<Grid> listesG = new GestionGrille().GetGrid(gridCentre);
-            for (int i = 0; i < listes.Count; ++i)
+            List<Grid> grids = new GestionGrille().GetGrid(gridCentre);          
+            for (int i = 0; i < listesNew.Count; ++i)
             {
-                listesG[i + 1].DataContext = listes[i];
+                //Pas de datacontext sur la premiere grille
+                grids[i +1].DataContext = listesNew[i];
             }
         }     
 
@@ -161,56 +184,25 @@ namespace Echographie.Fenetres.Parametres
         private void SendDatabase_CanExecute(object sender, CanExecuteRoutedEventArgs arg)
         {
             bool different = false;
-            if(listes != null && listesModifie != null)
+            if(listes != null && listesNew != null)
             {
                 for (int i = 0; i < listes.Count; ++i)
                 {
-                    if(!(listes[i].Equals(listesModifie[i])))
+                    if(!(listes[i].Equals(listesNew[i])))
                     {
                         different = true;
                     }
                 }
             }
+        
             arg.CanExecute = different;          
         }
 
         private void SendDatabase_Executed(object sender, ExecutedRoutedEventArgs arg)
         {
-            //Appel du constructeur par defaut
-            if (listes == null)
-            {
-                listes = new List<Classes.Element>();
-                List<Reference> langues = new ElementBase().GetLangue();
-                for (int j = 0; j < langues.Count; ++j)
-                {
-                    Classes.Element elt = new Classes.Element();
-                    elt.CleLangue = langues[j].Cle;
-                    elt.Label = string.Empty;
-                    listes.Add(elt);
-                }
-
-                SetBinding();
-                listes = GetBinding();
-                foreach (Classes.Element e in listes)
-                {
-                    if (!string.IsNullOrEmpty(e.Label) || !string.IsNullOrEmpty(e.Description))
-                    {
-                        new ElementBase().SetNewElement(e.CleLangue, e.Label, e.Description);
-                    }
-                }
-            }
-            //Appel second constructeur
-            else
-            {
-                listesModifie = GetBinding();
-
-                var r = from e in listesModifie
-                        orderby e.CleLangue
-                        select e;
-
-                listesModifie = r.ToList();
-
-                #region Traitement 
+          
+                #region Traitement de la listeAjoute
+            
                 if (listesAjoute.Count > 0)
                 {
                     for (int j = listesAjoute.Count; j > 0; --j)
@@ -250,7 +242,38 @@ namespace Echographie.Fenetres.Parametres
                     }
                 }
                 ///////////
-            }
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            //TextBox tb = (TextBox)sender;
+            //if(tb.Text.Trim().Length > 4)
+                //listesModifie = GetBinding();
+        }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //listesModifie = GetBinding();
+        }
+
+        private void checkBox_Clicked(object sender, RoutedEventArgs e)
+        {
+            ////Conversion du sender
+            //CheckBox cb = (CheckBox)sender;
+            ////Recherche du parent du sender
+            //Panel panel = (Panel)cb.Parent;
+            //GroupBox groupBox = (GroupBox)panel.Parent;
+            //Grid grid = (Grid)groupBox.Parent;
+            //Grid grid1 = (Grid)grid.Parent;
+            //MessageBox.Show("Grid n° " + new GestionGrille().GetIndexGrille(grid1).ToString());
+            
+
+        }
+
+        private void buttonTerminer_Click(object sender, RoutedEventArgs e)
+        {
+            listesNew = GetBinding();
         }
     }
 }
