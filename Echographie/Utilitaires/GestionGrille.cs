@@ -26,6 +26,48 @@ namespace Echographie.Utilitaires
 
         #endregion END VISIBILITY
 
+        public  List<Grid> GetGrid(Grid grid)
+        {
+            List<Grid> listes = new List<Grid>();
+            foreach (Grid g in grid.Children)
+            {
+                listes.Add(g);
+            }
+            return listes;
+        }
+
+        public  int GetIndexGrille(Grid grid)
+        {
+            //Recherche de la grille qui est visible
+            int i = -1;
+            foreach (Grid g in grid.Children)
+            {
+                if (g.IsVisible)
+                {
+                    i = grid.Children.IndexOf(g);
+                }
+            }
+            return i;
+        }
+
+        public List<TextBox> GetTextBox(Grid grid)
+        {
+            List<TextBox> listes = new List<TextBox>();
+            foreach (Control c in grid.Children)
+            {
+                if (c is TextBox)
+                {
+                    if (c.BorderBrush.ToString() == "#FFFFFF00")
+                    {
+                        TextBox tb = (TextBox)c;
+                        listes.Add(tb);
+                    }
+                }
+            }
+            return listes;
+        }
+
+
         #region AJOUT UNITDATA
 
         #region UNITDATABIOMETRIE

@@ -47,6 +47,7 @@ namespace Echographie.Fenetres.Parametres
             listes = new ElementBase().GetElementLangue(cleElement);
             List<Reference> langues = new ElementBase().GetLangue();
             listesAjoute = new List<Classes.Element>();
+            ////////////////////////////////////////
             for (int i = 0; i < langues.Count; ++ i)
             {
                 int cle = langues[i].Cle;
@@ -67,7 +68,7 @@ namespace Echographie.Fenetres.Parametres
                     listesAjoute.Add(elt);
                 }
             }
-  
+            ////////////////////////////////////
             if (listesAjoute.Count >0)
             {             
                 foreach(Classes.Element e in listesAjoute)
@@ -75,13 +76,13 @@ namespace Echographie.Fenetres.Parametres
                     listes.Add(e);
                 }              
             }
-
+            ////////////////////////////////////////////
             var r = from e in listes
                     orderby e.CleLangue
                     select e;
 
             listes = r.ToList();
-
+            ///////////////////////////////////////////////
             SetBinding();
         }
 
@@ -94,8 +95,6 @@ namespace Echographie.Fenetres.Parametres
 
              
         }
-
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e){}
 
         private void comboBoxLangue_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -125,7 +124,7 @@ namespace Echographie.Fenetres.Parametres
         private  void SetBinding()
         {
             //Mettre le binding sur les textbox de la premiere page
-            List<TextBox> listesTb = GetTextBox();
+            List<TextBox> listesTb =new GestionGrille().GetTextBox(gridElement);
 
             for (int i = 0; i < listesTb.Count; ++i)
             {
@@ -147,54 +146,12 @@ namespace Echographie.Fenetres.Parametres
 
         private void SetBindingGrid()
         {
-            List<Grid> listesG = GetGrid();
+            List<Grid> listesG = new GestionGrille().GetGrid(gridCentre);
             for (int i = 0; i < listes.Count; ++i)
             {
                 listesG[i + 1].DataContext = listes[i];
-
             }
-        }
-
-        private List<TextBox> GetTextBox()
-        {
-            List<TextBox> listes = new List<TextBox>();
-            foreach (Control c in gridElement.Children)
-            {            
-                if(c is TextBox)
-                {                    
-                    if(c.BorderBrush.ToString() == "#FFFFFF00")
-                    {
-                        TextBox tb = (TextBox)c;
-                        listes.Add(tb);
-                    }
-                }
-            }
-            return listes;
-        }
-
-        private int GetIndexGrille()
-        {
-            //Recherche de la grille qui est visible
-            int i = -1;
-            foreach (Grid g in gridCentre.Children)
-            {
-                if (g.IsVisible)
-                {
-                    i = gridCentre.Children.IndexOf(g);
-                }
-            }
-            return i;
-        }
-
-        private List<Grid> GetGrid()
-        {
-            List<Grid> listes = new List<Grid>();
-            foreach (Grid g in gridCentre.Children)
-            {
-                listes.Add(g);
-            }
-            return listes;
-        }
+        }     
 
         private void buttonCancel_Click(object sender, RoutedEventArgs arg)
         {
@@ -203,7 +160,18 @@ namespace Echographie.Fenetres.Parametres
 
         private void SendDatabase_CanExecute(object sender, CanExecuteRoutedEventArgs arg)
         {
-            throw new System.Exception();
+            bool different = false;
+            if(listes != null && listesModifie != null)
+            {
+                for (int i = 0; i < listes.Count; ++i)
+                {
+                    if(!(listes[i].Equals(listesModifie[i])))
+                    {
+                        different = true;
+                    }
+                }
+            }
+            arg.CanExecute = different;          
         }
 
         private void SendDatabase_Executed(object sender, ExecutedRoutedEventArgs arg)
@@ -281,12 +249,9 @@ namespace Echographie.Fenetres.Parametres
                         }
                     }
                 }
-
-
-
+                ///////////
             }
         }
-
     }
 }
 
