@@ -43,19 +43,22 @@ namespace Echographie.Fenetres.Parametres
             /////////
             listes = new List<Classes.Element>();
             listesConnecte = new List<Classes.Element>();
+            listesAjoute = new List<Classes.Element>();
             List<Reference> langues = new ElementBase().GetLangue();
             for (int j = 0; j < langues.Count; ++j)
             {
                 Classes.Element elt = new Classes.Element();
-                elt.CleLangue = langues[j].Cle;
-                elt.Langue = langues[j].Label;
-                elt.Label = string.Empty;
-                elt.Description = string.Empty;
+                Classes.Element elt1 = new Classes.Element();
+                Classes.Element elt2 = new Classes.Element();
+                elt2.CleLangue = elt1.CleLangue = elt.CleLangue = langues[j].Cle;
+                elt2.Langue = elt1.Langue = elt.Langue = langues[j].Label;
+                elt2.Label = elt1.Label = elt.Label = string.Empty;
+                elt2.Description = elt1.Description = elt.Description = string.Empty;
                 listes.Add(elt);
+                listesConnecte.Add(elt1);
+                listesAjoute.Add(elt2);
             }
 
-            new GestionListe().Copier(listes, listesConnecte);
-          
             SetBindingGrid(listesConnecte);
         }
 
@@ -141,7 +144,13 @@ namespace Echographie.Fenetres.Parametres
             //Creation d'une liste d'elements
             List<Classes.Element> elements = new List<Classes.Element>();
             //Recuperation des datacontexts et conversion en elment ajoute à la liste des elelemntd
-            new GestionListe().Copier(listesConnecte, elements);
+            List<Grid>  grids = new GestionGrille().GetGrid(gridCentre);
+            //Recuperation des datacontexts et conversion en elment ajoute à la liste des elelemntd
+            for (int i = 1; i < grids.Count; ++i)
+            {
+                Classes.Element e = (Classes.Element)grids[i].DataContext;
+                elements.Add(e);
+            }
             return elements;
         }
 
@@ -184,29 +193,40 @@ namespace Echographie.Fenetres.Parametres
 
             if (listesAjoute.Count > 0)
             {
-                for (int j = listesAjoute.Count; j > 0; --j)
+                List<Classes.Element> listesAAjouter = new List<Classes.Element>();
+                //listesAjoute et listesModifie doivent etre de la meme longuer
+                for (int j = listesAjoute.Count - 1; j >= 0; --j)
                 {
-                    for (int i = listesModifie.Count; i > 0; --i)
+                    for (int i = listesModifie.Count -1; i >= 0; --i)
                     {
-                        bool d = listes[j].Description == listesModifie[j].Description;
-                        bool l = listes[j].Label == listesModifie[j].Label;
-
-                        if (listesAjoute[j].CleLangue == listesModifie[i].CleLangue)
+                        bool d = listesAjoute[j].Description == listesModifie[i].Description;
+                        bool l = listesAjoute[j].Label == listesModifie[i].Label;
+                        bool langue = listesAjoute[j].CleLangue == listesModifie[i].CleLangue;
+                        if ((langue) && (!(d) || !(l)))
                         {
-                            if ((d) || (l))
-                            {
-                                listesAjoute.RemoveAt(j);
-                                listesModifie.RemoveAt(i);
-                                listes.RemoveAt(i);
-                            }
-                            else
-                            {
-                                new ElementBase().SetNewElementLangue(listesAjoute[j].CleElement, listesAjoute[j].CleLangue, listesAjoute[j].Label, listesAjoute[j].Description);
-                            }
+                            listesAAjouter.Add(listesModifie[i]);
                         }
                     }
                 }
+
+                if (listesAAjouter.Count > 0)
+                {
+
+                    foreach(Classes.Element e in listesAAjouter)
+                    {
+                        if (e.CleElement > 0)
+                        {
+                            new ElementBase().SetNewElementLangue(e.CleElement, e.CleLangue, e.Label, e.Description);
+                        }
+                        else
+                        {
+                            new ElementBase().SetNewElement( e.CleLangue, e.Label);
+                        }
+                        
+                    }
+                }
             }
+
             #endregion
             else
             {
@@ -214,9 +234,11 @@ namespace Echographie.Fenetres.Parametres
                 {
                     bool d = listes[j].Description == listesModifie[j].Description;
                     bool l = listes[j].Label == listesModifie[j].Label;
+                    bool langue = listesAjoute[j].CleLangue == listesModifie[i].CleLangue;
 
-                    if ((!d) || (!l))
+                    if  ((langue) && (!(d) || !(l)))
                     {
+                        new ElementBase().UpdateElement(listesModifie[j].CleElement);
                         new ElementBase().UpdateElementLangue(listesModifie[j].CleElement, listesModifie[j].CleLangue, listesModifie[j].Label, listesModifie[j].Description);
                     }
                 }

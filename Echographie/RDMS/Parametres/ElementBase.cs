@@ -39,6 +39,7 @@ namespace Echographie.RDMS.Parametres
 
         #region REQUETES GET
 
+        #region ELEMENT
         public List<Element> GetElementLangue(int cle_element)
         {
             FbConnection connexion = new FbConnection(ChaineConnection());
@@ -86,8 +87,8 @@ namespace Echographie.RDMS.Parametres
                     return null;
                 }
             }
-        }
-
+        } 
+        #endregion
 
         #region PREMIER TRIMESTRE
         public List<ElementAnatomique> GetElementsAnatomiques1T()
@@ -238,7 +239,7 @@ namespace Echographie.RDMS.Parametres
 
         #region REQUETES SET
 
-        public int SetNewElement(int cleLangue,string element, string description)
+        public int SetNewElement(int cleLangue,string element)
         {
             FbConnection connexion = new FbConnection(ChaineConnection());
             using (FbCommand commande = connexion.CreateCommand())
@@ -248,7 +249,7 @@ namespace Echographie.RDMS.Parametres
                 FbParameterCollection pc = commande.Parameters;
                 pc.Add("CLELANGUE", FbDbType.Integer, 0).Value = cleLangue;
                 pc.Add("LABEL", FbDbType.VarChar, 30).Value = element;
-                pc.Add("DESCRIPTION", FbDbType.VarChar, 900).Value = description;
+                //pc.Add("DESCRIPTION", FbDbType.VarChar, 900).Value = description;
                 try
                 {
                     return execution(commande, connexion);
@@ -283,6 +284,8 @@ namespace Echographie.RDMS.Parametres
             }
         }
 
+       
+
         #endregion END REQUETES SET
 
         #region REQUETES UPDATE
@@ -299,6 +302,29 @@ namespace Echographie.RDMS.Parametres
                 pc.Add("CLELANGUE", FbDbType.Integer, 0).Value = cleLangue;
                 pc.Add("LABEL", FbDbType.VarChar, 30).Value = label;
                 pc.Add("DESCRIPTION", FbDbType.VarChar, 900).Value = description;
+                try
+                {
+                    return execution(commande, connexion);
+                }
+                catch (Exception ex)
+                {
+                    return intExeption(connexion, ex);
+                }
+            }
+        }
+
+        public  int  UpdateElement(int cleElement)
+        {
+            FbConnection connexion = new FbConnection(ChaineConnection());
+            using (FbCommand commande = connexion.CreateCommand())
+            {
+                commande.CommandText = "UPDATE_ELEMENT";
+                commande.CommandType = CommandType.StoredProcedure;
+                FbParameterCollection pc = commande.Parameters;
+                pc.Add("CLE", FbDbType.Integer, 0).Value = cleElement;
+                //pc.Add("CLELANGUE", FbDbType.Integer, 0).Value = cleLangue;
+                //pc.Add("LABEL", FbDbType.VarChar, 30).Value = label;
+                //pc.Add("DESCRIPTION", FbDbType.VarChar, 900).Value = description;
                 try
                 {
                     return execution(commande, connexion);
