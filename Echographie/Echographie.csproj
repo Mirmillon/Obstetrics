@@ -133,6 +133,7 @@
     <Compile Include="Utilitaires\Fichier.cs" />
     <Compile Include="Utilitaires\GestionComboBox.cs" />
     <Compile Include="Utilitaires\GestionGrille.cs" />
+    <Compile Include="Utilitaires\GestionListe.cs" />
     <Compile Include="Utilitaires\GestionTextBox.cs" />
     <Compile Include="Utilitaires\GestionWrapPanel.cs" />
     <Compile Include="Utilitaires\Graphiques.cs" />

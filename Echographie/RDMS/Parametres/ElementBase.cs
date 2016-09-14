@@ -16,6 +16,27 @@ namespace Echographie.RDMS.Parametres
             return @"Database=H:\Echo project\RDMS\BASEECHO.GDB;user=SYSDBA;Password=Xrgc540108";
         }
 
+        private int execution(FbCommand commande, FbConnection connexion)
+        {
+            connexion.Open();
+            commande.ExecuteNonQuery();
+            connexion.Close();
+            return 1;
+        }
+
+        private int intExeption( FbConnection connexion, Exception ex)
+        {
+            System.Windows.Forms.MessageBox.Show(ex.ToString());
+            connexion.Close();
+            return 0;
+        }
+
+        private int execExcep(FbCommand commande, FbConnection connexion,Exception ex)
+        {
+            try { return execution(commande, connexion); } catch {return intExeption(connexion, ex); }
+        }
+
+
         #region REQUETES GET
 
         public List<Element> GetElementLangue(int cle_element)
@@ -217,26 +238,76 @@ namespace Echographie.RDMS.Parametres
 
         #region REQUETES SET
 
-        public void SetNewElement(int cleLangue,string element, string description)
+        public int SetNewElement(int cleLangue,string element, string description)
         {
-            throw new NotImplementedException();
-            //TODO A FAIRE AJOUTER PLUS DE PARAMETRE
+            FbConnection connexion = new FbConnection(ChaineConnection());
+            using (FbCommand commande = connexion.CreateCommand())
+            {
+                commande.CommandText = "SET_NEW_ELEMENT";
+                commande.CommandType = CommandType.StoredProcedure;
+                FbParameterCollection pc = commande.Parameters;
+                pc.Add("CLELANGUE", FbDbType.Integer, 0).Value = cleLangue;
+                pc.Add("LABEL", FbDbType.VarChar, 30).Value = element;
+                pc.Add("DESCRIPTION", FbDbType.VarChar, 900).Value = description;
+                try
+                {
+                    return execution(commande, connexion);
+                }
+                catch (Exception ex)
+                {
+                    return intExeption(connexion, ex);
+                }
+            }
         }
 
-        public void SetNewElementLangue(int cleElement, int cleLangue, string label, string description)
+        public int SetNewElementLangue(int cleElement, int cleLangue, string label, string description)
         {
-            throw new NotImplementedException();
-            //TODO A FAIRE AJOUTER PLUS DE PARAMETRE
+            FbConnection connexion = new FbConnection(ChaineConnection());
+            using (FbCommand commande = connexion.CreateCommand())
+            {
+                commande.CommandText = "SET_NEW_ELEMENT_LANGUE";
+                commande.CommandType = CommandType.StoredProcedure;
+                FbParameterCollection pc = commande.Parameters;
+                pc.Add("CLE", FbDbType.Integer, 0).Value = cleElement;
+                pc.Add("CLELANGUE", FbDbType.Integer, 0).Value = cleLangue;
+                pc.Add("LABEL", FbDbType.VarChar, 30).Value = label;
+                pc.Add("DESCRIPTION", FbDbType.VarChar, 900).Value = description;
+                try
+                {
+                    return execution(commande, connexion);
+                }
+                catch (Exception ex)
+                {
+                    return intExeption(connexion, ex);
+                }
+            }
         }
 
         #endregion END REQUETES SET
 
         #region REQUETES UPDATE
 
-        public void UpdateElementLangue(int cleElement, int cleLangue, string label, string description)
+        public int UpdateElementLangue(int cleElement, int cleLangue, string label, string description)
         {
-            throw new NotImplementedException();
-            //TODO A FAIRE AJOUTER PLUS DE PARAMETRE
+            FbConnection connexion = new FbConnection(ChaineConnection());
+            using (FbCommand commande = connexion.CreateCommand())
+            {
+                commande.CommandText = "UPDATE_ELEMENT_LANGUE";
+                commande.CommandType = CommandType.StoredProcedure;
+                FbParameterCollection pc = commande.Parameters;
+                pc.Add("CLE", FbDbType.Integer, 0).Value = cleElement;
+                pc.Add("CLELANGUE", FbDbType.Integer, 0).Value = cleLangue;
+                pc.Add("LABEL", FbDbType.VarChar, 30).Value = label;
+                pc.Add("DESCRIPTION", FbDbType.VarChar, 900).Value = description;
+                try
+                {
+                    return execution(commande, connexion);
+                }
+                catch (Exception ex)
+                {
+                    return intExeption(connexion, ex);
+                }
+            }
         }
 
         #endregion END REQUETES UPDATE
