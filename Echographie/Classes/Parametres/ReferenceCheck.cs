@@ -1,12 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Echographie.Classes.Parametres
+﻿namespace Echographie.Classes.Parametres
 {
-    class ReferenceCheck
+    public class ReferenceCheck : Reference
     {
+        private bool? check;
+
+        public ReferenceCheck()
+        {
+            check = false;
+        }
+
+        public bool? Check
+        {
+            get
+            {
+                //return (check ?? false);
+                return check;
+            }
+            set  
+            {
+                check = value;
+                OnPropertyChanged("Check");
+            }
+        }
     }
 }
