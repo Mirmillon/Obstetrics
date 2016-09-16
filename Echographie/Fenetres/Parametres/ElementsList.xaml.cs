@@ -28,8 +28,10 @@ namespace Echographie.Fenetres.Parametres
 
             radionButtonBiometric.IsChecked = true;
             comboBoxPregnancyUscKind.SelectedIndex = 0;
+            comboBoxLangue.SelectedIndex = 1;
 
             new GestionComboBox().SetComboxReference(new ElementBase().GetLangue(), comboBoxLangue, 1);
+
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e) { Close(); }
@@ -78,6 +80,24 @@ namespace Echographie.Fenetres.Parametres
 
         private void comboBoxLangue_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            switch(comboBoxLangue.SelectedIndex)
+            {
+                case 0:
+                    dataGrid.ItemsSource = null;
+                    dataGrid.ItemsSource = new ElementBase().GetElementLangueByLangue(comboBoxLangue.SelectedIndex + 1);
+                    dataGridColKey.Visibility = Visibility.Collapsed;
+                    break;
+                case 1:
+                    dataGrid.ItemsSource = null;
+                    dataGridColKey.Visibility = Visibility.Collapsed;
+                    dataGrid.ItemsSource = new ElementBase().GetElementLangueByLangue(comboBoxLangue.SelectedIndex + 1);
+                    break;
+                case 2:
+                    dataGrid.ItemsSource = null;
+                    dataGridColKey.Visibility = Visibility.Collapsed;
+                    dataGrid.ItemsSource = new ElementBase().GetElementLangueByLangue(comboBoxLangue.SelectedIndex + 1);
+                    break;
+            }
 
         }
 

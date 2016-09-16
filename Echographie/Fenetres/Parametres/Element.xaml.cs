@@ -23,6 +23,7 @@ namespace Echographie.Fenetres.Parametres
         List<Classes.Element> listesModifie = null;
         List<Classes.Element> listesAjoute = null;
 
+        #region CONSTRUCTOR
         public Element()
         {
             InitializeComponent();
@@ -30,9 +31,10 @@ namespace Echographie.Fenetres.Parametres
             new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionEnglish, new ElementBase().GetDimensionEng(), checkBox_Clicked);
             new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionTagalog, new ElementBase().GetDimensionTag(), checkBox_Clicked);
 
-            new GestionComboBox().SetComboxReference(new ElementBase().GetLangue(), comboBoxLangue,0);
+            new GestionComboBox().SetComboxReference(new ElementBase().GetLangue(), comboBoxLangue, 0);
 
             buttonValidate.Command = DatabaseCommand.SendDatabase;
+
 
             CommandBinding binding = new CommandBinding();
             binding.Command = DatabaseCommand.SendDatabase;
@@ -62,24 +64,24 @@ namespace Echographie.Fenetres.Parametres
             SetBindingGrid(listesConnecte);
         }
 
-        public Element(int cleElement  ) : this()
+        public Element(int cleElement) : this()
         {
             listes = new ElementBase().GetElementLangue(cleElement);
             List<Reference> langues = new ElementBase().GetLangue();
             listesAjoute = new List<Classes.Element>();
             ////////////////////////////////////////
-            for (int i = 0; i < langues.Count; ++ i)
+            for (int i = 0; i < langues.Count; ++i)
             {
                 int cle = langues[i].Cle;
                 bool absent = true;
-                for (int j =0; j < listes.Count;++j)
+                for (int j = 0; j < listes.Count; ++j)
                 {
                     if (listes[j].CleLangue == cle)
                     {
                         absent = false;
                     }
                 }
-                if(absent)
+                if (absent)
                 {
                     Classes.Element elt = new Classes.Element();
                     elt.CleElement = cleElement;
@@ -89,12 +91,12 @@ namespace Echographie.Fenetres.Parametres
                 }
             }
             ////////////////////////////////////
-            if (listesAjoute.Count >0)
-            {             
-                foreach(Classes.Element e in listesAjoute)
+            if (listesAjoute.Count > 0)
+            {
+                foreach (Classes.Element e in listesAjoute)
                 {
                     listes.Add(e);
-                }              
+                }
             }
             ////////////////////////////////////////////
             var r = from e in listes
@@ -106,13 +108,21 @@ namespace Echographie.Fenetres.Parametres
             listesConnecte = new List<Classes.Element>();
             new GestionListe().Copier(listes, listesConnecte);
             SetBindingGrid(listesConnecte);
+        } 
+        #endregion FIN CONSTRUCTOR
+
+        #region CONTROLS
+        private void buttonClose_Click(object sender, RoutedEventArgs e) { Close(); }
+
+        private void buttonCancel_Click(object sender, RoutedEventArgs arg) { }
+
+        private void buttonTerminer_Click(object sender, RoutedEventArgs e)
+        {
+            listesModifie = new List<Classes.Element>();
+            listesModifie = GetBinding();
         }
 
-        private void buttonClose_Click(object sender, RoutedEventArgs e){Close();}
-
         private void buttonIdentification_Click(object sender, RoutedEventArgs e) { new GestionGrille().GridVisibilty(gridCentre, stackPanelGauche.Children.IndexOf((UIElement)sender)); }
-
-        private void buttonValidate_Click(object sender, RoutedEventArgs e){}
 
         private void comboBoxLangue_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -139,12 +149,20 @@ namespace Echographie.Fenetres.Parametres
             }
         }
 
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) { }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e) { }
+
+        private void checkBox_Clicked(object sender, RoutedEventArgs e) { }
+        #endregion FIN CONTROL
+
+        #region BINDINGS
         private List<Classes.Element> GetBinding()
         {
             //Creation d'une liste d'elements
             List<Classes.Element> elements = new List<Classes.Element>();
             //Recuperation des datacontexts et conversion en elment ajoute à la liste des elelemntd
-            List<Grid>  grids = new GestionGrille().GetGrid(gridCentre);
+            List<Grid> grids = new GestionGrille().GetGrid(gridCentre);
             //Recuperation des datacontexts et conversion en elment ajoute à la liste des elelemntd
             for (int i = 1; i < grids.Count; ++i)
             {
@@ -156,19 +174,16 @@ namespace Echographie.Fenetres.Parametres
 
         private void SetBindingGrid(List<Classes.Element> l)
         {
-            List<Grid> grids = new GestionGrille().GetGrid(gridCentre);          
+            List<Grid> grids = new GestionGrille().GetGrid(gridCentre);
             for (int i = 0; i < l.Count; ++i)
             {
                 //Pas de datacontext sur la premiere grille
-                grids[i +1].DataContext = l[i];
+                grids[i + 1].DataContext = l[i];
             }
-        }     
-
-        private void buttonCancel_Click(object sender, RoutedEventArgs arg)
-        {
-           
         }
+        #endregion FIN BINDINGS
 
+        #region COMMANDS
         private void SendDatabase_CanExecute(object sender, CanExecuteRoutedEventArgs arg)
         {
             bool different = false;
@@ -197,7 +212,7 @@ namespace Echographie.Fenetres.Parametres
                 //listesAjoute et listesModifie doivent etre de la meme longuer
                 for (int j = listesAjoute.Count - 1; j >= 0; --j)
                 {
-                    for (int i = listesModifie.Count -1; i >= 0; --i)
+                    for (int i = listesModifie.Count - 1; i >= 0; --i)
                     {
                         bool d = listesAjoute[j].Description == listesModifie[i].Description;
                         bool l = listesAjoute[j].Label == listesModifie[i].Label;
@@ -216,7 +231,7 @@ namespace Echographie.Fenetres.Parametres
                     {
                         foreach (Classes.Element e in listesAAjouter)
                         {
-                            new ElementBase().SetNewElementLangue(e.CleElement, e.CleLangue, e.Label, e.Description);
+                            new ElementBase().SetElementLangue(e.CleElement, e.CleLangue, e.Label, e.Description);
                         }
                     }
                     else
@@ -224,7 +239,7 @@ namespace Echographie.Fenetres.Parametres
                         cle = new ElementBase().SetElement("XXXXX");
                         foreach (Classes.Element e in listesAAjouter)
                         {
-                            new ElementBase().SetNewElementLangue(cle, e.CleLangue, e.Label, e.Description);
+                            new ElementBase().SetElementLangue(cle, e.CleLangue, e.Label, e.Description);
                         }
 
                     }
@@ -240,26 +255,16 @@ namespace Echographie.Fenetres.Parametres
                     bool l = listes[j].Label == listesModifie[j].Label;
                     bool langue = listes[j].CleLangue == listesModifie[j].CleLangue;
 
-                    if  ((langue) && (!(d) || !(l)))
+                    if ((langue) && (!(d) || !(l)))
                     {
                         //new ElementBase().UpdateElement(listesModifie[j].CleElement);
-                      new ElementBase().UpdateElementLangue(listesModifie[j].CleElement, listesModifie[j].CleLangue, listesModifie[j].Label, listesModifie[j].Description);
+                        new ElementBase().UpdateElementLangue(listesModifie[j].CleElement, listesModifie[j].CleLangue, listesModifie[j].Label, listesModifie[j].Description);
                     }
                 }
             }
-        }
+        } 
+        #endregion
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e) {}
-
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {}
-
-        private void checkBox_Clicked(object sender, RoutedEventArgs e) {}
-
-        private void buttonTerminer_Click(object sender, RoutedEventArgs e)
-        {
-            listesModifie =  new List<Classes.Element>();
-            listesModifie = GetBinding();
-        }
     }
 }
 

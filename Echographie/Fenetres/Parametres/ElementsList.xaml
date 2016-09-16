@@ -49,6 +49,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="dataGridColKey" Header="KEY"  Binding="{Binding CleElement}"/>
                 <DataGridTextColumn x:Name="dataGridColLabel" Header="LABEL"  Binding="{Binding Label}"/>
+                <DataGridTextColumn x:Name="dataGridColDescription" Header="DESCRIPTION"  Binding="{Binding Description}"/>
                 <DataGridComboBoxColumn x:Name="dataGridComboBoxDimension" Header="DIMENSION" SelectedValueBinding="{Binding CleDimension}"></DataGridComboBoxColumn>
             </DataGrid.Columns>
         </DataGrid>

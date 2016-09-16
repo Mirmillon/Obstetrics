@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Echographie.Classes
 {
@@ -8,10 +9,11 @@ namespace Echographie.Classes
         private string label;
         private int cleLangue;
         private string langue;
-        private string description = null;
-        
-     
-        public Element(){ }
+        private string description = string.Empty;
+        private List<Reference> listeDimensions = null;
+       
+
+        public Element(){ listeDimensions = new List<Reference>(); }
 
         public int CleElement
         {
@@ -57,6 +59,19 @@ namespace Echographie.Classes
         {
             get { return cleLangue; }
             set { cleLangue = value; }
+        }
+
+        public List<Reference> ListeDimensions
+        {
+            get
+            {
+                return listeDimensions;
+            }
+
+            set
+            {
+                listeDimensions = value;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

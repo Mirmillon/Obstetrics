@@ -80,8 +80,8 @@
                 <TextBox x:Name="textBoxElementEnglish" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="6" Grid.RowSpan="1" Style="{DynamicResource TextBoxBinding}"  Width="276"  Text="{Binding ElementName=textBoxEnglish,Path=Text,Mode=TwoWay}"></TextBox>
                 <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}" >TAGALOG NAME</Label>
                 <TextBox x:Name="textBoxElementTagalog" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="6" Grid.RowSpan="1" Style="{DynamicResource TextBoxBinding}"  Width="276"  Text="{Binding ElementName=textBoxTagalog,Path=Text,Mode=TwoWay}"></TextBox>
-                <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  Margin="5,0">DESCRIPTION</Label>
-                <ComboBox x:Name="comboBoxLangue" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{StaticResource ComboBoxStandard}" SelectionChanged="comboBoxLangue_SelectionChanged"></ComboBox>
+                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Style="{DynamicResource LabelStandard}"  Margin="5,0">DESCRIPTION</Label>
+                <ComboBox x:Name="comboBoxLangue" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="1" Style="{StaticResource ComboBoxStandard}" SelectionChanged="comboBoxLangue_SelectionChanged"></ComboBox>
                 <TextBox x:Name="textBoxDescription" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="12" Grid.RowSpan="5" Style="{StaticResource TextBoxDescription}"  ></TextBox>
             </Grid>
             <Grid x:Name="gridFrench" Visibility="Hidden">
@@ -241,7 +241,7 @@
         </Grid>
         <StackPanel x:Name="stackPanelBas" Style="{StaticResource stackPanelBas}">
             <Button x:Name="buttonClose" Style="{StaticResource buttonStackPanelBas}" Click="buttonClose_Click">Close</Button>
-            <Button x:Name="buttonValidate" Style="{DynamicResource buttonStackPanelBas}"  IsEnabled="True" Click="buttonValidate_Click" Visibility="Visible">Validate</Button>
+            <Button x:Name="buttonValidate" Style="{DynamicResource buttonStackPanelBas}"  IsEnabled="True" Visibility="Visible">Validate</Button>
             <Button x:Name="buttonTerminer" Style="{DynamicResource buttonStackPanelBas}"  IsEnabled="True" Click="buttonTerminer_Click" Visibility="Visible">Terminer</Button>
             <Button x:Name="buttonCancel" Style="{DynamicResource buttonStackPanelBas}" Click="buttonCancel_Click" >Cancel</Button>
             <Label x:Name="labelInfo" Style="{StaticResource LabelInfo}"></Label>

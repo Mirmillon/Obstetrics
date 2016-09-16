@@ -87,7 +87,55 @@ namespace Echographie.RDMS.Parametres
                     return null;
                 }
             }
-        } 
+        }
+
+        public List<Element> GetElementLangueByLangue(int cleLangue)
+        {
+            FbConnection connexion = new FbConnection(ChaineConnection());
+            List<Element> listes = new List<Element>();
+            using (FbCommand commande = connexion.CreateCommand())
+            {
+                commande.CommandText = "GET_ELEMENT_BY_LANGUE";
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                FbParameterCollection pc = commande.Parameters;
+                pc.Add("CLE", FbDbType.Integer, 0).Value = cleLangue;
+                try
+                {
+                    connexion.Open();
+                    FbDataReader reader = commande.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Element a = new Element();
+                            if (!(reader[0] == DBNull.Value))
+                            {
+                                a.CleElement = (int)reader[0];
+                            }
+                            if (!(reader[1] == DBNull.Value))
+                            {
+                                a.Label = (string)reader[1];
+                            }
+                            if (!(reader[2] == DBNull.Value))
+                            {
+                                a.Description = (string)reader[2];
+                            }
+                            listes.Add(a);
+                        }
+                        connexion.Close();
+                        return listes;
+                    }
+                    connexion.Close();
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.ToString());
+                    connexion.Close();
+                    return null;
+                }
+            }
+        }
         #endregion
 
         #region PREMIER TRIMESTRE
@@ -239,29 +287,6 @@ namespace Echographie.RDMS.Parametres
 
         #region REQUETES SET
 
-        public int SetNewElement(int cleLangue,string element)
-        {
-            FbConnection connexion = new FbConnection(ChaineConnection());
-            using (FbCommand commande = connexion.CreateCommand())
-            {
-                commande.CommandText = "SET_NEW_ELEMENT";
-                commande.CommandType = CommandType.StoredProcedure;
-                FbParameterCollection pc = commande.Parameters;
-                pc.Add("CLELANGUE", FbDbType.Integer, 0).Value = cleLangue;
-                pc.Add("LABEL", FbDbType.VarChar, 30).Value = element;
-                //pc.Add("DESCRIPTION", FbDbType.VarChar, 900).Value = description;
-                try
-                {
-                    return execution(commande, connexion);
-                }
-                catch (Exception ex)
-                {
-                    return intExeption(connexion, ex);
-                }
-            }
-        }
-
-
         public int SetElement(string element)
         {
 
@@ -300,12 +325,12 @@ namespace Echographie.RDMS.Parametres
             }
         }
 
-        public int SetNewElementLangue(int cleElement, int cleLangue, string label, string description)
+        public int SetElementLangue(int cleElement, int cleLangue, string label, string description)
         {
             FbConnection connexion = new FbConnection(ChaineConnection());
             using (FbCommand commande = connexion.CreateCommand())
             {
-                commande.CommandText = "SET_NEW_ELEMENT_LANGUE_NEW";
+                commande.CommandText = "SET_NEW_ELEMENT_LANGUE";
                 commande.CommandType = CommandType.StoredProcedure;
                 FbParameterCollection pc = commande.Parameters;
                 pc.Add("CLE", FbDbType.Integer, 0).Value = cleElement;
@@ -334,7 +359,7 @@ namespace Echographie.RDMS.Parametres
             FbConnection connexion = new FbConnection(ChaineConnection());
             using (FbCommand commande = connexion.CreateCommand())
             {
-                commande.CommandText = "UPDATE_ELEMENT_LANGUE_NEW";
+                commande.CommandText = "UPDATE_ELEMENT_LANGUE";
                 commande.CommandType = CommandType.StoredProcedure;
                 FbParameterCollection pc = commande.Parameters;
                 pc.Add("CLE", FbDbType.Integer, 0).Value = cleElement;

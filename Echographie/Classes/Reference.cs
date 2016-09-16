@@ -5,7 +5,7 @@ namespace Echographie.Classes
     public class Reference : INotifyPropertyChanged
     {        
         int cle;
-        string label;
+        string label = string.Empty;
 
         public Reference() { }
 
