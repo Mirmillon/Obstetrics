@@ -241,45 +241,7 @@ namespace Echographie.RDMS.Parametres
             return new DataBase().GetReference("GET_DIMENSION_FR");
         }
 
-        public List<ReferenceLangue> GetElementNameLangue()
-        {
-            return GetReferenceLangue("");
-        }
-
-        public List<Reference> GetElementNameEng()
-        {
-            return new DataBase().GetReference("");
-        }
-
-        public List<Reference> GetElementNameTag()
-        {
-            return new DataBase().GetReference("");
-        }
-
-        public List<Reference> GetElementNameFr()
-        {
-            return new DataBase().GetReference("");
-        }
-
-        public List<ReferenceLangue> GetDescriptionLangue()
-        {
-            return GetReferenceLangue("");
-        }
-
-        public List<Reference> GetDescriptionEng()
-        {
-            return new DataBase().GetReference("");
-        }
-
-        public List<Reference> GetDescriptionTag()
-        {
-            return new DataBase().GetReference("");
-        }
-
-        public List<Reference> GetDescriptionFr()
-        {
-            return new DataBase().GetReference("");
-        }
+       
 
         #endregion END REFERENCES
 

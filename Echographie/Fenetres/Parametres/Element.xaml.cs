@@ -8,7 +8,7 @@ using Echographie.Classes;
 using Echographie.Classes.Parametres;
 using Echographie.RDMS.Parametres;
 using Echographie.Utilitaires;
-
+using Echographie.RDMS;
 
 namespace Echographie.Fenetres.Parametres
 {
@@ -32,6 +32,26 @@ namespace Echographie.Fenetres.Parametres
             new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionTagalog, new ElementBase().GetDimensionTag(), checkBox_Clicked);
 
             new GestionComboBox().SetComboxReference(new ElementBase().GetLangue(), comboBoxLangue, 0);
+
+
+
+            List<Reference> l = new ElementBase().GetDimensionFr();
+            List<ReferenceCheck> listeDFr = new List<ReferenceCheck>();
+            new GestionListe().Copier(l, listeDFr);
+
+            List<Reference> l1 = new ElementBase().GetDimensionEng();
+            List<ReferenceCheck> listeDEng = new List<ReferenceCheck>();
+            new GestionListe().Copier(l1, listeDEng);
+
+            List<Reference> l2 = new ElementBase().GetDimensionTag();
+            List<ReferenceCheck> listeDTag = new List<ReferenceCheck>();
+            new GestionListe().Copier(l2, listeDTag);
+
+
+            new GestionWrapPanel().SetBinding(wrapPanelDimensionFrench, listeDFr);
+            new GestionWrapPanel().SetBinding(wrapPanelDimensionEnglish, listeDEng);
+            new GestionWrapPanel().SetBinding(wrapPanelDimensionTagalog, listeDTag);
+
 
             buttonValidate.Command = DatabaseCommand.SendDatabase;
 

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Echographie.Classes;
+using Echographie.Classes.Parametres;
+using System.Collections.Generic;
 
 namespace Echographie.Utilitaires
 {
@@ -19,6 +21,17 @@ namespace Echographie.Utilitaires
             }
         }
 
-       
+        public void Copier(List<Reference> l1, List<ReferenceCheck> l2)
+        {
+            foreach (Reference e in l1)
+            {
+                ReferenceCheck elt = new ReferenceCheck();
+                elt.Cle = e.Cle;
+                elt.Label = e.Label;
+                l2.Add(elt);
+            }
+        }
+
+
     }
 }
