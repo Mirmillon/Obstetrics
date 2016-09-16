@@ -261,6 +261,45 @@ namespace Echographie.RDMS.Parametres
             }
         }
 
+
+        public int SetElement(string element)
+        {
+
+            FbConnection connexion = new FbConnection(ChaineConnection());
+            using (FbCommand commande = connexion.CreateCommand())
+            {
+                commande.CommandText = "SET_ELEMENT";
+                commande.CommandType = CommandType.StoredProcedure;
+                FbParameterCollection pc = commande.Parameters;
+                pc.Add("CLE", FbDbType.Integer, 0).Direction = ParameterDirection.Output;
+                pc.Add("LABEL", FbDbType.VarChar, 30).Value = element;
+                
+                try
+                {
+                    connexion.Open();
+                    commande.ExecuteNonQuery();
+                    int cle;
+                    if (pc[0].Value is int)
+                    {
+                        cle = (int)pc[0].Value;
+                        return cle;
+
+                    }
+                    else
+                    {
+                        cle = -2;
+                    }
+
+                    connexion.Close();
+                    return cle;
+                }
+                catch (Exception ex)
+                {
+                    return intExeption(connexion, ex);
+                }
+            }
+        }
+
         public int SetNewElementLangue(int cleElement, int cleLangue, string label, string description)
         {
             FbConnection connexion = new FbConnection(ChaineConnection());

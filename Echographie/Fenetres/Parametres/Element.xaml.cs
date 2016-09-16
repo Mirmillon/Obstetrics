@@ -211,18 +211,22 @@ namespace Echographie.Fenetres.Parametres
 
                 if (listesAAjouter.Count > 0)
                 {
-
-                    foreach(Classes.Element e in listesAAjouter)
+                    int cle = listesAAjouter[0].CleElement;
+                    if (cle > 0)
                     {
-                        if (e.CleElement > 0)
+                        foreach (Classes.Element e in listesAAjouter)
                         {
                             new ElementBase().SetNewElementLangue(e.CleElement, e.CleLangue, e.Label, e.Description);
                         }
-                        else
+                    }
+                    else
+                    {
+                        cle = new ElementBase().SetElement("XXXXX");
+                        foreach (Classes.Element e in listesAAjouter)
                         {
-                            new ElementBase().SetNewElement( e.CleLangue, e.Label);
+                            new ElementBase().SetNewElementLangue(cle, e.CleLangue, e.Label, e.Description);
                         }
-                        
+
                     }
                 }
             }
