@@ -234,12 +234,12 @@ namespace Echographie.Fenetres.Parametres
                 {
                     bool d = listes[j].Description == listesModifie[j].Description;
                     bool l = listes[j].Label == listesModifie[j].Label;
-                    bool langue = listesAjoute[j].CleLangue == listesModifie[i].CleLangue;
+                    bool langue = listes[j].CleLangue == listesModifie[j].CleLangue;
 
                     if  ((langue) && (!(d) || !(l)))
                     {
-                        new ElementBase().UpdateElement(listesModifie[j].CleElement);
-                        new ElementBase().UpdateElementLangue(listesModifie[j].CleElement, listesModifie[j].CleLangue, listesModifie[j].Label, listesModifie[j].Description);
+                        //new ElementBase().UpdateElement(listesModifie[j].CleElement);
+                      new ElementBase().UpdateElementLangue(listesModifie[j].CleElement, listesModifie[j].CleLangue, listesModifie[j].Label, listesModifie[j].Description);
                     }
                 }
             }

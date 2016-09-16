@@ -46,7 +46,7 @@ namespace Echographie.RDMS.Parametres
             List<Element> listes = new List<Element>();
             using (FbCommand commande = connexion.CreateCommand())
             {
-                commande.CommandText = "GET_ELE_LANGUE";
+                commande.CommandText = "GET_LANGUES_ELE";
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
                 FbParameterCollection pc = commande.Parameters;
                 pc.Add("CLE", FbDbType.Integer, 0).Value = cle_element;
@@ -60,17 +60,17 @@ namespace Echographie.RDMS.Parametres
                         {
                             Element a = new Element();
                             a.CleElement = cle_element;
-                            if (!(reader[0] == DBNull.Value))
-                            {
-                                a.Label = (string)reader[0];
-                            }
                             if (!(reader[1] == DBNull.Value))
                             {
                                 a.CleLangue = (int)reader[1];
                             }
                             if (!(reader[2] == DBNull.Value))
                             {
-                                a.Langue = (string)reader[2];
+                                a.Label = (string)reader[2];
+                            }
+                            if (!(reader[3] == DBNull.Value))
+                            {
+                                a.Description = (string)reader[3];
                             }
                             listes.Add(a);
                         }
@@ -266,7 +266,7 @@ namespace Echographie.RDMS.Parametres
             FbConnection connexion = new FbConnection(ChaineConnection());
             using (FbCommand commande = connexion.CreateCommand())
             {
-                commande.CommandText = "SET_NEW_ELEMENT_LANGUE";
+                commande.CommandText = "SET_NEW_ELEMENT_LANGUE_NEW";
                 commande.CommandType = CommandType.StoredProcedure;
                 FbParameterCollection pc = commande.Parameters;
                 pc.Add("CLE", FbDbType.Integer, 0).Value = cleElement;
@@ -295,13 +295,13 @@ namespace Echographie.RDMS.Parametres
             FbConnection connexion = new FbConnection(ChaineConnection());
             using (FbCommand commande = connexion.CreateCommand())
             {
-                commande.CommandText = "UPDATE_ELEMENT_LANGUE";
+                commande.CommandText = "UPDATE_ELEMENT_LANGUE_NEW";
                 commande.CommandType = CommandType.StoredProcedure;
                 FbParameterCollection pc = commande.Parameters;
                 pc.Add("CLE", FbDbType.Integer, 0).Value = cleElement;
                 pc.Add("CLELANGUE", FbDbType.Integer, 0).Value = cleLangue;
                 pc.Add("LABEL", FbDbType.VarChar, 30).Value = label;
-                pc.Add("DESCRIPTION", FbDbType.VarChar, 900).Value = description;
+                pc.Add("DESCRIPTION", FbDbType.VarChar, 500).Value = description;
                 try
                 {
                     return execution(commande, connexion);
