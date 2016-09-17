@@ -8,7 +8,6 @@ using Echographie.Classes;
 using Echographie.Classes.Parametres;
 using Echographie.RDMS.Parametres;
 using Echographie.Utilitaires;
-using Echographie.RDMS;
 
 namespace Echographie.Fenetres.Parametres
 {
@@ -22,30 +21,35 @@ namespace Echographie.Fenetres.Parametres
         List<Classes.Element> listesConnecte = null;
         List<Classes.Element> listesModifie = null;
         List<Classes.Element> listesAjoute = null;
+        List<ReferenceCheck> listesDimensions = null;
+        List<ReferenceCheck> listesDimensionsModifie = null;
+
 
         #region CONSTRUCTOR
+
         public Element()
         {
             InitializeComponent();
-            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionFrench, new ElementBase().GetDimensionFr(), checkBox_Clicked);
-            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionEnglish, new ElementBase().GetDimensionEng(), checkBox_Clicked);
-            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionTagalog, new ElementBase().GetDimensionTag(), checkBox_Clicked);
+            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionFrench, new ElementBase().GetDimensionFr());
+            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionEnglish, new ElementBase().GetDimensionEng());
+            new GestionWrapPanel().AjoutCheckBox(wrapPanelDimensionTagalog, new ElementBase().GetDimensionTag());
 
             new GestionComboBox().SetComboxReference(new ElementBase().GetLangue(), comboBoxLangue, 0);
 
 
-
             List<Reference> l = new ElementBase().GetDimensionFr();
             List<ReferenceCheck> listeDFr = new List<ReferenceCheck>();
-            new GestionListe().Copier(l, listeDFr);
+            new GestionReferenceCheck().Copier(l, listeDFr);
+            listesDimensions = new List<ReferenceCheck>();
+            new GestionReferenceCheck().Copier(l, listesDimensions);
 
             List<Reference> l1 = new ElementBase().GetDimensionEng();
             List<ReferenceCheck> listeDEng = new List<ReferenceCheck>();
-            new GestionListe().Copier(l1, listeDEng);
+            new GestionReferenceCheck().Copier(l1, listeDEng);
 
             List<Reference> l2 = new ElementBase().GetDimensionTag();
             List<ReferenceCheck> listeDTag = new List<ReferenceCheck>();
-            new GestionListe().Copier(l2, listeDTag);
+            new GestionReferenceCheck().Copier(l2, listeDTag);
 
 
             new GestionWrapPanel().SetBinding(wrapPanelDimensionFrench, listeDFr);
@@ -81,11 +85,12 @@ namespace Echographie.Fenetres.Parametres
                 listesAjoute.Add(elt2);
             }
 
-            SetBindingGrid(listesConnecte);
+            new GestionGrille().SetBindingGridCentre(listesConnecte,gridCentre);
         }
 
         public Element(int cleElement) : this()
         {
+            //GESTION DES ELEMENTS
             listes = new ElementBase().GetElementLangue(cleElement);
             List<Reference> langues = new ElementBase().GetLangue();
             listesAjoute = new List<Classes.Element>();
@@ -126,12 +131,20 @@ namespace Echographie.Fenetres.Parametres
             listes = r.ToList();
             ///////////////////////////////////////////////
             listesConnecte = new List<Classes.Element>();
-            new GestionListe().Copier(listes, listesConnecte);
-            SetBindingGrid(listesConnecte);
+            new GestionElement().Copier(listes, listesConnecte);
+            new GestionGrille().SetBindingGridCentre(listesConnecte, gridCentre);
+         
+            //GESTION DES DIMENSIONS
+            List<ReferenceCheck> listOrigine = new ElementBase().GetElementCheck(cleElement);
+            List<ReferenceCheck> listConnecte = new GestionReferenceCheck().CheckListReferenceCheck(listOrigine, listesDimensions);
+            new GestionWrapPanel().SetBinding(wrapPanelDimensionFrench, listConnecte);
+            //GESTION DES TYPES US
         } 
+       
         #endregion FIN CONSTRUCTOR
 
         #region CONTROLS
+
         private void buttonClose_Click(object sender, RoutedEventArgs e) { Close(); }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs arg) { }
@@ -140,6 +153,7 @@ namespace Echographie.Fenetres.Parametres
         {
             listesModifie = new List<Classes.Element>();
             listesModifie = GetBinding();
+            listesDimensionsModifie = new GestionWrapPanel().GetBindingWrapPanel(wrapPanelDimensionFrench);
         }
 
         private void buttonIdentification_Click(object sender, RoutedEventArgs e) { new GestionGrille().GridVisibilty(gridCentre, stackPanelGauche.Children.IndexOf((UIElement)sender)); }
@@ -173,7 +187,6 @@ namespace Echographie.Fenetres.Parametres
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e) { }
 
-        private void checkBox_Clicked(object sender, RoutedEventArgs e) { }
         #endregion FIN CONTROL
 
         #region BINDINGS
@@ -192,15 +205,6 @@ namespace Echographie.Fenetres.Parametres
             return elements;
         }
 
-        private void SetBindingGrid(List<Classes.Element> l)
-        {
-            List<Grid> grids = new GestionGrille().GetGrid(gridCentre);
-            for (int i = 0; i < l.Count; ++i)
-            {
-                //Pas de datacontext sur la premiere grille
-                grids[i + 1].DataContext = l[i];
-            }
-        }
         #endregion FIN BINDINGS
 
         #region COMMANDS

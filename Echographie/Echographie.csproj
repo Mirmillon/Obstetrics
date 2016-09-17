@@ -66,6 +66,7 @@
     <Compile Include="Acteurs\Patient.cs" />
     <Compile Include="Acteurs\People.cs" />
     <Compile Include="Acteurs\PregnantWoman.cs" />
+    <Compile Include="Classes\Controles\UnitCheckBox.cs" />
     <Compile Include="Classes\DataBiometrique.cs" />
     <Compile Include="Classes\Element.cs" />
     <Compile Include="Classes\ElementAnatomique.cs" />
@@ -133,8 +134,10 @@
     <Compile Include="Utilitaires\EstimationPoids.cs" />
     <Compile Include="Utilitaires\Fichier.cs" />
     <Compile Include="Utilitaires\GestionComboBox.cs" />
+    <Compile Include="Utilitaires\GestionElement.cs" />
     <Compile Include="Utilitaires\GestionGrille.cs" />
-    <Compile Include="Utilitaires\GestionListe.cs" />
+    <Compile Include="Utilitaires\GestionReference.cs" />
+    <Compile Include="Utilitaires\GestionReferenceCheck.cs" />
     <Compile Include="Utilitaires\GestionTextBox.cs" />
     <Compile Include="Utilitaires\GestionWrapPanel.cs" />
     <Compile Include="Utilitaires\Graphiques.cs" />

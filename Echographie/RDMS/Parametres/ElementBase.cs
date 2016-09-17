@@ -24,6 +24,10 @@ namespace Echographie.RDMS.Parametres
             return 1;
         }
 
+     
+
+
+
         private int intExeption( FbConnection connexion, Exception ex)
         {
             System.Windows.Forms.MessageBox.Show(ex.ToString());
@@ -241,13 +245,73 @@ namespace Echographie.RDMS.Parametres
             return new DataBase().GetReference("GET_DIMENSION_FR");
         }
 
-       
+
 
         #endregion END REFERENCES
+        
+        internal List<ReferenceCheck> GetElementCheck(int cle)
+        {
+            FbConnection connexion = new FbConnection(ChaineConnection());
+            List<ReferenceCheck> references = new List<ReferenceCheck>();
+            using (FbCommand commande = connexion.CreateCommand())
+            {
+                commande.CommandText = "GET_ELEMENT_CHECK";
+                commande.CommandType = CommandType.StoredProcedure;
+                FbParameterCollection pc = commande.Parameters;
+                pc.Add("CLE", FbDbType.Integer, 0).Value = cle;
+                try
+                {
+                    connexion.Open();
+                    FbDataReader reader = commande.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            ReferenceCheck p = new ReferenceCheck();
+                            p.Cle = (int)reader[0];
+                            p.Label = (string)reader[1];
+                            p.Check = true;
+                            references.Add(p);
+                        }
+                        connexion.Close();
+                        return references;
+                    }
+                    connexion.Close();
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.ToString());
+                    connexion.Close();
+                    return null;
+                }
+            }
+        }
 
         #endregion END REQUETES GET
 
         #region REQUETES SET
+
+        internal int SetElementCheck(int cle, int cleElement)
+        {
+            FbConnection connexion = new FbConnection(ChaineConnection());
+            using (FbCommand commande = connexion.CreateCommand())
+            {
+                commande.CommandText = "SET_ELEMENT_CHECK";
+                commande.CommandType = CommandType.StoredProcedure;
+                FbParameterCollection pc = commande.Parameters;
+                pc.Add("CLE", FbDbType.Integer, 0).Value = cleElement;
+                pc.Add("CLEDIMENSION", FbDbType.Integer, 0).Value = cle;
+                try
+                {
+                    return execution(commande, connexion);
+                }
+                catch (Exception ex)
+                {
+                    return intExeption(connexion, ex);
+                }
+            }
+        }
 
         public int SetElement(string element)
         {
@@ -366,6 +430,26 @@ namespace Echographie.RDMS.Parametres
 
         #region REQUETES DELETE
 
+        internal int DeleteElementCheck(int cle, int cleElement)
+        {
+            FbConnection connexion = new FbConnection(ChaineConnection());
+            using (FbCommand commande = connexion.CreateCommand())
+            {
+                commande.CommandText = "DELETE_ELEMENT_CHECK";
+                commande.CommandType = CommandType.StoredProcedure;
+                FbParameterCollection pc = commande.Parameters;
+                pc.Add("CLE", FbDbType.Integer, 0).Value = cleElement;
+                pc.Add("CLEDIMENSION", FbDbType.Integer, 0).Value = cle;
+                try
+                {
+                    return execution(commande, connexion);
+                }
+                catch (Exception ex)
+                {
+                    return intExeption(connexion, ex);
+                }
+            }
+        }
         #endregion END REQUETES DELETE
 
         #region REQUETES GENERIQUES

@@ -240,6 +240,17 @@ namespace Echographie.Utilitaires
 
         #endregion END BINDINGS UNITDATA
 
+
+        public  void SetBindingGridCentre(List<Classes.Element> l, Grid g)
+        {
+            List<Grid> grids = new GestionGrille().GetGrid(g);
+            for (int i = 0; i < l.Count; ++i)
+            {
+                //Pas de datacontext sur la premiere grille
+                grids[i + 1].DataContext = l[i];
+            }
+        }
+
         ///////////////////////////////////////////////////////////////////
         #region BINDINGS CLASSIQUE AVEC OU SANS LIST COMME PARAMETRE
 
