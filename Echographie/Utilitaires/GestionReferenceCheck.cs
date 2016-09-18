@@ -8,7 +8,7 @@ namespace Echographie.Utilitaires
 {
     public class GestionReferenceCheck
     {
-        public void SetDataBaseElementCheck(List<ReferenceCheck> l1, List<ReferenceCheck> l2, int cleElement)
+        internal void SetDataBaseElementCheck(List<ReferenceCheck> l1, List<ReferenceCheck> l2, int cleElement)
         {
             for (int i = 0; i < l1.Count; ++i)
             {
@@ -23,7 +23,7 @@ namespace Echographie.Utilitaires
             }
         }
 
-        public List<ReferenceCheck> CheckListReferenceCheck(List<ReferenceCheck> lor, List<ReferenceCheck> lref)
+        internal List<ReferenceCheck> CheckListReferenceCheck(List<ReferenceCheck> lor, List<ReferenceCheck> lref)
         {
             List<ReferenceCheck> l = new List<ReferenceCheck>();
 
@@ -58,7 +58,7 @@ namespace Echographie.Utilitaires
             return l;
         }
 
-        public void Copier(List<ReferenceCheck> l1, List<ReferenceCheck> l2)
+        internal void Copier(List<ReferenceCheck> l1, List<ReferenceCheck> l2)
         {
             foreach (ReferenceCheck e in l1)
             {
@@ -70,7 +70,7 @@ namespace Echographie.Utilitaires
             }
         }
 
-        public void Copier(List<Reference> l1, List<ReferenceCheck> l2)
+        internal void Copier(List<Reference> l1, List<ReferenceCheck> l2)
         {
             foreach (Reference e in l1)
             {

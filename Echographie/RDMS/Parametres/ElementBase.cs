@@ -24,10 +24,6 @@ namespace Echographie.RDMS.Parametres
             return 1;
         }
 
-     
-
-
-
         private int intExeption( FbConnection connexion, Exception ex)
         {
             System.Windows.Forms.MessageBox.Show(ex.ToString());
@@ -39,7 +35,6 @@ namespace Echographie.RDMS.Parametres
         {
             try { return execution(commande, connexion); } catch {return intExeption(connexion, ex); }
         }
-
 
         #region REQUETES GET
 
@@ -244,8 +239,6 @@ namespace Echographie.RDMS.Parametres
         {
             return new DataBase().GetReference("GET_DIMENSION_FR");
         }
-
-
 
         #endregion END REFERENCES
         
