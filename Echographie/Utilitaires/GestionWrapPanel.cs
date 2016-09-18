@@ -38,12 +38,9 @@ namespace Echographie.Utilitaires
                     u.Tb.SetBinding(TextBox.TextProperty, bCle);
 
                     Binding bLabel = new Binding();
-                    bLabel.Mode = BindingMode.TwoWay;
+                    bLabel.Mode = BindingMode.OneWay;
                     bLabel.Path = new PropertyPath("Label");
-                    u.Lbl.SetBinding(Label.ContentProperty,bLabel);
-
-                   
-
+                    u.Lbl.SetBinding(Label.ContentProperty,bLabel);                   
                 }
             }
         }
@@ -68,13 +65,10 @@ namespace Echographie.Utilitaires
                     u.Tb.SetBinding(TextBox.TextProperty, bCle);
 
                     Binding bLabel = new Binding();
-                    bLabel.Mode = BindingMode.TwoWay;
+                    bLabel.Mode = BindingMode.OneWay;
                     bLabel.Source = l1[i];
                     bLabel.Path = new PropertyPath("Label");
                     u.Lbl.SetBinding(Label.ContentProperty, bLabel);
-
-
-
                 }
             }
         }
@@ -100,20 +94,12 @@ namespace Echographie.Utilitaires
                     u.Tb.SetBinding(TextBox.TextProperty, bCle);
 
                     Binding bLabel = new Binding();
-                    bLabel.Mode = BindingMode.TwoWay;
+                    bLabel.Mode = BindingMode.OneWay;
                     bLabel.Source = l1[i];
                     bLabel.Path = new PropertyPath("Label");
                     u.Lbl.SetBinding(Label.ContentProperty, bLabel);
-
-
-
                 }
             }
-        }
-
-        public void SetMultiBinding(List<WrapPanel> wps, List<ReferenceCheck> l)
-        {
-            MultiBinding multiBinging = new MultiBinding();
         }
 
         public List<ReferenceCheck> GetBindingWrapPanel(WrapPanel wp)

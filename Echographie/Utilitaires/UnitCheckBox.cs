@@ -34,8 +34,7 @@ namespace Echographie.Utilitaires
             Style = (Style)FindResource("CheckBoxGroupBox");
             IsThreeState = false;
             grd = new Grid();
-            grd.ShowGridLines = true;
-            grd.Background = Brushes.Wheat;
+            grd.ShowGridLines = false;
             for (int k = 0; k < 4; ++k)
             {
                 ColumnDefinition c = new ColumnDefinition();

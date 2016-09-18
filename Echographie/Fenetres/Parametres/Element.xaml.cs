@@ -73,6 +73,8 @@ namespace Echographie.Fenetres.Parametres
                 listesAjoute.Add(elt2);
             }
             new GestionGrille().SetBindingGridCentre(listesConnecte,gridCentre);
+
+
         }
 
         public Element(int cleElement) : this()
@@ -126,6 +128,8 @@ namespace Echographie.Fenetres.Parametres
             listesDimensions.Clear();
             new GestionReferenceCheck().Copier(listConnecte, listesDimensions);
             new GestionWrapPanel().SetBinding(wrapPanelDimensionFrench, listConnecte);
+            new GestionWrapPanel().SetBinding(wrapPanelDimensionEnglish, listConnecte, new ElementBase().GetDimensionEng());
+            new GestionWrapPanel().SetBinding(wrapPanelDimensionTagalog, listConnecte, new ElementBase().GetDimensionTag());
             //GESTION DES TYPES US
         } 
        
@@ -279,9 +283,15 @@ namespace Echographie.Fenetres.Parametres
             }
             //Traitements des dimensions
             new GestionReferenceCheck().SetDataBaseElementCheck(listesDimensions, listesDimensionsModifie, cleElement);
-        } 
+        }
         #endregion
 
+        private void Window_Activated(object sender, System.EventArgs e)
+        {
+            listesModifie = new List<Classes.Element>();
+            listesModifie = GetBinding();
+            listesDimensionsModifie = new GestionWrapPanel().GetBindingWrapPanel(wrapPanelDimensionFrench);
+        }
     }
 }
 
